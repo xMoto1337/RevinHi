@@ -119,3 +119,57 @@ body {
 .pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
 }
+
+/* Registers --chase-angle as an actual <angle> type so the browser can smoothly interpolate it
+   through the keyframes below - without this, animating a custom property used inside a
+   conic-gradient() just snaps between values instead of sweeping around the ring. */
+@property --chase-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes chase-spin {
+  to { --chase-angle: 360deg; }
+}
+
+/* A bright white "spark" with a fading rainbow tail racing around the button's edge - like a sword
+   dragged around the border, chasing itself. Built as a padded wrapper: this element's own background
+   is the spinning conic-gradient comet, and the actual button sits inside with its own opaque
+   background, covering everything except a thin ring at the edge where the comet peeks through. */
+.chase-ring {
+  --chase-angle: 0deg;
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 3px;
+  isolation: isolate;
+}
+
+.chase-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--chase-angle),
+    transparent 0deg,
+    transparent 205deg,
+    #8a5cff 235deg,
+    #00e5ff 255deg,
+    #2ed573 275deg,
+    #ffee00 295deg,
+    #ff9500 315deg,
+    #ff3b30 335deg,
+    #ffffff 356deg,
+    transparent 360deg
+  );
+  filter: blur(3px);
+  animation: chase-spin 2.2s linear infinite;
+  z-index: 0;
+}
+
+.chase-ring > * {
+  position: relative;
+  z-index: 1;
+}

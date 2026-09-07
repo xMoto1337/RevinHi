@@ -1,11 +1,13 @@
+import { AppShowcase } from "@/components/AppShowcase";
+
 // --- Fill these in once you have real values -------------------------------------------------
 const GUMROAD_PRODUCT_URL = "https://xanybot.gumroad.com/l/fsxmgh";
 const PRICE_DISPLAY = "$9.99"; // must match whatever you set as the Gumroad product price
 const SUPPORT_EMAIL = "support@revinhiperformance.com"; // TODO
 // -----------------------------------------------------------------------------------------------
 
-function BuyButton({ className = "" }: { className?: string }) {
-  return (
+function BuyButton({ className = "", chase = false, wrapperClassName = "" }: { className?: string; chase?: boolean; wrapperClassName?: string }) {
+  const button = (
     <a
       className={`gumroad-button inline-flex items-center justify-center gap-2 rounded-full bg-neon-cyan px-7 py-3 font-semibold text-black shadow-[0_0_30px_rgba(0,229,255,0.35)] transition hover:shadow-[0_0_45px_rgba(0,229,255,0.55)] hover:scale-[1.02] ${className}`}
       href={GUMROAD_PRODUCT_URL}
@@ -14,6 +16,14 @@ function BuyButton({ className = "" }: { className?: string }) {
       Buy Now &mdash; {PRICE_DISPLAY}
     </a>
   );
+
+  // Reserved for the standout usages (hero, pricing) - the little nav button stays plain so the
+  // spinning comet effect doesn't feel cramped/noisy at that size.
+  if (!chase) {
+    return button;
+  }
+
+  return <div className={`chase-ring ${wrapperClassName}`}>{button}</div>;
 }
 
 function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
@@ -101,8 +111,8 @@ export default function Home() {
           scroll frame for the entire page, not just briefly as it passes through view. Removing it
           traded a barely-visible "content blurring through" effect for real scroll smoothness. */}
       <header className="sticky top-0 z-20 border-b border-white/10 bg-background/95">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2 text-sm font-bold tracking-wide">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4">
+          <div className="flex items-center gap-1.5 text-xs font-bold tracking-wide sm:gap-2 sm:text-sm">
             <span className="text-white/90">REVINHI</span>
             <span className="text-white/50">PERFORMANCE</span>
           </div>
@@ -112,29 +122,29 @@ export default function Home() {
             <a href="#pricing" className="transition hover:text-white">Pricing</a>
             <a href="#faq" className="transition hover:text-white">FAQ</a>
           </nav>
-          <BuyButton className="px-4 py-2 text-sm" />
+          <BuyButton className="px-3.5 py-2 text-xs sm:px-4 sm:text-sm" />
         </div>
       </header>
 
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pb-24 pt-20 sm:pt-28">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <div className="glass-panel flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-white/70">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-neon-success" />
-            Windows 10/11 &bull; One-time purchase &bull; Instant key delivery
+          <div className="glass-panel flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 text-center text-[11px] text-white/70 sm:px-4 sm:text-xs">
+            <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-neon-success" />
+            <span>Windows 10/11 &bull; One-time purchase &bull; Instant key delivery</span>
           </div>
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-6xl">
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-6xl">
             Stop losing frames to
             <br />
             <span className="rgb-chase-text">Windows itself.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/60">
+          <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
             RevinHi Performance is a safe, reversible Windows optimizer built for gamers - one-click tweaks,
             live system monitoring, and a DNS finder that actually shows you what matters. Every change can be
             undone with a single button.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
-            <BuyButton className="px-8 py-3.5 text-base" />
+            <BuyButton className="px-8 py-3.5 text-base" chase />
             <a
               href="#features"
               className="glass-panel rounded-full px-8 py-3.5 text-base font-semibold text-white/80 transition hover:text-white"
@@ -144,47 +154,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stylized app mockup - a simplified illustration of the real UI, not a literal screenshot */}
-        <div className="mx-auto mt-16 max-w-3xl">
-          <div className="glass-panel rounded-2xl p-3 shadow-[0_0_80px_rgba(0,229,255,0.08)]">
-            <div className="flex items-center gap-2 border-b border-white/10 px-3 pb-3">
-              <div className="flex gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              </div>
-              <span className="ml-2 text-[11px] font-bold tracking-wide text-white/40">REVINHI PERFORMANCE</span>
-              <span className="ml-auto flex items-center gap-1.5 rounded-full border border-neon-success/50 bg-white/5 px-2.5 py-0.5 text-[10px] text-white/60">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon-success" /> Administrator
-              </span>
-            </div>
-            <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2">
-              {[
-                { name: "Windows Game Mode", tier: "Safe", on: true },
-                { name: "Hardware-Accelerated GPU Scheduling", tier: "Advanced", on: true },
-                { name: "Disable Nagle's Algorithm", tier: "Advanced", on: false },
-                { name: "Disable Fullscreen Optimizations", tier: "Safe", on: true },
-              ].map((tweak) => (
-                <div key={tweak.name} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3.5">
-                  <div>
-                    <p className="text-sm font-medium text-white/90">{tweak.name}</p>
-                    <span
-                      className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-                        tweak.tier === "Safe" ? "bg-neon-success/15 text-neon-success" : "bg-neon-amber/15 text-neon-amber"
-                      }`}
-                    >
-                      {tweak.tier}
-                    </span>
-                  </div>
-                  <div
-                    className={`h-5 w-9 rounded-full p-0.5 transition ${tweak.on ? "bg-neon-success/80" : "bg-white/15"}`}
-                  >
-                    <div className={`h-4 w-4 rounded-full bg-white transition ${tweak.on ? "translate-x-4" : ""}`} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Interactive app showcase - click between tabs to see each real section of the app
+            (Boost & Tweaks, DNS Finder, Dashboard, Startup Manager), rather than a static picture
+            of just one screen. Illustrative, not a literal screenshot. */}
+        <div className="mx-auto mt-12 max-w-3xl sm:mt-16">
+          <AppShowcase />
         </div>
       </section>
 
@@ -266,7 +240,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <BuyButton className="mt-8 w-full py-3.5 text-base" />
+            <BuyButton className="w-full py-3.5 text-base" chase wrapperClassName="mt-8 block w-full" />
           </div>
         </div>
       </section>
