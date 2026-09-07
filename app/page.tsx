@@ -96,7 +96,11 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
       {/* Nav */}
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/80 backdrop-blur-sm">
+      {/* No backdrop-blur here - unlike the other glass panels, the sticky nav is on-screen and
+          recompositing its live blur against whatever's scrolling underneath it on every single
+          scroll frame for the entire page, not just briefly as it passes through view. Removing it
+          traded a barely-visible "content blurring through" effect for real scroll smoothness. */}
+      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/95">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2 text-sm font-bold tracking-wide">
             <span className="text-white/90">REVINHI</span>
