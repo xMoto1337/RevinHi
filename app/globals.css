@@ -43,11 +43,12 @@ body {
 .bg-orbs::after {
   content: "";
   position: absolute;
-  width: 60vw;
-  height: 60vw;
+  width: 50vw;
+  height: 50vw;
   border-radius: 9999px;
-  filter: blur(120px);
-  opacity: 0.18;
+  filter: blur(70px);
+  opacity: 0.16;
+  will-change: transform;
 }
 
 .bg-orbs::before {
@@ -62,11 +63,22 @@ body {
   background: var(--neon-purple);
 }
 
+/* Reserved for the handful of panels where the live blur genuinely matters (nav, hero, pricing) -
+   backdrop-filter is expensive to recomposite on scroll, so this is intentionally NOT used on every
+   card. Reduced from an earlier 20px after the page felt laggy with ~15 blurred elements on one page. */
 .glass-panel {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Same look, no backdrop-filter - for repeated list items (feature/FAQ cards) where a live blur adds
+   render cost without a visible difference, since there's rarely interesting content moving directly
+   behind them. */
+.glass-panel-flat {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
 }
 
 /* Same rainbow stops/6s cadence as MainWindow.xaml's RgbChaseStoryboard in the app, so the site's

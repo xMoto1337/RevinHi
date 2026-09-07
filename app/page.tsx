@@ -1,5 +1,5 @@
 // --- Fill these in once you have real values -------------------------------------------------
-const GUMROAD_PRODUCT_URL = "https://YOUR_USERNAME.gumroad.com/l/revinhi-performance"; // TODO
+const GUMROAD_PRODUCT_URL = "https://xanybot.gumroad.com/l/fsxmgh";
 const PRICE_DISPLAY = "$9.99"; // must match whatever you set as the Gumroad product price
 const SUPPORT_EMAIL = "support@revinhiperformance.com"; // TODO
 // -----------------------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
       {/* Nav */}
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/70 backdrop-blur-md">
+      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2 text-sm font-bold tracking-wide">
             <span className="text-white/90">REVINHI</span>
@@ -193,7 +193,7 @@ export default function Home() {
         />
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature) => (
-            <div key={feature.title} className="glass-panel rounded-2xl p-6 transition hover:bg-white/[0.07]">
+            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
               <div
                 className="mb-4 h-9 w-9 rounded-lg"
                 style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }}
@@ -272,7 +272,7 @@ export default function Home() {
         <SectionHeading eyebrow="Questions" title="Frequently asked" />
         <div className="mx-auto mt-12 max-w-2xl space-y-4">
           {FAQ.map((item) => (
-            <div key={item.q} className="glass-panel rounded-2xl p-6">
+            <div key={item.q} className="glass-panel-flat rounded-2xl p-6">
               <p className="font-semibold text-white/90">{item.q}</p>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{item.a}</p>
             </div>
