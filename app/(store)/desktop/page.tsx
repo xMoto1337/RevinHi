@@ -135,7 +135,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What's the refund policy?",
-    a: `TODO: refund policy. Reach out at ${SUPPORT_EMAIL} if something isn't working and we'll sort it out.`,
+    a: `Refunds are available within 24 hours of purchase - email ${SUPPORT_EMAIL} from the address you bought with. After 24 hours all sales are final, so try the free version first to make sure it runs well on your PC. If something isn't working, reach out any time and we'll help sort it out.`,
   },
 ];
 
@@ -312,7 +312,7 @@ export default function DesktopPage() {
           </div>
         </div>
         <p className="mt-4 text-center text-xs text-white/40">
-          Windows 10/11 only &middot; already running the free version? Your Pro key unlocks it in place.
+          Windows 10/11 only &middot; refunds within 24 hours of purchase &middot; already running the free version? Your Pro key unlocks it in place.
         </p>
       </section>
 

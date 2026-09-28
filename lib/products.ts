@@ -27,7 +27,7 @@ export type Product = {
   downloadUrl?: string;
 };
 
-export const SUPPORT_EMAIL = "support@revinhiperformance.com"; // TODO: real support address
+export const SUPPORT_EMAIL = "revinhi@yahoo.com";
 
 export const PRODUCTS: Product[] = [
   {
