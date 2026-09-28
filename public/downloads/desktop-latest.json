@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "Automatic updates. Widget text now stays inside its card. New widgets open on the desktop by default.",
+  "pub_date": "2026-09-28T22:11:19.367Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UmxiY0VzaUhlNlZISmpFanBvNi9aYXFoRTRZTzN6RGdaNmNhZWVCSVl4cUV2WkpwNjV3MWRuR3RNRSt1U0dMa3YrZm9RZXRlbWdzb1J5bU5na2FGY1FNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjMzNDc5CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS4xX3g2NC1zZXR1cC5leGUKeGJGdkZENWVWTCtEZUxDVFovRDd3RHVIdXZZRTI5c1NKZTVGUmhEOUJySmxTQnMyUWs4M09xblEvcEhwZUg4YXZLL3oweEdOTmNpVFUrcnZUa3gyRFE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.1"
+    }
+  }
+}
