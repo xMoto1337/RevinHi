@@ -11,7 +11,22 @@ import { generateLicenseKey } from "@/lib/license-key";
  *
  * Gumroad has no HMAC/signature verification for Ping - matching seller_id against your own
  * account is the only verification it offers, so that's what's checked here.
+ *
+ * Two apps are sold on the same account, each validating keys against its OWN secret: a sale of
+ * RevinHi Desktop (product_name "RevinHi Desktop", or GUMROAD_PRODUCT_NAME_DESKTOP) is signed with
+ * LICENSE_SECRET_HEX_DESKTOP; every other sale goes down the original RevinHi Performance path
+ * (GUMROAD_PRODUCT_NAME filter + LICENSE_SECRET_HEX), unchanged.
  */
+type Fulfillment = { app: string; secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" };
+
+const PERFORMANCE: Fulfillment = { app: "RevinHi Performance", secretEnv: "LICENSE_SECRET_HEX" };
+const DESKTOP: Fulfillment = { app: "RevinHi Desktop", secretEnv: "LICENSE_SECRET_HEX_DESKTOP" };
+
+function isDesktopProduct(productName: string | null): boolean {
+  const desktopName = process.env.GUMROAD_PRODUCT_NAME_DESKTOP || DESKTOP.app;
+  return !!productName && productName.trim().toLowerCase() === desktopName.trim().toLowerCase();
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const params = new URLSearchParams(body);
@@ -27,9 +42,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, skipped: "seller_id_mismatch" });
   }
 
-  const expectedProductName = process.env.GUMROAD_PRODUCT_NAME;
   const productName = params.get("product_name");
-  if (expectedProductName && productName !== expectedProductName) {
+  const product = isDesktopProduct(productName) ? DESKTOP : PERFORMANCE;
+
+  const expectedProductName = process.env.GUMROAD_PRODUCT_NAME;
+  if (product === PERFORMANCE && expectedProductName && productName !== expectedProductName) {
     // A different product on the same Gumroad account - not ours to fulfill.
     return NextResponse.json({ ok: true, skipped: "different_product" });
   }
@@ -43,9 +60,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "missing_email" }, { status: 400 });
   }
 
-  const secretHex = process.env.LICENSE_SECRET_HEX;
+  const secretHex = process.env[product.secretEnv];
   if (!secretHex) {
-    console.error("LICENSE_SECRET_HEX is not set - cannot generate a key.");
+    console.error(`${product.secretEnv} is not set - cannot generate a ${product.app} key.`);
     return NextResponse.json({ ok: false, error: "server_misconfigured" }, { status: 500 });
   }
 
@@ -53,16 +70,16 @@ export async function POST(request: NextRequest) {
 
   // Logged so a lost-key support request can at least be cross-referenced against these logs until
   // there's a proper database recording issued keys per sale.
-  console.log(`Issued RevinHi key to ${email} for sale_id=${params.get("sale_id")}`);
+  console.log(`Issued ${product.app} key to ${email} for sale_id=${params.get("sale_id")}`);
 
   const resend = new Resend(process.env.RESEND_API_KEY);
   const { error } = await resend.emails.send({
     from: process.env.EMAIL_FROM ?? "RevinHi Performance <onboarding@resend.dev>",
     to: email,
-    subject: "Your RevinHi Performance license key",
+    subject: `Your ${product.app} license key`,
     html: `
       <div style="font-family: -apple-system, sans-serif; background:#020203; color:#f5f7fb; padding:32px; border-radius:12px;">
-        <h1 style="font-size:20px; margin:0 0 16px;">Thanks for grabbing RevinHi Performance!</h1>
+        <h1 style="font-size:20px; margin:0 0 16px;">Thanks for grabbing ${product.app}!</h1>
         <p style="font-size:14px; color:#b7bcc9; margin:0 0 20px;">Here's your activation key - paste it into the app on first launch:</p>
         <div style="font-family: monospace; font-size:20px; letter-spacing:2px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:16px; text-align:center;">
           ${key}

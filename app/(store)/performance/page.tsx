@@ -1,29 +1,13 @@
 import { AppShowcase } from "@/components/AppShowcase";
 
-// --- Fill these in once you have real values -------------------------------------------------
-const GUMROAD_PRODUCT_URL = "https://xanybot.gumroad.com/l/fsxmgh";
-const PRICE_DISPLAY = "$9.99"; // must match whatever you set as the Gumroad product price
-const SUPPORT_EMAIL = "support@revinhiperformance.com"; // TODO
-// -----------------------------------------------------------------------------------------------
+import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
+import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
-function BuyButton({ className = "", chase = false, wrapperClassName = "" }: { className?: string; chase?: boolean; wrapperClassName?: string }) {
-  const button = (
-    <a
-      className={`gumroad-button inline-flex items-center justify-center gap-2 rounded-full bg-neon-cyan px-7 py-3 font-semibold text-black shadow-[0_0_30px_rgba(0,229,255,0.35)] transition hover:shadow-[0_0_45px_rgba(0,229,255,0.55)] hover:scale-[1.02] ${className}`}
-      href={GUMROAD_PRODUCT_URL}
-      data-gumroad-single-product="true"
-    >
-      Buy Now &mdash; {PRICE_DISPLAY}
-    </a>
-  );
+// Price / Gumroad link / support email now live in lib/products.ts (the storefront registry).
+const PRODUCT = getProduct("performance");
 
-  // Reserved for the standout usages (hero, pricing) - the little nav button stays plain so the
-  // spinning comet effect doesn't feel cramped/noisy at that size.
-  if (!chase) {
-    return button;
-  }
-
-  return <div className={`chase-ring ${wrapperClassName}`}>{button}</div>;
+function BuyButton(props: { className?: string; chase?: boolean; wrapperClassName?: string }) {
+  return <SharedBuyButton product={PRODUCT} {...props} />;
 }
 
 function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
@@ -102,32 +86,12 @@ const FAQ: { q: string; a: string }[] = [
   },
 ];
 
-export default function Home() {
+export default function PerformancePage() {
   return (
     <div className="flex flex-1 flex-col">
-      {/* Nav */}
-      {/* No backdrop-blur here - unlike the other glass panels, the sticky nav is on-screen and
-          recompositing its live blur against whatever's scrolling underneath it on every single
-          scroll frame for the entire page, not just briefly as it passes through view. Removing it
-          traded a barely-visible "content blurring through" effect for real scroll smoothness. */}
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/95">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4">
-          <div className="flex items-center gap-1.5 text-xs font-bold tracking-wide sm:gap-2 sm:text-sm">
-            <span className="text-white/90">REVINHI</span>
-            <span className="text-white/50">PERFORMANCE</span>
-          </div>
-          <nav className="hidden items-center gap-8 text-sm text-white/70 sm:flex">
-            <a href="#features" className="transition hover:text-white">Features</a>
-            <a href="#safety" className="transition hover:text-white">Safety</a>
-            <a href="#pricing" className="transition hover:text-white">Pricing</a>
-            <a href="#faq" className="transition hover:text-white">FAQ</a>
-          </nav>
-          <BuyButton className="px-3.5 py-2 text-xs sm:px-4 sm:text-sm" />
-        </div>
-      </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 pb-24 pt-20 sm:pt-28">
+      <section className="relative overflow-hidden px-6 pb-24 pt-14 sm:pt-24">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="glass-panel flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 text-center text-[11px] text-white/70 sm:px-4 sm:text-xs">
             <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-neon-success" />
@@ -163,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section id="features" className="px-6 py-24">
+      <section id="features" className="scroll-mt-28 px-6 py-24">
         <SectionHeading
           eyebrow="What you get"
           title="Every optimization, always reversible"
@@ -223,7 +187,7 @@ export default function Home() {
         <SectionHeading eyebrow="Pricing" title="One price. Yours for good." />
         <div className="mx-auto mt-12 max-w-md">
           <div className="glass-panel rgb-chase-border rounded-3xl border-2 p-10 text-center">
-            <p className="text-5xl font-extrabold">{PRICE_DISPLAY}</p>
+            <p className="text-5xl font-extrabold">{PRODUCT.price}</p>
             <p className="mt-1 text-sm text-white/50">One-time purchase &middot; free updates forever</p>
             <ul className="mt-8 space-y-3 text-left text-sm text-white/70">
               {[

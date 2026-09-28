@@ -173,3 +173,10 @@ body {
   position: relative;
   z-index: 1;
 }
+
+/* gumroad.js appends an empty <span class="logo-full"> to every Gumroad checkout link it hooks. It is
+   only styled (as the Gumroad logo) under a.gumroad-button, which our buttons don't use - hide it anyway
+   so it can never add spacing or show up if Gumroad changes their CSS. */
+.rh-buy .logo-full {
+  display: none;
+}

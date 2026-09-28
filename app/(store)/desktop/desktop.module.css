@@ -1,0 +1,233 @@
+/* Styles scoped to the /desktop landing page only - kept out of globals.css so the home page is untouched. */
+
+/* ---------- Hero media frame ---------- */
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #05060a;
+  box-shadow: 0 30px 80px -20px rgba(0, 229, 255, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.videoReady {
+  opacity: 1;
+}
+
+/* ---------- CSS desktop mockup (fallback when hero.mp4 is missing / fails) ---------- */
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, #1a0b3d, #0b2a5c, #062e3f, #2a0b3d, #1a0b3d);
+  background-size: 400% 400%;
+  animation: gradient-flow 16s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 68%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 58% 14%, #cfe9ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 76% 42%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 78%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 22% 86%, #e9d9ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 48% 38%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 90%, #fff 50%, transparent 51%);
+  opacity: 0.7;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+
+.wave {
+  position: absolute;
+  left: -50%;
+  width: 200%;
+  height: 60%;
+  bottom: -38%;
+  border-radius: 45%;
+  background: rgba(0, 229, 255, 0.12);
+  animation: wave-spin 18s linear infinite;
+}
+
+.wave2 {
+  bottom: -42%;
+  background: rgba(138, 92, 255, 0.14);
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+
+@keyframes wave-spin {
+  to { transform: rotate(360deg); }
+}
+
+.rain {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom, transparent 0%, rgba(200, 230, 255, 0.35) 50%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, rgba(200, 230, 255, 0.25) 50%, transparent 100%);
+  background-size: 1px 38px, 1px 26px;
+  background-position: 0 0, 17px 11px;
+  background-repeat: repeat;
+  /* Fake the column spacing by masking with a repeating stripe */
+  -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 23px);
+  mask-image: repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 23px);
+  transform: skewX(-8deg);
+  animation: rain-fall 0.7s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes rain-fall {
+  to { background-position: 0 38px, 17px 37px; }
+}
+
+.lightRay {
+  position: absolute;
+  top: -20%;
+  left: 55%;
+  width: 30%;
+  height: 140%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 70%);
+  transform: rotate(18deg);
+  filter: blur(8px);
+  animation: ray-pulse 6s ease-in-out infinite;
+}
+
+@keyframes ray-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+.widget {
+  position: absolute;
+  border-radius: 0.6rem;
+  background: rgba(10, 12, 20, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+}
+
+.taskbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7%;
+  min-height: 14px;
+  background: rgba(8, 10, 16, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5%;
+}
+
+.taskIcon {
+  width: 2.4%;
+  aspect-ratio: 1;
+  border-radius: 20%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.bar {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  animation: bar-breathe 3s ease-in-out infinite;
+}
+
+@keyframes bar-breathe {
+  0%, 100% { transform: scaleX(1); transform-origin: left; }
+  50% { transform: scaleX(0.75); transform-origin: left; }
+}
+
+/* ---------- Mini radar (used in mockup + radar section) ---------- */
+.radar {
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, transparent 0 24%, rgba(46, 213, 115, 0.18) 24.5% 25%, transparent 25.5% 49%, rgba(46, 213, 115, 0.18) 49.5% 50%, transparent 50.5% 74%, rgba(46, 213, 115, 0.18) 74.5% 75%, transparent 75.5%),
+    radial-gradient(circle at 50% 50%, #06140e, #020805);
+  border: 1px solid rgba(46, 213, 115, 0.35);
+}
+
+.radarSweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, rgba(46, 213, 115, 0.45), transparent 60deg, transparent 360deg);
+  animation: wave-spin 3.5s linear infinite;
+}
+
+.cell {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(3px);
+}
+
+.strike {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #ffee00;
+  box-shadow: 0 0 10px 3px rgba(255, 238, 0, 0.8);
+  animation: strike-flash 2.4s ease-out infinite;
+}
+
+@keyframes strike-flash {
+  0%, 60%, 100% { opacity: 0; transform: scale(0.6); }
+  62% { opacity: 1; transform: scale(1.4); }
+  75% { opacity: 0.6; transform: scale(1); }
+}
+
+/* ---------- Mobile sticky buy bar ---------- */
+.stickyBar {
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wallpaper,
+  .stars,
+  .wave,
+  .rain,
+  .lightRay,
+  .barFill,
+  .radarSweep,
+  .strike {
+    animation: none;
+  }
+}
