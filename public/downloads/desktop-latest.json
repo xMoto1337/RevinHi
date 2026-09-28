@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "Test update: automatic check on launch.",
-  "pub_date": "2026-09-28T22:45:26.056Z",
+  "version": "0.1.5",
+  "notes": "New Seamless look for widgets (on by default): no title bar or location label, so widgets blend into your desktop. Turn it off in Widgets > All widgets.",
+  "pub_date": "2026-09-28T23:20:19.555Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnRpZ1c2RDVyVEd1TlQxVkZqdmRsM3djS1NPZHhnaHF5SXB0aDkyNDlzQWhQRkZaWldMcHZHcnhvbVdwSmpKVlVSbHBKWHJTaW5jZEtnZlNNYlRmTndBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjM1NTI1CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS40X3g2NC1zZXR1cC5leGUKaXdYcWtrd3J6V1l4eE5tbnBSUll4blNOZUFmQUtKaW01YWtRQ2pKdDVOME13T01uMXdSeWlWVmVGODVMZHhHMC8rTW95NDBUYUVxRDUyZHhhSnlSRHc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.4"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnZJUkhLY015UFRJRUFwK2xJUnNLSUt5Q2JUSnZudzhTVTFoSmQ2TCswZkF0RVUrWGVVVlFENVQvS0RqbWQzMjVvdWk3QkVuaUhIWTlvYURRWGVpRHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjM3NjE5CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS41X3g2NC1zZXR1cC5leGUKbHUwaWtscHFnaHpiM0tEMEd5MDF3enFjamUwMjNmWEVpZ0d1OFlIa2lMdEl3SGJEeHZKcUdRVzdYa25mMTV3eDlraWtYemEzK0FpQ2xKWlhuM3kxQmc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.5"
     }
   }
 }
