@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "Updates are now found automatically a few seconds after launch. Fixed the unreadable Check for updates button.",
-  "pub_date": "2026-09-28T22:26:55.020Z",
+  "version": "0.1.4",
+  "notes": "Test update: automatic check on launch.",
+  "pub_date": "2026-09-28T22:45:26.056Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UmhhTEZ3VkxyNFZ6SnlrVlcrc0pORDJMYkpFbXh3VzdoeEFtbFd2Q2RsNy95WW5BdDBmNHFBM3owRkx2MUwxQlpyMzNQSVJpZUVVS3dUam5qSmMwR0FjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjM0NDE0CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS4zX3g2NC1zZXR1cC5leGUKZk5XelJCUDdXRWxDTkhwbE1iamZEdXNva1ZHWFVsWE5idUFrWFRxMDhGciswczY4U2orYnlyM21GUm5LaVowVzFDekRUWUdBVWg0VzZvaUJuaVdLREE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.3"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnRpZ1c2RDVyVEd1TlQxVkZqdmRsM3djS1NPZHhnaHF5SXB0aDkyNDlzQWhQRkZaWldMcHZHcnhvbVdwSmpKVlVSbHBKWHJTaW5jZEtnZlNNYlRmTndBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjM1NTI1CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS40X3g2NC1zZXR1cC5leGUKaXdYcWtrd3J6V1l4eE5tbnBSUll4blNOZUFmQUtKaW01YWtRQ2pKdDVOME13T01uMXdSeWlWVmVGODVMZHhHMC8rTW95NDBUYUVxRDUyZHhhSnlSRHc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.4"
     }
   }
 }
