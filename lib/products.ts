@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     platform: "Windows 10/11",
     status: "available",
     accent: "#8a5cff",
-    gumroadUrl: "https://xanybot.gumroad.com/l/TODO-revinhi-desktop", // TODO: real Gumroad product link
+    gumroadUrl: "https://xanybot.gumroad.com/l/buzbvq",
     route: "/desktop",
     features: ["Animated live wallpapers", "Customizable widgets", "Rain, snow & light rays", "Live US radar + lightning"],
     heroMedia: "/desktop/hero.mp4",
