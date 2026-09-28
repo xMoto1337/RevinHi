@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Desktop",
     tabLabel: "Desktop",
     tagline: "Live wallpapers, custom widgets, rain on your screen, and a live storm radar.",
-    price: "$7.99",
+    price: "$9.99",
     platform: "Windows 10/11",
     status: "available",
     accent: "#8a5cff",
