@@ -1,11 +1,11 @@
 {
-  "version": "0.1.6",
-  "notes": "39 new scenes and 16 new animated wallpaper styles: aurora, nebula, galaxy, synthwave, night city, digital rain, mountains, moonlit sea, fireflies, bokeh, lava lamp, liquid, silk flow, hypno tunnel, mandala and harmonograph.",
-  "pub_date": "2026-09-29T00:01:14.782Z",
+  "version": "0.1.7",
+  "notes": "18 new weather scenes with live radar, conditions, forecast and storm alerts built in, plus 10 more scenes. Presets now have categories and a compact gallery with Show all.",
+  "pub_date": "2026-09-29T00:17:07.130Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Umk4OHNuZFhkUDZ5Ri8zUUs2a2p4b01OaTQraDVOemxPMHBoVmYrTE0zZ2dBcGlhVC9CZEJEZkxyUkVHWWtvTEFBUllWVzNRc2gxSVZQV0x3VGVCRXdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjQwMDc0CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS42X3g2NC1zZXR1cC5leGUKY1Y5Y3Vqd001L1hDQ2pLNi9ZZDZnd0VjV0YxbEFSL0pxR1Fwd1ZDalVIT0VzWDM4YW1sYlgzdnUxc3gxaUZTVkpYWFdTOTh5bnZ5eFAybDVQdnhZQmc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.6"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Ump4a3NiUVJJWkhaU0E1WEEySjBrRzR6SkNGaHJpaEd3bGRFR09uZERpWkR5WGo1dSsreDNwTXMyQUFSVzFHbWpsVHJUanB0Z242YlBJemJCQ1Avc0EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjQxMDI3CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS43X3g2NC1zZXR1cC5leGUKQkRMZTFtd2JkTGMwSFczc1B1cEduU1F5K1BVU2NCbmV5ek9QWHhVaUFFbWxOUmVadm94NnhXY01ZTXczNFhqVnVOSzZQQkhVanFxc1AxR2x6RGp6Q1E9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.7"
     }
   }
 }
