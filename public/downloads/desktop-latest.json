@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "New Seamless look for widgets (on by default): no title bar or location label, so widgets blend into your desktop. Turn it off in Widgets > All widgets.",
-  "pub_date": "2026-09-28T23:20:19.555Z",
+  "version": "0.1.6",
+  "notes": "39 new scenes and 16 new animated wallpaper styles: aurora, nebula, galaxy, synthwave, night city, digital rain, mountains, moonlit sea, fireflies, bokeh, lava lamp, liquid, silk flow, hypno tunnel, mandala and harmonograph.",
+  "pub_date": "2026-09-29T00:01:14.782Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnZJUkhLY015UFRJRUFwK2xJUnNLSUt5Q2JUSnZudzhTVTFoSmQ2TCswZkF0RVUrWGVVVlFENVQvS0RqbWQzMjVvdWk3QkVuaUhIWTlvYURRWGVpRHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjM3NjE5CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS41X3g2NC1zZXR1cC5leGUKbHUwaWtscHFnaHpiM0tEMEd5MDF3enFjamUwMjNmWEVpZ0d1OFlIa2lMdEl3SGJEeHZKcUdRVzdYa25mMTV3eDlraWtYemEzK0FpQ2xKWlhuM3kxQmc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.5"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Umk4OHNuZFhkUDZ5Ri8zUUs2a2p4b01OaTQraDVOemxPMHBoVmYrTE0zZ2dBcGlhVC9CZEJEZkxyUkVHWWtvTEFBUllWVzNRc2gxSVZQV0x3VGVCRXdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjQwMDc0CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS42X3g2NC1zZXR1cC5leGUKY1Y5Y3Vqd001L1hDQ2pLNi9ZZDZnd0VjV0YxbEFSL0pxR1Fwd1ZDalVIT0VzWDM4YW1sYlgzdnUxc3gxaUZTVkpYWFdTOTh5bnZ5eFAybDVQdnhZQmc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.6"
     }
   }
 }

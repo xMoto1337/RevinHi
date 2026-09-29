@@ -55,7 +55,7 @@ const FEATURES: { title: string; description: string; accent: string; tag: strin
     tag: "Live wallpapers",
     title: "Your wallpaper, but moving",
     description:
-      "Set any video or image as your wallpaper, or pick one of our original animated styles - particles, starfield, gradient flow, and waves. Built to stay light while you game or work.",
+      "Set any video or image as your wallpaper, or pick one of 20 original animated scenes - aurora, galaxies, synthwave sunsets, lava lamps, fireflies, a moonlit sea and more. Built to stay light while you game or work.",
     accent: "var(--neon-cyan)",
   },
   {
@@ -83,7 +83,7 @@ const FEATURES: { title: string; description: string; accent: string; tag: strin
     tag: "Presets",
     title: "One click, whole new vibe",
     description:
-      "Themed presets set wallpaper, widgets, and effects all at once. Tweak anything after, or save your own.",
+      "45+ themed scenes set your wallpaper, widgets, and effects all at once. Tweak anything after, or save your own.",
     accent: "var(--neon-danger)",
   },
   {
@@ -95,13 +95,13 @@ const FEATURES: { title: string; description: string; accent: string; tag: strin
 ];
 
 const PRESETS: { name: string; vibe: string; bg: string }[] = [
-  // Names match revinhi-radar/src/desktop/presets.ts.
-  { name: "Lo-fi Rain", vibe: "Rain on glass + lo-fi clock", bg: "linear-gradient(160deg,#0b1a33,#1c2a4a 55%,#0a0f1c)" },
-  { name: "Storm Watch", vibe: "Live radar + lightning alerts", bg: "linear-gradient(160deg,#0f2a1c,#1a1f0a 50%,#2a0f0f)" },
-  { name: "Neon City", vibe: "Neon gradient + RGB text", bg: "linear-gradient(135deg,#ff3b30,#8a5cff 45%,#00e5ff)" },
-  { name: "Cozy Snow", vibe: "Falling snow + warm light rays", bg: "linear-gradient(180deg,#cfd9ea,#6d7f9e 60%,#2b3448)" },
-  { name: "Space", vibe: "Starfield + system stats", bg: "radial-gradient(circle at 30% 30%,#2a1466,#07051a 70%)" },
-  { name: "Minimal Mono", vibe: "Clean mono clock + date", bg: "linear-gradient(180deg,#1a1a1a,#3a3a3a 60%,#0d0d0d)" },
+  // Names match revinhi-radar/src/desktop/presets.ts; images are real renders of the scene styles.
+  { name: "Northern Lights", vibe: "Aurora curtains over a silent ridge", bg: "url(/desktop/presets/northern-lights.jpg) center / cover no-repeat" },
+  { name: "Outrun", vibe: "Striped sun, neon grid, endless highway", bg: "url(/desktop/presets/outrun.jpg) center / cover no-repeat" },
+  { name: "Firefly Meadow", vibe: "Summer dusk, fireflies in the trees", bg: "url(/desktop/presets/firefly-meadow.jpg) center / cover no-repeat" },
+  { name: "Lava Lamp", vibe: "Warm blobs rising and falling", bg: "url(/desktop/presets/lava-lamp.jpg) center / cover no-repeat" },
+  { name: "Moonlit Sea", vibe: "Moonlight glittering on a calm sea", bg: "url(/desktop/presets/moonlit-sea.jpg) center / cover no-repeat" },
+  { name: "Neon Skyline", vibe: "A city that never sleeps, in the rain", bg: "url(/desktop/presets/neon-skyline.jpg) center / cover no-repeat" },
 ];
 
 const FAQ: { q: string; a: string }[] = [
@@ -196,7 +196,7 @@ export default function DesktopPage() {
       {/* Presets strip - horizontal swipe on mobile, grid on desktop */}
       <section id="presets" className="scroll-mt-28 py-16 sm:py-24">
         <div className="px-4 sm:px-6">
-          <SectionHeading eyebrow="One-click presets" title="Pick a vibe. Done." subtitle="Each preset sets your wallpaper, widgets, and effects in one tap." />
+          <SectionHeading eyebrow="One-click scenes" title="Pick a vibe. Done." subtitle="45+ scenes to get lost in. Each one sets your wallpaper, widgets, and effects in one click." />
         </div>
         <div className="mx-auto mt-10 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-6 lg:grid-cols-6">
           {PRESETS.map((p) => (
@@ -295,7 +295,7 @@ export default function DesktopPage() {
                 "Every wallpaper + your own videos & images",
                 "All widgets - radar, weather, stats, text",
                 "Rain, snow & light-ray effects",
-                "Six one-click themed presets",
+                "45+ one-click animated scenes",
                 "Live lightning + 2-hour radar replay",
                 "Unlimited locations + full forecast",
                 "No badge, no reminders",

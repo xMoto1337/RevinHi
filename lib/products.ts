@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
     accent: "#8a5cff",
     gumroadUrl: "https://xanybot.gumroad.com/l/buzbvq",
     route: "/desktop",
-    features: ["Animated live wallpapers", "Customizable widgets", "Rain, snow & light rays", "Live US radar + lightning"],
+    features: ["45+ animated scenes", "Customizable widgets", "Rain, snow & light rays", "Live US radar + lightning"],
     heroMedia: "/desktop/hero.mp4",
     // Served from /public. Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-Desktop-Setup.exe",
