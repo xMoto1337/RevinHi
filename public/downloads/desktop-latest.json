@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "18 new weather scenes with live radar, conditions, forecast and storm alerts built in, plus 10 more scenes. Presets now have categories and a compact gallery with Show all.",
-  "pub_date": "2026-09-29T00:17:07.130Z",
+  "version": "0.1.8",
+  "notes": "21 new scenes with lightning, fog and embers. New effects: Lightning, Fog and Embers. Desktop radar: zoom and animate settings, full opacity fixed. Your own installed fonts now show in the font picker. Easier custom wallpaper upload with drag-and-drop. Tidier style and palette pickers.",
+  "pub_date": "2026-09-30T15:23:20.566Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Ump4a3NiUVJJWkhaU0E1WEEySjBrRzR6SkNGaHJpaEd3bGRFR09uZERpWkR5WGo1dSsreDNwTXMyQUFSVzFHbWpsVHJUanB0Z242YlBJemJCQ1Avc0EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjQxMDI3CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS43X3g2NC1zZXR1cC5leGUKQkRMZTFtd2JkTGMwSFczc1B1cEduU1F5K1BVU2NCbmV5ek9QWHhVaUFFbWxOUmVadm94NnhXY01ZTXczNFhqVnVOSzZQQkhVanFxc1AxR2x6RGp6Q1E9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.7"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnFiV3lWMGxjb0ZCVGkxQmlHbXoyN0w0NTRYS2paNDRnN01oOUh0N1FYdVp5TDNhZllIWUJHa0lYY3p1RjAzb2ZpTGFTT2NrRHMwN0xQV3owTmRTZ1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNzgxODAwCWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS44X3g2NC1zZXR1cC5leGUKOForZTBwQUwyUStyb3hYdktteXFkN214UVNYUGhTSGtrckNxRmFmSi82Q1JXYkdsc2ZwVklaL2NRSnBtem4yK0R0SmFvL2s1TFB5ZjN3RWhXOWE0RFE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.8"
     }
   }
 }
