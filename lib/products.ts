@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     platform: "Windows 10/11",
     status: "available",
     accent: "#8a5cff",
-    gumroadUrl: "https://revinhi.gumroad.com/l/buzbvq",
+    gumroadUrl: "https://revinhi.gumroad.com/l/wflne",
     route: "/desktop",
     features: ["70+ animated scenes", "Customizable widgets", "Rain, snow & light rays", "Live US radar + lightning"],
     heroMedia: "/desktop/hero.mp4",
