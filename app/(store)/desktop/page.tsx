@@ -1,6 +1,7 @@
 import { HeroMedia, MiniRadar } from "./HeroMedia";
 import styles from "./desktop.module.css";
 import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
+import { LegalLinks } from "@/components/Legal";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
 // Price / Gumroad link / support email live in lib/products.ts (the storefront registry).
@@ -340,6 +341,7 @@ export default function DesktopPage() {
           <div className="flex items-center gap-6">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/" className="transition hover:text-white/70">All RevinHi apps</a>
+            <LegalLinks />
             <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
               {SUPPORT_EMAIL}
             </a>

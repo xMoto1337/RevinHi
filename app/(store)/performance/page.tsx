@@ -1,6 +1,7 @@
 import { AppShowcase } from "@/components/AppShowcase";
 
 import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
+import { LegalLinks } from "@/components/Legal";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
 // Price / Gumroad link / support email now live in lib/products.ts (the storefront registry).
@@ -226,7 +227,8 @@ export default function PerformancePage() {
       <footer className="mt-auto border-t border-white/10 px-6 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} RevinHi Performance. All rights reserved.</p>
-          <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
+          <LegalLinks />
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
             {SUPPORT_EMAIL}
           </a>
         </div>

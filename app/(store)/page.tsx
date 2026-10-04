@@ -1,3 +1,4 @@
+import { LegalLinks } from "@/components/Legal";
 import fs from "node:fs";
 import path from "node:path";
 import { BuyButton } from "@/components/BuyButton";
@@ -197,6 +198,7 @@ export default function StorefrontHome() {
                 {p.tabLabel}
               </a>
             ))}
+            <LegalLinks />
             <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
               {SUPPORT_EMAIL}
             </a>
