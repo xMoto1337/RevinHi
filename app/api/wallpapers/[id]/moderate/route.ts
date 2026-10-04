@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const adminSecret = process.env.ADMIN_SECRET;
-  const provided = request.headers.get("x-admin-secret");
+  const adminSecret = process.env.ADMIN_SECRET?.trim();
+  const provided = request.headers.get("x-admin-secret")?.trim();
   if (!adminSecret || provided !== adminSecret) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }

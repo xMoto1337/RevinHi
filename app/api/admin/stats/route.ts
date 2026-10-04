@@ -3,8 +3,9 @@ import { getSupabaseAdmin } from "@/lib/supabase";
 
 /** Aggregates for /admin/stats. Gated by the same ADMIN_SECRET header as the wallpaper admin. */
 export async function GET(request: NextRequest) {
-  const secret = process.env.ADMIN_SECRET;
-  if (!secret || request.headers.get("x-admin-secret") !== secret) {
+  // Trimmed: a value pasted/piped into Vercel can carry a trailing newline.
+  const secret = process.env.ADMIN_SECRET?.trim();
+  if (!secret || request.headers.get("x-admin-secret")?.trim() !== secret) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const product = request.nextUrl.searchParams.get("product") ?? "desktop";

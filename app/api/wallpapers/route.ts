@@ -14,8 +14,8 @@ export async function GET(request: NextRequest) {
   const page = Math.max(1, Number(params.get("page") ?? "1"));
 
   if (status !== "approved") {
-    const adminSecret = process.env.ADMIN_SECRET;
-    const provided = request.headers.get("x-admin-secret");
+    const adminSecret = process.env.ADMIN_SECRET?.trim();
+    const provided = request.headers.get("x-admin-secret")?.trim();
     if (!adminSecret || provided !== adminSecret) {
       return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
     }
