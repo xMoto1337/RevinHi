@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9",
-  "notes": "Bolder, brighter lightning. New Privacy setting: anonymous usage stats (on by default, turn off any time in Settings).",
-  "pub_date": "2026-10-04T14:53:46.461Z",
+  "version": "0.2.0",
+  "notes": "Big update: redesigned forecast with animated icons, hourly temperature graph, 7-day range bars, sunrise/sunset and moon. 14 new Signature scenes. New widgets: Analog Clock, Calendar, Sun & Moon, Temperature Graph, Countdown. Frosted-glass widgets, text alignment, spacing, shadows and accent colors. Radar color schemes and legend. New effects: Shooting Stars, Dust Motes, Cinematic. New animated styles: Underwater and Starry Lake.",
+  "pub_date": "2026-10-04T20:35:45.610Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnFKaGVJanpHVFhDSUFqNXY1bmo4S0xLNldEQTFldWRSUG5jTWk0QnBWa1hnaFRLZFpuSXRIbnRUTkxtSUdEWXI0eXpCS05WeW50QzZJU05sYkRrM3dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTI1NjI2CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS45X3g2NC1zZXR1cC5leGUKaUZLU2d6OHdKZHFDWGVkVXMzOVErMGZDbk0rNXhuTUxrNG0rWGloMXFyZDhrVlZIYmZLSzJXOUE0dHZueVdwRzV6NjlwTmtoL1lYT1doQVlDalpHRFE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.9"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnE0MER1bkZTM0VtL2JmQXd1NFhHeG9xOFRNb2VNUU1ZOXdkWVFGM2FJVW9jSU44Y3V1UC9QalhnYWdSRUZBR1k0cmozbFZBRTE3bUJRVEhrbUNEeGdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTQ2MTQ1CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4wX3g2NC1zZXR1cC5leGUKVDZkQjRjMk9yUGc5TTM3T2l4Q0xBeHRDMEtUWDlVeGUzbjZRWWxNek5lQWxnVHhJVFhscm9obzUzbVJ1LzRGZ3ErcmpabHZhQ01jdllQS29Pd3VvQnc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.0"
     }
   }
 }

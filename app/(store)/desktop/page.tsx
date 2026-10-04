@@ -85,7 +85,7 @@ const FEATURES: { title: string; description: string; accent: string; tag: strin
     tag: "Presets",
     title: "One click, whole new vibe",
     description:
-      "90+ themed scenes set your wallpaper, widgets, and effects all at once. Tweak anything after, or save your own.",
+      "100+ themed scenes set your wallpaper, widgets, and effects all at once. Tweak anything after, or save your own.",
     accent: "var(--neon-danger)",
   },
   {
@@ -258,7 +258,7 @@ export default function DesktopPage() {
       {/* Presets strip - horizontal swipe on mobile, grid on desktop */}
       <section id="presets" className="scroll-mt-28 py-16 sm:py-24">
         <div className="px-4 sm:px-6">
-          <SectionHeading eyebrow="One-click scenes" title="Pick a vibe. Done." subtitle="90+ scenes to get lost in. Each one sets your wallpaper, widgets, and effects in one click." />
+          <SectionHeading eyebrow="One-click scenes" title="Pick a vibe. Done." subtitle="100+ scenes to get lost in. Each one sets your wallpaper, widgets, and effects in one click." />
         </div>
         <div className="mx-auto mt-10 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-6 lg:grid-cols-6">
           {PRESETS.map((p) => (
@@ -357,7 +357,7 @@ export default function DesktopPage() {
                 "Every wallpaper + your own videos & images",
                 "All widgets - radar, weather, stats, text",
                 "Rain, snow & light-ray effects",
-                "90+ one-click animated scenes",
+                "100+ one-click animated scenes",
                 "Live lightning + 2-hour radar replay",
                 "Unlimited locations + full forecast",
                 "No badge, no reminders",
