@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "21 new scenes with lightning, fog and embers. New effects: Lightning, Fog and Embers. Desktop radar: zoom and animate settings, full opacity fixed. Your own installed fonts now show in the font picker. Easier custom wallpaper upload with drag-and-drop. Tidier style and palette pickers.",
-  "pub_date": "2026-09-30T15:23:20.566Z",
+  "version": "0.1.9",
+  "notes": "Bolder, brighter lightning. New Privacy setting: anonymous usage stats (on by default, turn off any time in Settings).",
+  "pub_date": "2026-10-04T14:53:46.461Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnFiV3lWMGxjb0ZCVGkxQmlHbXoyN0w0NTRYS2paNDRnN01oOUh0N1FYdVp5TDNhZllIWUJHa0lYY3p1RjAzb2ZpTGFTT2NrRHMwN0xQV3owTmRTZ1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNzgxODAwCWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS44X3g2NC1zZXR1cC5leGUKOForZTBwQUwyUStyb3hYdktteXFkN214UVNYUGhTSGtrckNxRmFmSi82Q1JXYkdsc2ZwVklaL2NRSnBtem4yK0R0SmFvL2s1TFB5ZjN3RWhXOWE0RFE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.8"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnFKaGVJanpHVFhDSUFqNXY1bmo4S0xLNldEQTFldWRSUG5jTWk0QnBWa1hnaFRLZFpuSXRIbnRUTkxtSUdEWXI0eXpCS05WeW50QzZJU05sYkRrM3dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTI1NjI2CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMS45X3g2NC1zZXR1cC5leGUKaUZLU2d6OHdKZHFDWGVkVXMzOVErMGZDbk0rNXhuTUxrNG0rWGloMXFyZDhrVlZIYmZLSzJXOUE0dHZueVdwRzV6NjlwTmtoL1lYT1doQVlDalpHRFE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.1.9"
     }
   }
 }
