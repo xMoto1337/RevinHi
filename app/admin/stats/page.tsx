@@ -1,10 +1,6 @@
-﻿"use client";
+﻿import { redirect } from "next/navigation";
 
-import dynamic from "next/dynamic";
-
-// Browser-only: the dashboard reads the admin secret from sessionStorage on first render.
-const StatsDashboard = dynamic(() => import("./StatsDashboard"), { ssr: false });
-
-export default function AdminStatsPage() {
-  return <StatsDashboard />;
+// Old address - the dashboard now lives at /admin.
+export default function AdminStatsRedirect() {
+  redirect("/admin");
 }
