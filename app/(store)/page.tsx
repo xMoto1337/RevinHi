@@ -115,7 +115,7 @@ function ProductCard({ product }: { product: Product }) {
           </a>
           {product.downloadUrl ? (
             <a
-              href={product.downloadUrl}
+              href={`/api/download/${product.slug}`}
               download
               className="inline-flex flex-1 items-center justify-center rounded-full bg-neon-cyan px-5 py-3 text-sm font-semibold text-black shadow-[0_0_30px_rgba(0,229,255,0.35)] transition hover:scale-[1.02]"
             >

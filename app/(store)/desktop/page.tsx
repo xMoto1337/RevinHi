@@ -11,7 +11,8 @@ function BuyButton({ label, ...props }: { className?: string; chase?: boolean; w
   return <SharedBuyButton product={PRODUCT} label={label ?? <>Get it &mdash; {PRICE_DISPLAY}</>} {...props} />;
 }
 
-const DOWNLOAD_URL = PRODUCT.downloadUrl!;
+// Counted: /api/download logs the click, then redirects to the installer.
+const DOWNLOAD_URL = `/api/download/${PRODUCT.slug}`;
 
 /** Free installer - the primary CTA. Pro is unlocked in-app with a key from BuyButton / ProLink. */
 function DownloadButton({ className = "", chase = false, wrapperClassName = "", label }: { className?: string; chase?: boolean; wrapperClassName?: string; label?: React.ReactNode }) {

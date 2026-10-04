@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { generateLicenseKey } from "@/lib/license-key";
+import { getSupabaseAdmin } from "@/lib/supabase";
 
 /**
  * Gumroad's "Ping" webhook: configured account-wide under Settings -> Advanced -> "Ping" URL, it
@@ -27,6 +28,16 @@ function isDesktopProduct(productName: string | null): boolean {
   return !!productName && productName.trim().toLowerCase() === desktopName.trim().toLowerCase();
 }
 
+/** Sales count for /admin/stats. Best-effort: a stats outage must never stop a key email. */
+async function logSale(row: { sale_id: string; product: string; price_cents?: number | null; refunded: boolean }) {
+  try {
+    const { error } = await getSupabaseAdmin().from("sales").upsert(row, { onConflict: "sale_id" });
+    if (error) throw error;
+  } catch (e) {
+    console.error("sale log failed", e);
+  }
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const params = new URLSearchParams(body);
@@ -51,7 +62,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, skipped: "different_product" });
   }
 
+  const slug = product === DESKTOP ? "desktop" : "performance";
+  const saleId = params.get("sale_id");
+
   if (params.get("refunded") === "true") {
+    if (saleId) await logSale({ sale_id: saleId, product: slug, refunded: true });
     return NextResponse.json({ ok: true, skipped: "refunded" });
   }
 
@@ -70,7 +85,8 @@ export async function POST(request: NextRequest) {
 
   // Logged so a lost-key support request can at least be cross-referenced against these logs until
   // there's a proper database recording issued keys per sale.
-  console.log(`Issued ${product.app} key to ${email} for sale_id=${params.get("sale_id")}`);
+  console.log(`Issued ${product.app} key to ${email} for sale_id=${saleId}`);
+  if (saleId) await logSale({ sale_id: saleId, product: slug, price_cents: Number(params.get("price")) || null, refunded: false });
 
   const resend = new Resend(process.env.RESEND_API_KEY);
   const { error } = await resend.emails.send({
