@@ -106,6 +106,22 @@ const PRESETS: { name: string; vibe: string; bg: string }[] = [
   { name: "Neon Skyline", vibe: "A city that never sleeps, in the rain", bg: "url(/desktop/presets/neon-skyline.jpg) center / cover no-repeat" },
 ];
 
+// Stills rendered from the app's own scene engine (public/desktop/gallery).
+const GALLERY: { file: string; name: string; note: string }[] = [
+  { file: "storm-radar", name: "Live storm radar", note: "Radar widget on your desktop" },
+  { file: "weather-widgets", name: "Weather widgets", note: "Radar, forecast, conditions, stats" },
+  { file: "outrun", name: "Outrun", note: "Synthwave sun + neon grid" },
+  { file: "midnight-lofi", name: "Midnight Lo-fi", note: "Real rain on the glass" },
+  { file: "northern-lights", name: "Northern Lights", note: "Rippling aurora" },
+  { file: "supercell", name: "Supercell", note: "Lightning storm effect" },
+  { file: "lava-lamp", name: "Lava Lamp", note: "Fluid motion, all day" },
+  { file: "firefly-meadow", name: "Firefly Meadow", note: "Summer dusk" },
+  { file: "vaporwave", name: "Vaporwave", note: "Pastel retro" },
+  { file: "milky-core", name: "Milky Core", note: "A turning galaxy" },
+  { file: "volcano", name: "Volcano", note: "Rising embers" },
+  { file: "lotus-mandala", name: "Lotus Mandala", note: "Breathing kaleidoscope" },
+];
+
 const FAQ: { q: string; a: string }[] = [
   {
     q: "What do I need to run it?",
@@ -192,6 +208,50 @@ export default function DesktopPage() {
               <p className="mt-2 text-sm leading-relaxed text-white/60">{f.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* See it in action - the vertical trailer + real renders from the app's scene engine */}
+      <section id="in-action" className="scroll-mt-28 px-4 py-16 sm:px-6 sm:py-24">
+        <SectionHeading
+          eyebrow="See it in action"
+          title="This is what your desktop could look like"
+          subtitle="Every frame below is rendered by the app itself: the same scenes, widgets and effects you get."
+        />
+        <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 items-start gap-8 sm:mt-14 lg:grid-cols-[300px_1fr]">
+          <div className="mx-auto w-[260px] sm:w-[300px]">
+            <div className="overflow-hidden rounded-[2rem] border-[6px] border-white/10 bg-black shadow-[0_0_60px_rgba(138,92,255,0.35)]">
+              <video
+                className="block aspect-[9/16] w-full object-cover"
+                src="/desktop/trailer-vertical.mp4"
+                poster="/desktop/trailer-vertical-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="RevinHi Desktop trailer"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs text-white/40">30-second tour · sound off</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {GALLERY.map((g) => (
+              <figure key={g.file} className="group overflow-hidden rounded-xl border border-white/10 bg-black">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/desktop/gallery/${g.file}.jpg`}
+                  alt={`${g.name} - ${g.note}`}
+                  loading="lazy"
+                  className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <figcaption className="px-3 py-2">
+                  <p className="text-sm font-semibold">{g.name}</p>
+                  <p className="text-xs text-white/50">{g.note}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
