@@ -45,7 +45,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: 
 const FEATURES: { title: string; description: string; accent: string }[] = [
   {
     title: "Edit existing text",
-    description: "Click any line in a PDF and retype it. RevinHi matches the original font, size and colour, so the change blends in.",
+    description: "Click any line in a PDF and retype it. RevinHi matches the original font, size and color, so the change blends in.",
     accent: "var(--neon-purple)",
   },
   {
