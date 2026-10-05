@@ -114,7 +114,7 @@ function ProductCard({ product }: { product: Product }) {
           >
             View
           </a>
-          {product.downloadUrl ? (
+          {product.downloadUrl && available ? (
             <a
               href={`/api/download/${product.slug}`}
               download

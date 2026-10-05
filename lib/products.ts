@@ -23,7 +23,8 @@ export type Product = {
   /** Path under /public. Optional file - the storefront falls back to a gradient panel if it doesn't exist yet. */
   heroMedia: string;
   /** Free-tier installer (freemium apps only). When set, the product page leads with "Download free"
-   *  and the Gumroad link becomes the Pro upgrade. */
+   *  and the Gumroad link becomes the Pro upgrade. Only offered while status is "available" (a
+   *  coming-soon product can list its future file without a dead download link). */
   downloadUrl?: string;
 };
 
@@ -59,6 +60,22 @@ export const PRODUCTS: Product[] = [
     heroMedia: "/desktop/hero.mp4",
     // Served from /public. Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-Desktop-Setup.exe",
+  },
+  {
+    slug: "pdf",
+    name: "RevinHi PDF",
+    tabLabel: "PDF",
+    tagline: "Edit, sign, merge, compress and protect PDFs - fast, offline, no subscription.",
+    price: "$9.99",
+    platform: "Windows 10/11",
+    status: "coming-soon",
+    accent: "#ff5c7a",
+    // TODO: replace with the real Gumroad product link once it exists (then set status "available").
+    gumroadUrl: "https://revinhi.gumroad.com/l/revinhi-pdf",
+    route: "/pdf",
+    features: ["Edit existing text", "Sign & fill forms", "Merge, split & reorder", "Compress & password-protect"],
+    heroMedia: "/pdf/hero.png",
+    downloadUrl: "/downloads/RevinHi-PDF-Setup.exe",
   },
 ];
 

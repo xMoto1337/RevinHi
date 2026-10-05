@@ -8,7 +8,7 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  */
 export async function GET(request: NextRequest, { params }: { params: Promise<{ product: string }> }) {
   const { product: slug } = await params;
-  const product = PRODUCTS.find((p) => p.slug === slug && p.downloadUrl);
+  const product = PRODUCTS.find((p) => p.slug === slug && p.downloadUrl && p.status === "available");
   if (!product?.downloadUrl) {
     return NextResponse.json({ error: "unknown_product" }, { status: 404 });
   }

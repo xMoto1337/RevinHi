@@ -3,11 +3,11 @@ import { getSupabaseAdmin } from "@/lib/supabase";
 
 /**
  * Anonymous "this copy is running" ping from the apps (at launch and every 12 hours).
- * Body: { install_id: uuid, product: "desktop", version: "0.1.9", tier: "free" | "pro" }.
+ * Body: { install_id: uuid, product: "desktop" | "performance" | "pdf", version: "0.1.9", tier: "free" | "pro" }.
  * The install ID is random, made by the app on first run - no names, emails, keys or hardware IDs.
  */
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const PRODUCTS = new Set(["desktop", "performance"]);
+const PRODUCTS = new Set(["desktop", "performance", "pdf"]);
 
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;

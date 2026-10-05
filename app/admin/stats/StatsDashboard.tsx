@@ -17,6 +17,7 @@ const PRODUCTS = [
   { slug: "website", label: "Website" },
   { slug: "desktop", label: "RevinHi Desktop" },
   { slug: "performance", label: "RevinHi Performance" },
+  { slug: "pdf", label: "RevinHi PDF" },
 ];
 
 // Same shared-secret gate as /admin/wallpapers (sessionStorage only, sent as a header).

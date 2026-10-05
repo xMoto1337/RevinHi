@@ -13,19 +13,52 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  * Gumroad has no HMAC/signature verification for Ping - matching seller_id against your own
  * account is the only verification it offers, so that's what's checked here.
  *
- * Two apps are sold on the same account, each validating keys against its OWN secret: a sale of
- * RevinHi Desktop (product_name "RevinHi Desktop", or GUMROAD_PRODUCT_NAME_DESKTOP) is signed with
- * LICENSE_SECRET_HEX_DESKTOP; every other sale goes down the original RevinHi Performance path
- * (GUMROAD_PRODUCT_NAME filter + LICENSE_SECRET_HEX), unchanged.
+ * Several apps are sold on the same account, each validating keys against its OWN secret. A sale
+ * is matched to a product by product_name (table below). Desktop and PDF match their default name
+ * case-insensitively, or GUMROAD_PRODUCT_NAME_<APP> when set. Performance keeps its original rule:
+ * an EXACT match on GUMROAD_PRODUCT_NAME when that's set; when it isn't, "RevinHi Performance"
+ * (case-insensitive). A sale that matches nothing is logged and acknowledged with 200, and no key is
+ * sent (previously any non-Desktop sale fell through to Performance).
  */
-type Fulfillment = { app: string; secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" };
+type Fulfillment = {
+  slug: "performance" | "desktop" | "pdf";
+  app: string;
+  secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" | "LICENSE_SECRET_HEX_PDF";
+  /** Env var overriding the Gumroad product_name. */
+  nameEnv: string;
+  /** product_name used when the env var isn't set. */
+  defaultName: string;
+  /** Performance's legacy rule: the env override is compared exactly (case-sensitive). */
+  exactOverride?: boolean;
+};
 
-const PERFORMANCE: Fulfillment = { app: "RevinHi Performance", secretEnv: "LICENSE_SECRET_HEX" };
-const DESKTOP: Fulfillment = { app: "RevinHi Desktop", secretEnv: "LICENSE_SECRET_HEX_DESKTOP" };
+// Order matters only if two names collide; Desktop / PDF first, as before.
+const FULFILLMENTS: Fulfillment[] = [
+  { slug: "desktop", app: "RevinHi Desktop", secretEnv: "LICENSE_SECRET_HEX_DESKTOP", nameEnv: "GUMROAD_PRODUCT_NAME_DESKTOP", defaultName: "RevinHi Desktop" },
+  { slug: "pdf", app: "RevinHi PDF", secretEnv: "LICENSE_SECRET_HEX_PDF", nameEnv: "GUMROAD_PRODUCT_NAME_PDF", defaultName: "RevinHi PDF" },
+  {
+    slug: "performance",
+    app: "RevinHi Performance",
+    secretEnv: "LICENSE_SECRET_HEX",
+    nameEnv: "GUMROAD_PRODUCT_NAME",
+    defaultName: "RevinHi Performance",
+    exactOverride: true,
+  },
+];
 
-function isDesktopProduct(productName: string | null): boolean {
-  const desktopName = process.env.GUMROAD_PRODUCT_NAME_DESKTOP || DESKTOP.app;
-  return !!productName && productName.trim().toLowerCase() === desktopName.trim().toLowerCase();
+const norm = (s: string) => s.trim().toLowerCase();
+
+function matchProduct(productName: string | null): Fulfillment | null {
+  if (!productName) return null;
+  for (const f of FULFILLMENTS) {
+    const override = process.env[f.nameEnv];
+    if (override) {
+      if (f.exactOverride ? productName === override : norm(productName) === norm(override)) return f;
+    } else if (norm(productName) === norm(f.defaultName)) {
+      return f;
+    }
+  }
+  return null;
 }
 
 /** Sales count for /admin/stats. Best-effort: a stats outage must never stop a key email. */
@@ -54,16 +87,14 @@ export async function POST(request: NextRequest) {
   }
 
   const productName = params.get("product_name");
-  const product = isDesktopProduct(productName) ? DESKTOP : PERFORMANCE;
-
-  const expectedProductName = process.env.GUMROAD_PRODUCT_NAME;
-  if (product === PERFORMANCE && expectedProductName && productName !== expectedProductName) {
-    // A different product on the same Gumroad account - not ours to fulfill.
+  const product = matchProduct(productName);
+  const saleId = params.get("sale_id");
+  if (!product) {
+    // Not one of ours (or a renamed product): acknowledge so Gumroad doesn't retry, send nothing.
+    console.log(`Unmatched Gumroad sale - product_name "${productName}", sale_id=${saleId}. No key sent.`);
     return NextResponse.json({ ok: true, skipped: "different_product" });
   }
-
-  const slug = product === DESKTOP ? "desktop" : "performance";
-  const saleId = params.get("sale_id");
+  const slug = product.slug;
 
   if (params.get("refunded") === "true") {
     if (saleId) await logSale({ sale_id: saleId, product: slug, refunded: true });
