@@ -1,11 +1,11 @@
 {
-  "version": "0.2.1",
-  "notes": "New Taskbar & Dock tab: make the Windows taskbar clear, blurred, acrylic or tinted, hide its buttons, auto-hide it, and add the RevinHi Dock - a glass dock for your apps, folders and websites with real app icons, hover magnify and any screen edge. Signature presets now bring a matching taskbar.",
-  "pub_date": "2026-10-05T20:07:06.121Z",
+  "version": "0.2.2",
+  "notes": "Take down now sticks after a restart. Send applies only to the monitor you're editing - other monitors keep what they show. New: My Presets - save your own desktops (wallpaper, widgets, effects and taskbar look), then apply, rename or delete them. Fixed the neon analog clock's glow being cut off.",
+  "pub_date": "2026-10-05T20:23:34.228Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UmpXTnpjcWFGUkkyM3dMdWJ5cnowOHFna0l2RmtSQWswbmt1UVJoM0c5OFBWVlJBSTk5ZXJ4VVEvcTZJa29UZTB4Q0dOQkwyM3Ivdjdya1pmbm4yT2drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjMwODI2CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4xX3g2NC1zZXR1cC5leGUKWjFwVUlJTTUvT2wxTWpLcHZML2FTQ0x2b3plS0RNdlpCY05MSUFxYXZqc2pGZVRwcERSYTVYZkFJL2JYSU9sMDF1ZXoxaVhmYUpickpmVnZwZW5CRFE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.1"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Um9MclMzeUlZUVJlWFN2dDl4amxuNmFGanBWUGtlSjUwaStiZ3UzVU1RTU9GSy81ZllBTldXall4SkFuVjNPcnd1WkM0eHFpbldaOFJmV1Rqc3IvWHdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjMxODE0CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4yX3g2NC1zZXR1cC5leGUKQlltSkxCVnBVcUh2MXRJU0RkUTF4VWdUMVNzVSs4bU5kaVdOWVVucysvK0RPYVJIdXM2dDNHZjZOWWRVaU9KYTlxY2h1MlBJVW9kR3REVW10U3EyRHc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.2"
     }
   }
 }
