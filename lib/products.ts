@@ -70,8 +70,8 @@ export const PRODUCTS: Product[] = [
     platform: "Windows 10/11",
     status: "coming-soon",
     accent: "#ff5c7a",
-    // TODO: replace with the real Gumroad product link once it exists (then set status "available").
-    gumroadUrl: "https://revinhi.gumroad.com/l/revinhi-pdf",
+    // Set status "available" once the installer is released to public/downloads.
+    gumroadUrl: "https://revinhi.gumroad.com/l/xwajbx",
     route: "/pdf",
     features: ["Edit existing text", "Sign & fill forms", "Merge, split & reorder", "Compress & password-protect"],
     heroMedia: "/pdf/hero.png",
