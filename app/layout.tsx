@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const SITE_TITLE = "RevinHi - Apps that upgrade your PC";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <div className="bg-orbs" aria-hidden="true" />
         {children}
+        <Analytics />
         {/* Gumroad's overlay checkout script - lets any <a href="https://*.gumroad.com/l/..."> open a payment
             overlay on top of this page instead of redirecting away to gumroad.com. */}
         <Script src="https://gumroad.com/js/gumroad.js" strategy="afterInteractive" />

@@ -21,10 +21,16 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
-      <Section heading="Downloads from this website">
+      <Section heading="Visits and downloads on this website">
         <p>
-          When you click a download button we record that a download happened, with the time, the product, your approximate
-          country (provided by our host, Vercel) and the page you came from. We don&apos;t store your IP address with it.
+          We count visits ourselves, without cookies and without third-party analytics. For each page view we record the page,
+          the site that linked you here, any campaign tag in the link, your approximate country (from our host, Vercel) and
+          your device type, browser and operating system. To count unique visitors we use a code made from your IP address and
+          browser that changes every day and can&apos;t be turned back into either. We never store your IP address.
+        </p>
+        <p>
+          When you click a download or checkout button we record that click the same way. When you download, we also record
+          the time, the product, your approximate country and the page you came from.
         </p>
       </Section>
 

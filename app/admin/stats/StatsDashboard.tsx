@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { WebsiteStats } from "./WebsiteStats";
 
 type Stats = {
   product: string;
@@ -13,6 +14,7 @@ type Stats = {
 };
 
 const PRODUCTS = [
+  { slug: "website", label: "Website" },
   { slug: "desktop", label: "RevinHi Desktop" },
   { slug: "performance", label: "RevinHi Performance" },
 ];
@@ -21,12 +23,13 @@ const PRODUCTS = [
 export default function StatsDashboard() {
   const [secret, setSecret] = useState(() => (typeof window === "undefined" ? "" : sessionStorage.getItem("revinhi-admin-secret") ?? ""));
   const [authed, setAuthed] = useState(() => typeof window !== "undefined" && !!sessionStorage.getItem("revinhi-admin-secret"));
-  const [product, setProduct] = useState("desktop");
+  const [product, setProduct] = useState("website");
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const load = useCallback(async () => {
+    if (product === "website") return; // WebsiteStats loads its own data
     setLoading(true);
     setError("");
     const res = await fetch(`/api/admin/stats?product=${product}`, { headers: { "x-admin-secret": secret } });
@@ -94,13 +97,25 @@ export default function StatsDashboard() {
             {p.label}
           </button>
         ))}
+        {product !== "website" && (
         <button onClick={() => void load()} className="rounded-full border border-white/15 px-4 py-1.5 text-sm text-white/70">
           {loading ? "Loading..." : "Refresh"}
         </button>
+        )}
       </div>
+      {product === "website" && (
+        <WebsiteStats
+          secret={secret}
+          onUnauthorized={() => {
+            sessionStorage.removeItem("revinhi-admin-secret");
+            setAuthed(false);
+            setError("Wrong secret.");
+          }}
+        />
+      )}
       {error && <p className="mt-4 text-sm text-neon-danger">{error}</p>}
 
-      {stats && (
+      {stats && product !== "website" && (
         <>
           <section className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
             <Tile label="Downloads" value={stats.downloads.total} sub={`${stats.downloads.day} today · ${stats.downloads.week} this week`} />

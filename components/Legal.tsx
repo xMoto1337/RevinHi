@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export const LEGAL_UPDATED = "October 4, 2026";
+export const LEGAL_UPDATED = "October 5, 2026";
 
 /** Footer links to /privacy and /terms (required on any page used as an ad landing page). */
 export function LegalLinks() {
