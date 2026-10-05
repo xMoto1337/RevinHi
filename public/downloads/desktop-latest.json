@@ -1,11 +1,11 @@
 {
-  "version": "0.2.2",
-  "notes": "Take down now sticks after a restart. Send applies only to the monitor you're editing - other monitors keep what they show. New: My Presets - save your own desktops (wallpaper, widgets, effects and taskbar look), then apply, rename or delete them. Fixed the neon analog clock's glow being cut off.",
-  "pub_date": "2026-10-05T20:23:34.228Z",
+  "version": "0.2.3",
+  "notes": "New RevinHi look: the weathered R icon with Desktop's lightning-bolt mark.",
+  "pub_date": "2026-10-05T22:14:27.383Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2Um9MclMzeUlZUVJlWFN2dDl4amxuNmFGanBWUGtlSjUwaStiZ3UzVU1RTU9GSy81ZllBTldXall4SkFuVjNPcnd1WkM0eHFpbldaOFJmV1Rqc3IvWHdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjMxODE0CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4yX3g2NC1zZXR1cC5leGUKQlltSkxCVnBVcUh2MXRJU0RkUTF4VWdUMVNzVSs4bU5kaVdOWVVucysvK0RPYVJIdXM2dDNHZjZOWWRVaU9KYTlxY2h1MlBJVW9kR3REVW10U3EyRHc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.2"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnRCV2VNd3A4TiswZ1BiblF0bCtsN1JCdnhYaTdsWjlIRlVsSGQ5NXJQa1JUZUJ1WUtUVi9mMEppVEJWRnRTakN2ZnZ4cUhBWWs4V0JXSXA3cXhWSVFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjM4NDY3CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4zX3g2NC1zZXR1cC5leGUKbmpsbythTWhqelhmajR1ZDFSKzVkdUFlOTlsSHFuZmZvSnU2UU1idGlSNmQ0VUdqV0Y1cWFRZUg1TVI3Ri9pd25XTTA5eS9RT0h3OENmQ2VMakREQ3c9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.3"
     }
   }
 }
