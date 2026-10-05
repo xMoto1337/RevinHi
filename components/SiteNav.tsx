@@ -21,7 +21,7 @@ export function SiteNav() {
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a href="/" className="flex shrink-0 items-center gap-2 text-sm font-bold tracking-[0.18em]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/revinhi-brand.png" alt="" width={30} height={30} className="-my-1 h-[30px] w-[30px]" />
+          <img src="/brand/revinhi-brand-64.png" alt="" width={30} height={30} className="-my-1 h-[30px] w-[30px]" />
           <span className="rgb-chase-text">REVINHI</span>
           <span className="hidden text-[11px] font-medium tracking-[0.2em] text-white/40 sm:inline">APPS</span>
         </a>
