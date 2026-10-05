@@ -1,11 +1,11 @@
 {
-  "version": "0.2.0",
-  "notes": "Big update: redesigned forecast with animated icons, hourly temperature graph, 7-day range bars, sunrise/sunset and moon. 14 new Signature scenes. New widgets: Analog Clock, Calendar, Sun & Moon, Temperature Graph, Countdown. Frosted-glass widgets, text alignment, spacing, shadows and accent colors. Radar color schemes and legend. New effects: Shooting Stars, Dust Motes, Cinematic. New animated styles: Underwater and Starry Lake.",
-  "pub_date": "2026-10-04T20:35:45.610Z",
+  "version": "0.2.1",
+  "notes": "New Taskbar & Dock tab: make the Windows taskbar clear, blurred, acrylic or tinted, hide its buttons, auto-hide it, and add the RevinHi Dock - a glass dock for your apps, folders and websites with real app icons, hover magnify and any screen edge. Signature presets now bring a matching taskbar.",
+  "pub_date": "2026-10-05T20:07:06.121Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnE0MER1bkZTM0VtL2JmQXd1NFhHeG9xOFRNb2VNUU1ZOXdkWVFGM2FJVW9jSU44Y3V1UC9QalhnYWdSRUZBR1k0cmozbFZBRTE3bUJRVEhrbUNEeGdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTQ2MTQ1CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4wX3g2NC1zZXR1cC5leGUKVDZkQjRjMk9yUGc5TTM3T2l4Q0xBeHRDMEtUWDlVeGUzbjZRWWxNek5lQWxnVHhJVFhscm9obzUzbVJ1LzRGZ3ErcmpabHZhQ01jdllQS29Pd3VvQnc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.0"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UmpXTnpjcWFGUkkyM3dMdWJ5cnowOHFna0l2RmtSQWswbmt1UVJoM0c5OFBWVlJBSTk5ZXJ4VVEvcTZJa29UZTB4Q0dOQkwyM3Ivdjdya1pmbm4yT2drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjMwODI2CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4xX3g2NC1zZXR1cC5leGUKWjFwVUlJTTUvT2wxTWpLcHZML2FTQ0x2b3plS0RNdlpCY05MSUFxYXZqc2pGZVRwcERSYTVYZkFJL2JYSU9sMDF1ZXoxaVhmYUpickpmVnZwZW5CRFE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.1"
     }
   }
 }
