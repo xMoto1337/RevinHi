@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { UTM_NAMES } from "@/lib/trackingLinks";
 
 /** Website analytics for /admin: traffic, sources, devices, live visitors and the sales funnel. */
 export async function GET(request: NextRequest) {
@@ -48,7 +49,8 @@ export async function GET(request: NextRequest) {
 
     // Referrer -> friendly source name.
     const source = (r: { referrer_host: string | null; utm_source: string | null }) => {
-      if (r.utm_source) return r.utm_source.toLowerCase();
+      // Tracking links (admin "Tracking links" card) merge with the same platform's referrer traffic.
+      if (r.utm_source) return UTM_NAMES[r.utm_source.toLowerCase()] ?? r.utm_source.toLowerCase();
       const h = r.referrer_host ?? "";
       if (!h) return "Direct / bio link";
       if (/tiktok/.test(h)) return "TikTok";

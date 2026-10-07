@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { PRODUCTS } from "@/lib/products";
+import { PLATFORMS } from "@/lib/trackingLinks";
 
 type Row = [string, number];
 type Traffic = {
@@ -167,9 +169,11 @@ export function WebsiteStats({ secret, onUnauthorized }: { secret: string; onUna
             <List title="Browsers & apps" rows={data.browsers} />
             <List title="Operating systems" rows={data.oses} />
             <List title="Referring sites" rows={data.referrers} />
-            <List title="Campaigns (UTM links)" rows={data.campaigns} empty="Add ?utm_source=tiktok to your bio link to see it here." />
+            <List title="Campaigns (UTM links)" rows={data.campaigns} empty="Use a link from Tracking links below to see it here." />
             <List title="Clicks" rows={data.clicks.map(([k, n]) => [k === "buy_click" ? "Get Pro (checkout)" : k === "download_click" ? "Download" : "Outbound links", n] as Row)} />
           </section>
+
+          <TrackingLinks sources={data.sources} />
           <p className="mt-6 text-xs text-white/40">
             Privacy-friendly: no cookies, no IPs stored. A visitor is counted once per day. Bots and your own /admin visits are
             ignored. Windows visitors can actually install the app; mobile visitors are mostly coming from TikTok/Instagram.
@@ -177,6 +181,78 @@ export function WebsiteStats({ secret, onUnauthorized }: { secret: string; onUna
         </>
       )}
     </>
+  );
+}
+
+const PAGES = [{ label: "Home", route: "/" }, ...PRODUCTS.map((p) => ({ label: p.tabLabel, route: p.route }))];
+
+/** Copy-paste links per platform (bio, post, ad) with how many visits each has brought in. */
+function TrackingLinks({ sources }: { sources: Row[] }) {
+  const [route, setRoute] = useState("/desktop");
+  const [campaign, setCampaign] = useState("");
+  const [copied, setCopied] = useState("");
+  const visits = new Map(sources);
+  const tag = campaign.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  const linkFor = (id: string, medium: string) => {
+    const q = new URLSearchParams({ utm_source: id, utm_medium: medium });
+    if (tag) q.set("utm_campaign", tag);
+    return `https://revinhi.com${route === "/" ? "/" : route}?${q}`;
+  };
+  const copy = async (id: string, url: string) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(id);
+      setTimeout(() => setCopied((c) => (c === id ? "" : c)), 1500);
+    } catch {
+      window.prompt("Copy this link:", url);
+    }
+  };
+
+  return (
+    <section className="glass-panel-flat mt-6 rounded-2xl p-5">
+      <h2 className="text-sm font-semibold uppercase tracking-widest text-white/60">Tracking links</h2>
+      <p className="mt-1 text-xs text-white/45">
+        Paste these in bios, posts and ads. Visits are counted per platform here and in &quot;Where visitors come from&quot;.
+      </p>
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {PAGES.map((p) => (
+          <button
+            key={p.route}
+            onClick={() => setRoute(p.route)}
+            className={`rounded-full border px-3 py-1 text-xs font-semibold ${route === p.route ? "border-neon-cyan bg-neon-cyan/15 text-neon-cyan" : "border-white/15 text-white/60"}`}
+          >
+            {p.label}
+          </button>
+        ))}
+        <input
+          value={campaign}
+          onChange={(e) => setCampaign(e.target.value)}
+          placeholder="Campaign (optional, e.g. storm-reel)"
+          className="ml-auto w-full rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs outline-none focus:border-neon-cyan sm:w-64"
+        />
+      </div>
+      <ul className="mt-4 space-y-1.5">
+        {PLATFORMS.map((p) => {
+          const url = linkFor(p.id, p.medium);
+          return (
+            <li key={p.id} className="flex items-center gap-3 rounded-lg bg-white/[0.04] px-3 py-2 text-sm">
+              <span className="w-24 shrink-0 font-semibold">{p.name}</span>
+              <code className="min-w-0 flex-1 truncate text-xs text-white/60" title={url}>
+                {url}
+              </code>
+              <span className="hidden shrink-0 text-xs text-white/45 sm:inline">{visits.get(p.name) ?? 0} visits</span>
+              <button
+                onClick={() => copy(p.id, url)}
+                className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${copied === p.id ? "border-neon-success text-neon-success" : "border-white/20 text-white/75 hover:border-neon-cyan hover:text-neon-cyan"}`}
+              >
+                {copied === p.id ? "Copied!" : "Copy"}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
