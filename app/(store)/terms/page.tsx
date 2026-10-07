@@ -13,7 +13,7 @@ export default function TermsPage() {
   return (
     <LegalPage title="Terms of Use & Sale">
       <p>
-        These terms cover the RevinHi apps (RevinHi Desktop and RevinHi Performance) and this website. By downloading, buying or
+        These terms cover the RevinHi apps (RevinHi Desktop, RevinHi PDF and RevinHi Performance) and this website. By downloading, buying or
         using them, you agree to these terms.
       </p>
 
@@ -27,7 +27,7 @@ export default function TermsPage() {
 
       <Section heading="Refunds">
         <p>
-          RevinHi Desktop: refunds are available within 24 hours of purchase. Email {SUPPORT_EMAIL} from the address you bought
+          RevinHi Desktop and RevinHi PDF: refunds are available within 24 hours of purchase. Email {SUPPORT_EMAIL} from the address you bought
           with. After 24 hours, sales are final, so please try the free version first. RevinHi Performance: contact us and
           refunds are handled case by case. Payments and refunds are processed by Gumroad.
         </p>
