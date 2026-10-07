@@ -22,6 +22,12 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: "RevinHi PDF app icon",
 });
 
+const DEMOS = [
+  { src: "/pdf/clip-sign.mp4", poster: "/pdf/clip-sign-poster.jpg", caption: "Sign in seconds with a saved signature" },
+  { src: "/pdf/clip-pages.mp4", poster: "/pdf/clip-pages-poster.jpg", caption: "Drag to reorder, rotate, merge and split" },
+  { src: "/pdf/clip-compress.mp4", poster: "/pdf/clip-compress-poster.jpg", caption: "Compress big PDFs for email" },
+];
+
 const FEATURES: { title: string; description: string; accent: string }[] = [
   {
     title: "Edit existing text",
@@ -182,6 +188,41 @@ export default function PdfPage() {
             <DownloadButton className="px-8 py-3.5 text-base" />
             <BuyButton className="px-8 py-3.5 text-base" chase />
           </div>
+        </div>
+        <div className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+          <video
+            className="block h-auto w-full"
+            src="/pdf/hero.mp4"
+            poster="/pdf/hero-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="RevinHi PDF editing the text of an existing PDF"
+          />
+        </div>
+      </section>
+
+      {/* Demos */}
+      <section className="px-6 pb-8">
+        <SectionHeading eyebrow="See it in action" title="Real app, real workflow" />
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-3">
+          {DEMOS.map((demo) => (
+            <figure key={demo.src} className="glass-panel-flat overflow-hidden rounded-2xl">
+              <video
+                className="block h-auto w-full"
+                src={demo.src}
+                poster={demo.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={demo.caption}
+              />
+              <figcaption className="px-5 py-4 text-sm text-white/70">{demo.caption}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 

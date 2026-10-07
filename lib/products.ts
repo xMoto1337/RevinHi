@@ -68,13 +68,12 @@ export const PRODUCTS: Product[] = [
     tagline: "Edit, sign, merge, compress and protect PDFs - fast, offline, no subscription.",
     price: "$9.99",
     platform: "Windows 10/11",
-    status: "coming-soon",
+    status: "available",
     accent: "#ff5c7a",
-    // Set status "available" once the installer is released to public/downloads.
     gumroadUrl: "https://revinhi.gumroad.com/l/xwajbx",
     route: "/pdf",
     features: ["Edit existing text", "Sign & fill forms", "Merge, split & reorder", "Compress & password-protect"],
-    heroMedia: "/pdf/hero.png",
+    heroMedia: "/pdf/hero.mp4",
     downloadUrl: "/downloads/RevinHi-PDF-Setup.exe",
   },
 ];
