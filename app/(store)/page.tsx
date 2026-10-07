@@ -1,8 +1,18 @@
+import type { Metadata } from "next";
 import { LegalLinks } from "@/components/Legal";
+import { pageMetadata } from "@/lib/seo";
 import fs from "node:fs";
 import path from "node:path";
 import { BuyButton } from "@/components/BuyButton";
 import { PRODUCTS, SUPPORT_EMAIL, type Product } from "@/lib/products";
+
+export const metadata: Metadata = pageMetadata({
+  title: "RevinHi - Windows apps for your PC, no subscription",
+  description:
+    "Small Windows 10/11 apps that upgrade your PC: a game optimizer, live wallpapers and radar, and an offline PDF editor. Pay once, free updates.",
+  path: "/",
+  imageAlt: "RevinHi logo",
+});
 
 // Checked at build time (this page is statically prerendered): only render a product's hero media if
 // the file actually exists in /public, otherwise show the gradient art panel instead of a broken video.

@@ -3,16 +3,19 @@ import Script from "next/script";
 import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
-const SITE_TITLE = "RevinHi - Apps that upgrade your PC";
+const SITE_TITLE = "RevinHi - Windows apps for your PC, no subscription";
 const SITE_DESCRIPTION =
-  "RevinHi makes small Windows apps that upgrade your PC - a safe game optimizer and live desktop wallpapers, widgets and weather radar. One-time price, free updates forever.";
+  "Small Windows 10/11 apps that upgrade your PC: a game optimizer, live wallpapers and radar, and an offline PDF editor. Pay once, free updates.";
+const OG_IMAGE = { url: "/brand/revinhi-brand.png", width: 512, height: 512, alt: "RevinHi logo" };
 
+// Defaults for every page. Pages override title/description/canonical via pageMetadata() in lib/seo.ts;
+// a page that only sets a plain title gets the "| RevinHi" suffix from the template.
 export const metadata: Metadata = {
   metadataBase: new URL("https://revinhi.com"),
-  title: SITE_TITLE,
+  title: { default: SITE_TITLE, template: "%s | RevinHi" },
   description: SITE_DESCRIPTION,
-  openGraph: { title: SITE_TITLE, description: SITE_DESCRIPTION, url: "https://revinhi.com", siteName: "RevinHi", type: "website" },
-  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION },
+  openGraph: { title: SITE_TITLE, description: SITE_DESCRIPTION, url: "https://revinhi.com", siteName: "RevinHi", type: "website", images: [OG_IMAGE] },
+  twitter: { card: "summary", title: SITE_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE.url] },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

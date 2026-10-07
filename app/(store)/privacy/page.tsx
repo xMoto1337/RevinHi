@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage, Section } from "@/components/Legal";
 import { SUPPORT_EMAIL } from "@/lib/products";
 
-export const metadata: Metadata = { title: "Privacy Policy - RevinHi", description: "What RevinHi collects, why, and your choices." };
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy | RevinHi",
+  description: "What RevinHi collects on this website and in its Windows apps, why, and your choices.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-const TITLE = "RevinHi Desktop - Make your Windows desktop come alive";
-const DESCRIPTION =
-  "Live wallpapers, custom widgets, rain & snow effects, and a live US weather radar with lightning strikes - right on your Windows 10/11 desktop. Free to download - Pro is $9.99 once, free updates forever.";
-
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: "https://revinhi.com/desktop",
-    siteName: "RevinHi",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "RevinHi Desktop - Live wallpapers, widgets and radar",
+  description:
+    "Live wallpapers, custom widgets, rain and snow effects and a live US weather radar on Windows 10/11. Free download, Pro is $9.99 once.",
+  path: "/desktop",
+  image: "/brand/revinhi-desktop.png",
+  imageAlt: "RevinHi Desktop app icon",
+});
 
 export default function DesktopLayout({ children }: { children: React.ReactNode }) {
   return children;

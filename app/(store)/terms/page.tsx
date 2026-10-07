@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage, Section } from "@/components/Legal";
 import { SUPPORT_EMAIL } from "@/lib/products";
 
-export const metadata: Metadata = { title: "Terms - RevinHi", description: "Terms of use and sale for RevinHi apps." };
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Use & Sale | RevinHi",
+  description: "Terms of use and sale for RevinHi apps: licenses, refunds and updates.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

@@ -1,46 +1,26 @@
-import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
-import { LegalLinks } from "@/components/Legal";
-import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
+import type { Metadata } from "next";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
+import { SUPPORT_EMAIL } from "@/lib/products";
+import {
+  JsonLd,
+  PDF_AVAILABLE as AVAILABLE,
+  PDF_OG_IMAGE,
+  PDF_PRODUCT as PRODUCT,
+  PdfBuyButton as BuyButton,
+  PdfDownloadButton as DownloadButton,
+  PdfFooter,
+  PdfGuideLinks,
+  SectionHeading,
+} from "@/components/pdf/PdfUi";
 
-const PRODUCT = getProduct("pdf");
-const AVAILABLE = PRODUCT.status === "available";
-// Counted: /api/download logs the click, then redirects to the installer.
-const DOWNLOAD_URL = `/api/download/${PRODUCT.slug}`;
-
-function BuyButton(props: { className?: string; chase?: boolean; wrapperClassName?: string }) {
-  return <SharedBuyButton product={PRODUCT} label={<>Get Pro &mdash; {PRODUCT.price}</>} {...props} />;
-}
-
-function DownloadButton({ className = "" }: { className?: string }) {
-  if (!AVAILABLE) {
-    return (
-      <span
-        className={`inline-flex cursor-not-allowed items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 font-semibold text-white/50 ${className}`}
-      >
-        Free download coming soon
-      </span>
-    );
-  }
-  return (
-    <a
-      href={DOWNLOAD_URL}
-      download
-      className={`inline-flex items-center justify-center rounded-full bg-neon-cyan px-7 py-3 font-semibold text-black shadow-[0_0_30px_rgba(0,229,255,0.35)] transition hover:scale-[1.02] ${className}`}
-    >
-      Download free
-    </a>
-  );
-}
-
-function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-base text-white/60">{subtitle}</p>}
-    </div>
-  );
-}
+export const metadata: Metadata = pageMetadata({
+  title: "RevinHi PDF - Offline PDF editor, no subscription",
+  description:
+    "Offline PDF editor for Windows 10/11: edit text, sign, fill forms, merge, compress and protect PDFs. Free download, Pro is $9.99 once - no subscription.",
+  path: "/pdf",
+  image: PDF_OG_IMAGE,
+  imageAlt: "RevinHi PDF app icon",
+});
 
 const FEATURES: { title: string; description: string; accent: string }[] = [
   {
@@ -85,39 +65,103 @@ const TIERS: { feature: string; free: string; pro: string }[] = [
   { feature: "PDF → Images", free: "-", pro: "Included" },
   { feature: "Compress", free: "-", pro: "Included" },
   { feature: "Password protect / unlock", free: "-", pro: "Included" },
-  { feature: "Exports", free: "Small footer credit", pro: "Clean" },
+  { feature: "Exports", free: "Small watermark", pro: "Clean" },
 ];
 
 const FAQ: { q: string; a: string }[] = [
   {
-    q: "Is it really free?",
-    a: "Yes. Viewing, page tools, annotating, signing and form filling are free forever. Pro is a one-time purchase that unlocks text editing, compress, protect, conversion and removes the small footer credit.",
+    q: "Is it really a one-time price?",
+    a: `Yes. Pro is ${PRODUCT.price} once, paid through Gumroad. There's no subscription and no account to make, and your Pro key keeps working on every future version.`,
   },
   {
-    q: "Do my files get uploaded anywhere?",
-    a: "No. RevinHi PDF works entirely on your PC, offline. Your documents never leave your computer.",
+    q: "Does it work offline?",
+    a: "Yes. RevinHi PDF runs entirely on your PC and doesn't need an internet connection to open, edit or save files. Your documents are never uploaded anywhere.",
+  },
+  {
+    q: "Is it Windows only?",
+    a: "Yes. It's built for Windows 10 and 11 (64-bit). There's no Mac, mobile or web version.",
+  },
+  {
+    q: "What's included in the free version?",
+    a: "Viewing, page tools (reorder, rotate, delete, extract and insert pages), merging 2 files at a time, annotating (text, highlights, drawing, shapes, images and whiteout), filling forms and 1 saved signature. Free exports carry a small RevinHi watermark. Pro removes it and adds editing existing text, compress, PDF to images, password protect/unlock and unlimited merging.",
   },
   {
     q: "Is edited text secure redaction?",
     a: "No. Edited text is drawn over the original, which stays in the file underneath. Don't use it to hide sensitive information.",
   },
   {
-    q: "What are the system requirements?",
-    a: "Windows 10 or 11, 64-bit.",
-  },
-  {
     q: "How do updates work?",
     a: "The app updates itself, and your Pro key works on every future version, with no subscription.",
   },
   {
-    q: "What if I'm not happy with it?",
-    a: `Reach out at ${SUPPORT_EMAIL} - refunds are handled case by case through Gumroad's checkout.`,
+    q: "Can I get a refund?",
+    a: `Yes, within 24 hours of purchase. Email ${SUPPORT_EMAIL} from the address you bought with. Please try the free version first.`,
+  },
+  {
+    q: "How do I get support?",
+    a: `Email ${SUPPORT_EMAIL} and we'll get back to you.`,
   },
 ];
+
+const SOFTWARE_LD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: PRODUCT.name,
+  description:
+    "Offline PDF editor for Windows: edit existing text, sign, fill forms, annotate, merge, split, compress and password-protect PDFs.",
+  url: `${SITE_URL}/pdf`,
+  image: `${SITE_URL}${PDF_OG_IMAGE}`,
+  operatingSystem: "Windows 10, Windows 11",
+  applicationCategory: "BusinessApplication",
+  isAccessibleForFree: true,
+  ...(AVAILABLE ? { downloadUrl: `${SITE_URL}/api/download/${PRODUCT.slug}` } : {}),
+  featureList: [
+    "Edit existing text (Pro)",
+    "Sign PDFs and fill forms",
+    "Annotate: text, highlight, draw, shapes, images, whiteout",
+    "Reorder, rotate, delete, extract and insert pages",
+    "Merge and split PDFs",
+    "Compress PDFs (Pro)",
+    "PDF to images (Pro)",
+    "Password protect and unlock (Pro)",
+  ],
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Free download",
+      price: "0",
+      priceCurrency: "USD",
+      description: "Free to download and use. Exports carry a small watermark.",
+    },
+    {
+      "@type": "Offer",
+      name: "RevinHi PDF Pro",
+      price: "9.99",
+      priceCurrency: "USD",
+      description: "One-time purchase, no subscription. Removes the watermark and unlocks all Pro features, with free updates.",
+      url: `${SITE_URL}/pdf`,
+      ...(AVAILABLE ? { availability: "https://schema.org/InStock" } : {}),
+    },
+  ],
+  publisher: { "@type": "Organization", name: "RevinHi", url: SITE_URL },
+};
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 
 export default function PdfPage() {
   return (
     <div className="flex flex-1 flex-col">
+      <JsonLd data={SOFTWARE_LD} />
+      <JsonLd data={FAQ_LD} />
+
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pb-24 pt-14 sm:pt-24">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -181,29 +225,25 @@ export default function PdfPage() {
         </div>
       </section>
 
+      {/* Guides */}
+      <section id="guides" className="scroll-mt-28 px-6 py-16">
+        <PdfGuideLinks />
+      </section>
+
       {/* FAQ */}
       <section id="faq" className="px-6 py-24">
         <SectionHeading eyebrow="Questions" title="Frequently asked" />
         <div className="mx-auto mt-12 max-w-2xl space-y-4">
           {FAQ.map((item) => (
             <div key={item.q} className="glass-panel-flat rounded-2xl p-6">
-              <p className="font-semibold text-white/90">{item.q}</p>
+              <h3 className="font-semibold text-white/90">{item.q}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{item.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mt-auto border-t border-white/10 px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} RevinHi. All rights reserved.</p>
-          <LegalLinks />
-          <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
-            {SUPPORT_EMAIL}
-          </a>
-        </div>
-      </footer>
+      <PdfFooter />
     </div>
   );
 }

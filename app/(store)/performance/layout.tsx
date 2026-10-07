@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-const TITLE = "RevinHi Performance - Safe, reversible Windows game optimizer";
-const DESCRIPTION =
-  "RevinHi Performance is a Windows optimizer built for gamers - safe, reversible tweaks to cut input lag and squeeze more FPS out of your PC.";
-
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "https://revinhi.com/performance", siteName: "RevinHi", type: "website" },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "RevinHi Performance - Safe Windows game optimizer",
+  description:
+    "Safe, reversible Windows 10/11 tweaks that cut input lag and squeeze more FPS out of your PC. $9.99 once, free updates forever.",
+  path: "/performance",
+  image: "/brand/revinhi-perf.png",
+  imageAlt: "RevinHi Performance app icon",
+});
 
 export default function PerformanceLayout({ children }: { children: React.ReactNode }) {
   return children;
