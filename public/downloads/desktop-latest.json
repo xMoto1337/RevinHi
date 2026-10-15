@@ -1,11 +1,11 @@
 {
-  "version": "0.2.3",
-  "notes": "New RevinHi look: the weathered R icon with Desktop's lightning-bolt mark.",
-  "pub_date": "2026-10-05T22:14:27.383Z",
+  "version": "0.2.4",
+  "notes": "Crisp new RevinHi icon at every size; spelling fixes",
+  "pub_date": "2026-10-15T22:53:09.723Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnRCV2VNd3A4TiswZ1BiblF0bCtsN1JCdnhYaTdsWjlIRlVsSGQ5NXJQa1JUZUJ1WUtUVi9mMEppVEJWRnRTakN2ZnZ4cUhBWWs4V0JXSXA3cXhWSVFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjM4NDY3CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi4zX3g2NC1zZXR1cC5leGUKbmpsbythTWhqelhmajR1ZDFSKzVkdUFlOTlsSHFuZmZvSnU2UU1idGlSNmQ0VUdqV0Y1cWFRZUg1TVI3Ri9pd25XTTA5eS9RT0h3OENmQ2VMakREQ3c9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.3"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnUzcEpwd0V6NnA4M0hqd3o2K0VMdjNHaElUOHc1bktxeFhOcTJLd1owOWloTU9nelhoY29DN1hsV3Q0Q2pPMURuSTd5TjRHSG40cUNieFFWd3JIVEFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTA0Nzg5CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi40X3g2NC1zZXR1cC5leGUKWXpHVGRSd25icGVZL0MwRWxYRFhGb3Q2TGNOU3JwdHVRcjJJRG9NK3RIeWt2YjhPall1NGZiektOM3RnNlFJWGdKeFZzYmRvWlhiN0dIY1NlTTg1QXc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.4"
     }
   }
 }
