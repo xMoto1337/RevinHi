@@ -10,13 +10,14 @@ import {
   PdfDownloadButton as DownloadButton,
   PdfFooter,
   PdfGuideLinks,
+  PdfPortableLink as PortableLink,
   SectionHeading,
 } from "@/components/pdf/PdfUi";
 
 export const metadata: Metadata = pageMetadata({
   title: "RevinHi PDF - Offline PDF editor, no subscription",
   description:
-    "Offline PDF editor for Windows 10/11: edit text, sign, fill forms, merge, compress and protect PDFs. Free download, Pro is $9.99 once - no subscription.",
+    "Offline PDF editor for Windows 10/11: edit text, Fill & Sign, OCR scans, true redaction, merge, compress and protect PDFs. Portable USB version. Free download, Pro is $9.99 once - no subscription.",
   path: "/pdf",
   image: PDF_OG_IMAGE,
   imageAlt: "RevinHi PDF app icon",
@@ -28,47 +29,90 @@ const DEMOS = [
   { src: "/pdf/clip-compress.mp4", poster: "/pdf/clip-compress-poster.jpg", caption: "Compress big PDFs for email" },
 ];
 
-const FEATURES: { title: string; description: string; accent: string }[] = [
+const FEATURES: { title: string; description: string; accent: string; pro?: boolean }[] = [
   {
     title: "Edit existing text",
     description: "Click any line in a PDF and retype it. RevinHi matches the original font, size and color, so the change blends in.",
     accent: "var(--neon-purple)",
+    pro: true,
   },
   {
-    title: "Sign & fill forms",
-    description: "Draw, type or upload your signature once and drop it on any page. Fill in PDF forms and flatten them when you're done.",
+    title: "Add text anywhere",
+    description: "Type straight onto the page in wrapping text boxes. 6 fonts, bold, italic, underline, alignment, background, border and rotation, or match the text nearby.",
     accent: "var(--neon-cyan)",
   },
   {
-    title: "Annotate",
-    description: "Text boxes, highlights, freehand ink, shapes, arrows, images and whiteout, all movable and fully undoable.",
+    title: "Fill & Sign",
+    description: "Drop ✓ ✗ • ◯ ☑ marks that size themselves to checkboxes and lines, tick real form checkboxes, and sign with a saved signature. Flatten when you're done.",
     accent: "var(--neon-amber)",
   },
   {
-    title: "Page tools",
-    description: "Drag pages to reorder, rotate, delete, extract, insert blank pages, merge files and split by ranges.",
+    title: "Annotate & comment",
+    description: "Highlight, underline or strike through selected text, leave sticky-note comments that show up in other PDF readers, and add stamps like Approved, Paid or Signed with the date.",
     accent: "var(--neon-success)",
   },
   {
-    title: "Convert",
-    description: "Turn photos and scans into a PDF, or export pages as PNG / JPG at up to 300 dpi.",
+    title: "Read & find",
+    description: "Find with Ctrl+F, select and copy text, fit to width or page, two-page view, night reading and presentation mode. Bookmarks, clickable links, back/forward, and it remembers your place.",
     accent: "var(--neon-danger)",
+  },
+  {
+    title: "Page tools",
+    description: "Drag pages to reorder, rotate, crop, duplicate, reverse, delete, extract or insert blanks. Copy pages between tabs, merge files and split by ranges.",
+    accent: "var(--neon-purple)",
+  },
+  {
+    title: "OCR, fully offline",
+    description: "Make scanned PDFs searchable and selectable without uploading them anywhere. It all runs on your PC.",
+    accent: "var(--neon-cyan)",
+    pro: true,
+  },
+  {
+    title: "True redaction",
+    description: "Black out sensitive text and it's actually removed from the file, not just covered up.",
+    accent: "var(--neon-amber)",
+    pro: true,
+  },
+  {
+    title: "Convert",
+    description: "Turn photos and scans into a PDF, or export pages as PNG / JPG at up to 300 dpi. Pro adds PDF to Word, PDF to text and extract images.",
+    accent: "var(--neon-success)",
+  },
+  {
+    title: "Batch & finishing",
+    description: "Process many files at once. Add page numbers, headers & footers, Bates numbering, custom watermarks and custom stamps, convert to grayscale, remove blank pages and flatten annotations.",
+    accent: "var(--neon-danger)",
+    pro: true,
   },
   {
     title: "Compress & protect",
     description: "Shrink image-heavy PDFs, often by 80% or more, and lock files with AES-256 passwords.",
     accent: "var(--neon-purple)",
+    pro: true,
+  },
+  {
+    title: "Fast to work in",
+    description: "Command palette (Ctrl+K), a shortcut sheet, copy/paste/align/snap/lock objects, print, and autosave with crash recovery. Or run the portable version straight from a USB stick.",
+    accent: "var(--neon-cyan)",
   },
 ];
 
 const TIERS: { feature: string; free: string; pro: string }[] = [
-  { feature: "View, reorder, rotate, split", free: "Included", pro: "Included" },
-  { feature: "Annotate, sign, fill forms", free: "Included", pro: "Included" },
+  { feature: "View, find, print, reorder, rotate, crop, split", free: "Included", pro: "Included" },
+  { feature: "Add text, Fill & Sign, fill forms", free: "Included", pro: "Included" },
+  { feature: "Highlights, comments, stamps", free: "Included", pro: "Included" },
+  { feature: "Autosave, portable USB version", free: "Included", pro: "Included" },
   { feature: "Merge", free: "2 files at a time", pro: "Unlimited" },
   { feature: "Saved signatures", free: "1", pro: "Unlimited" },
   { feature: "Images → PDF", free: "Up to 3 images", pro: "Unlimited" },
   { feature: "Edit existing text", free: "-", pro: "Included" },
-  { feature: "PDF → Images", free: "-", pro: "Included" },
+  { feature: "OCR (searchable scans)", free: "-", pro: "Included" },
+  { feature: "True redaction", free: "-", pro: "Included" },
+  { feature: "Batch processing", free: "-", pro: "Included" },
+  { feature: "PDF → Word, text, images", free: "-", pro: "Included" },
+  { feature: "Page numbers, headers/footers, Bates, watermarks", free: "-", pro: "Included" },
+  { feature: "Grayscale, remove blank pages, flatten", free: "-", pro: "Included" },
+  { feature: "Custom stamps", free: "-", pro: "Included" },
   { feature: "Compress", free: "-", pro: "Included" },
   { feature: "Password protect / unlock", free: "-", pro: "Included" },
   { feature: "Exports", free: "Small watermark", pro: "Clean" },
@@ -89,11 +133,15 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What's included in the free version?",
-    a: "Viewing, page tools (reorder, rotate, delete, extract and insert pages), merging 2 files at a time, annotating (text, highlights, drawing, shapes, images and whiteout), filling forms and 1 saved signature. Free exports carry a small RevinHi watermark. Pro removes it and adds editing existing text, compress, PDF to images, password protect/unlock and unlimited merging.",
+    a: "Viewing with Find, bookmarks and print, page tools (reorder, rotate, crop, duplicate, delete, extract and insert pages), merging 2 files at a time, Add Text, Fill & Sign marks, highlights, sticky-note comments, stamps, drawing, shapes, images and whiteout, filling forms and 1 saved signature. Free exports carry a small RevinHi watermark. Pro removes it and adds editing existing text, OCR, true redaction, batch processing, PDF to Word/text/images, page numbers and watermarks, compress, password protect/unlock and unlimited merging.",
   },
   {
     q: "Is edited text secure redaction?",
-    a: "No. Edited text is drawn over the original, which stays in the file underneath. Don't use it to hide sensitive information.",
+    a: "No. Edited text and whiteout are drawn over the original, which stays in the file underneath. To hide sensitive information, use Redact (Pro), which removes the content from the file for good.",
+  },
+  {
+    q: "Is there a portable version?",
+    a: "Yes. Download the Portable (USB) zip, unzip it onto a USB stick and run it from there. There's nothing to install, and your settings travel with the stick.",
   },
   {
     q: "How do updates work?",
@@ -114,7 +162,8 @@ const SOFTWARE_LD = {
   "@type": "SoftwareApplication",
   name: PRODUCT.name,
   description:
-    "Offline PDF editor for Windows: edit existing text, sign, fill forms, annotate, merge, split, compress and password-protect PDFs.",
+    "Offline PDF editor for Windows: edit and add text, Fill & Sign, OCR scanned PDFs, true redaction, annotate, merge, split, compress and password-protect PDFs. Also available as a portable USB version.",
+  softwareVersion: "0.2.0",
   url: `${SITE_URL}/pdf`,
   image: `${SITE_URL}${PDF_OG_IMAGE}`,
   operatingSystem: "Windows 10, Windows 11",
@@ -123,10 +172,19 @@ const SOFTWARE_LD = {
   ...(AVAILABLE ? { downloadUrl: `${SITE_URL}/api/download/${PRODUCT.slug}` } : {}),
   featureList: [
     "Edit existing text (Pro)",
-    "Sign PDFs and fill forms",
-    "Annotate: text, highlight, draw, shapes, images, whiteout",
-    "Reorder, rotate, delete, extract and insert pages",
+    "Add text: wrapping boxes, 6 fonts, styles, alignment, rotation",
+    "Fill & Sign: check marks, signatures, form filling",
+    "Annotate: highlight, underline, strikethrough, comments, stamps, draw, shapes, images, whiteout",
+    "Find, text selection, bookmarks, links and print",
+    "Reorder, rotate, crop, duplicate, delete, extract and insert pages",
     "Merge and split PDFs",
+    "Autosave with crash recovery",
+    "Portable USB version",
+    "OCR for scanned PDFs, fully offline (Pro)",
+    "True redaction (Pro)",
+    "Batch processing (Pro)",
+    "PDF to Word, PDF to text, extract images (Pro)",
+    "Page numbers, headers and footers, Bates numbering, watermarks (Pro)",
     "Compress PDFs (Pro)",
     "PDF to images (Pro)",
     "Password protect and unlock (Pro)",
@@ -181,13 +239,14 @@ export default function PdfPage() {
             <span className="rgb-chase-text">no subscription.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
-            RevinHi PDF edits the text that&apos;s already there, signs and fills forms, merges and splits, compresses and
-            password-protects. Fast, offline, and yours to keep.
+            RevinHi PDF edits the text that&apos;s already there, fills and signs forms, makes scans searchable, redacts,
+            merges and splits, compresses and password-protects. Fast, offline, and yours to keep.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
             <DownloadButton className="px-8 py-3.5 text-base" />
             <BuyButton className="px-8 py-3.5 text-base" chase />
           </div>
+          <PortableLink className="mt-5" />
         </div>
         <div className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
           <video
@@ -233,7 +292,14 @@ export default function PdfPage() {
           {FEATURES.map((feature) => (
             <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
               <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
+              <h3 className="flex items-center gap-2 text-lg font-semibold">
+                {feature.title}
+                {feature.pro && (
+                  <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/60">
+                    Pro
+                  </span>
+                )}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
             </div>
           ))}
@@ -261,6 +327,7 @@ export default function PdfPage() {
               <DownloadButton className="px-7 py-3 text-sm" />
               <BuyButton className="px-7 py-3 text-sm" />
             </div>
+            <PortableLink className="mt-4 text-center" />
             <p className="mt-4 text-center text-xs text-white/40">One-time purchase &middot; free updates forever &middot; key by email instantly</p>
           </div>
         </div>

@@ -11,6 +11,8 @@ export const PDF_AVAILABLE = PDF_PRODUCT.status === "available";
 // Counted: /api/download logs the click, then redirects to the installer.
 export const PDF_DOWNLOAD_URL = `/api/download/${PDF_PRODUCT.slug}`;
 export const PDF_OG_IMAGE = "/brand/revinhi-pdf.png";
+// Portable build (zip, runs from a USB stick). Served straight from /public, like the installer file.
+export const PDF_PORTABLE_URL = "/downloads/RevinHi-PDF-Portable.zip";
 
 export const PDF_GUIDES: { slug: string; label: string; blurb: string }[] = [
   { slug: "edit-pdf-text", label: "Edit PDF text", blurb: "Retype the words already in a PDF." },
@@ -42,6 +44,23 @@ export function PdfDownloadButton({ className = "" }: { className?: string }) {
     >
       Download free
     </a>
+  );
+}
+
+/** Secondary link to the portable (USB) zip, shown under the main download button. */
+export function PdfPortableLink({ className = "" }: { className?: string }) {
+  if (!PDF_AVAILABLE) return null;
+  return (
+    <p className={`text-xs text-white/45 ${className}`}>
+      <a
+        href={PDF_PORTABLE_URL}
+        download
+        className="font-semibold text-neon-cyan underline-offset-4 transition hover:underline"
+      >
+        Portable (USB) version
+      </a>
+      {" "}&middot; Runs from a USB stick &mdash; no install, settings travel with it.
+    </p>
   );
 }
 
