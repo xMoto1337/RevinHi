@@ -1,11 +1,11 @@
 {
-  "version": "0.2.2",
-  "notes": "Snap button, Ctrl+; and View menu turn snapping on/off for precise placement (remembered); Alt flips it for one drag.",
-  "pub_date": "2026-10-16T23:18:58.877Z",
+  "version": "0.2.3",
+  "notes": "New blank PDF (Ctrl+N): Letter, A4 or Legal, portrait or landscape, any number of pages.",
+  "pub_date": "2026-10-16T23:37:28.095Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRM2xpSyt2MGpPTUlnTlZmaW9jRWRreUUrMitrMFM2cGFUZThZdS9CRnQySDlUMktLQUpTZEZwaUIvWWxKZzV4eFVxbThTbFNRdjVOaitTTGxuOTNuU2lCUlhlRG54OGdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTkyNzQxCWZpbGU6UmV2aW5IaS1QREYtUG9ydGFibGUtMC4yLjIuemlwCXZlcnNpb246MC4yLjIKcVFOaGpzTThncUdoYkRlUjI4aXFTZE5icnhJMnErT2tVOUN6b2daWEIwL21UcW9oRGhWcmE2bkZoWUNrU1FyNGR2VmNMU2NPTWlUUW9xRGlkN2lCQVE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-PDF-Portable.zip?v=0.2.2"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRM2xpSyt2MGpPTUh0aWQ3djNOZ08xcnJua2xFdUNsMWNBaytqNjUvN1VyY2JYa0JhV1hrKzd2eXh5MDdNT1VITlJwKys2WEtCaTR1bkQ5b1ROZ2k5cUdZNlJZakdEWkF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTkzODUwCWZpbGU6UmV2aW5IaS1QREYtUG9ydGFibGUtMC4yLjMuemlwCXZlcnNpb246MC4yLjMKOUtuQW1EOVFDTTBKWjJDRWVNdTArVXBBVng1N0k4d0JiT01zMExCRWFlZVJTc3NTeG9RSXFYNmEzUDVCbHZ2NnN0SWNMbXVsaE1wTFE3d2h1eDJBQmc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-PDF-Portable.zip?v=0.2.3"
     }
   }
 }
