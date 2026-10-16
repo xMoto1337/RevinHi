@@ -1,11 +1,11 @@
 {
-  "version": "0.2.1",
-  "notes": "New in 0.2: Add Text rebuilt (type on the page, wrapping boxes, 6 fonts); Fill & Sign check/X marks; Find, bookmarks, links, two-page view, night reading, presentation, print; highlight, comments, stamps; align/snap/lock objects, crop; Ctrl+K command palette, autosave and recovery, portable USB version; Pro: OCR, redaction, batch, PDF to Word/text, page numbers and watermarks, grayscale. 0.2.1: text box outline now fits while typing.",
-  "pub_date": "2026-10-15T23:02:24.753Z",
+  "version": "0.2.2",
+  "notes": "Snap button, Ctrl+; and View menu turn snapping on/off for precise placement (remembered); Alt flips it for one drag.",
+  "pub_date": "2026-10-16T23:18:58.877Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRM2xpSyt2MGpPTUFOajRNTUlHbGFYVndkVG5waWo4TFFLblp0bHNaRmlZQTZRWitNUXNCWEx6Mld4UU9xQkJsNDV6cENhMzQ0NlF5K2xXYklENzV5dkpHK0hGWTBYZkFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTA1MzQ0CWZpbGU6UmV2aW5IaSBQREZfMC4yLjFfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4xCnJ6cUxhZVphNFZLVXJZZUJpTkRHU09nVEY4TFpFSW9wRDJuV2t6azVya2dpcTJPblJ4bEgxQ2tWa1VFdTlYV09QRkhVRDdDN29hdis1SWF1REhKNERBPT0K",
-      "url": "https://revinhi.com/downloads/RevinHi-PDF-Setup.exe?v=0.2.1"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRM2xpSyt2MGpPTUZyVkJsZnBHNnp6OExPaWQvRzd2S3FGalloeGNINmZ4SGp5RHZaUUxPN0VZUklPVXhLL1RiYythY3k0QnNrS1k4dktUM1hVWC9HeDEvN3ZYcnJLdWdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTkyNzM4CWZpbGU6UmV2aW5IaSBQREZfMC4yLjJfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4yCkxUcDMycjhpc2ZrZTZ2N3lIV1hDRmExdEdMV25lUU1FcUFPai9WSzNGUDJ1eHFMV2VJWHhnK1YyOFhVWUtNK1FHRm5IRUNTczNaUXZTTld4NEt6Q0NnPT0K",
+      "url": "https://revinhi.com/downloads/RevinHi-PDF-Setup.exe?v=0.2.2"
     }
   }
 }
