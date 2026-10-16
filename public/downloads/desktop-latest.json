@@ -1,11 +1,11 @@
 {
-  "version": "0.2.4",
-  "notes": "Crisp new RevinHi icon at every size; spelling fixes",
-  "pub_date": "2026-10-15T22:53:09.723Z",
+  "version": "0.2.5",
+  "notes": "New To-Do widget: add it in the Editor, tick items off and your desktop updates instantly",
+  "pub_date": "2026-10-16T23:32:46.353Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UnUzcEpwd0V6NnA4M0hqd3o2K0VMdjNHaElUOHc1bktxeFhOcTJLd1owOWloTU9nelhoY29DN1hsV3Q0Q2pPMURuSTd5TjRHSG40cUNieFFWd3JIVEFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTA0Nzg5CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi40X3g2NC1zZXR1cC5leGUKWXpHVGRSd25icGVZL0MwRWxYRFhGb3Q2TGNOU3JwdHVRcjJJRG9NK3RIeWt2YjhPall1NGZiektOM3RnNlFJWGdKeFZzYmRvWlhiN0dIY1NlTTg1QXc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.4"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQmczK1BKM0J2UmdnNE5LOU15azVjc21vaDliVXdYOFVxZkhCVk95bitJSjJnNkZadlV6ME9ENlFLbk5vOXg3L0xNYVdNQlB3a0dpQ1d1UzU3Z0VLRzBpdllKRzFoY1FzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTkzNTY2CWZpbGU6UmV2aW5IaSBEZXNrdG9wXzAuMi41X3g2NC1zZXR1cC5leGUKdWxPVzVPMWZRQkF3UHIxSnEwNm52R2k4TTEvbzNoR2VoRnVNa2pxT3c0ZWdWOW43b2hBUkZEOGt0aDRkM0VBcHFHVThFdnkyWS9YSTVVaTNzb1A2QXc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Desktop-Setup.exe?v=0.2.5"
     }
   }
 }
