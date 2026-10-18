@@ -1,8 +1,8 @@
 {
-  "version": "0.2.6",
-  "notes": "Map looks like a real topo map: blue water, green woods and wetlands, elevation lines in flat country too; Springs, reservoirs and stock tanks across the USA show as water sources (and in Find water)",
-  "pub_date": "2026-10-18T03:41:12.190Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.6",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYm9ZbC82a0c0L1NDZmpvRGNVWE5HMmtMYVRXWU8xWlVON0lwZHc3aUtzU096bzdMQ0k4YWVpcm9ITEdLMnhManBJQ1lhK011OGNSMkh1UXFLWDdpTkFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk0ODcyCWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCmVvNXEwc08yd3NUaFdIMU1qc0Qway9oMCt6RTRHYkxpSStjck9hazQ2UGl2NFZRZksvdENmTnBvS0F5TVBHMlhMZG8yUHNHZFVZMTFoYWVvajJoUURBPT0K",
-  "size": 13709824
+  "version": "0.2.7",
+  "notes": "Much sharper satellite photos when you zoom in (Internet on), and in photo downloads; Live-video cameras are now red markers, photo-only cameras grey, with how many are live in each group; Traffic cameras added for Kansas, Nebraska, Massachusetts, Delaware and Michigan; Pick a saved person (or add one) in Remix, Edit and Video",
+  "pub_date": "2026-10-18T04:07:55.241Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.7",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmdFZFluL0ZPN0N1elROaUhRcFpRWXRUc0NXQ3FpV3UzOGZOalYxczVVTUFiWXJ2RDJzTm5pT1RIbWwra0NsWHQrZklvZ29nQjlTTVRiQlFiWE1vNmd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk2NDc1CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCmszcmluM0RxL2IvUVZTb3BxZnkrMWFBcmVSYnRJNGdDZkhXcEJVNFBLMzd2Z2FMVXNTZWR5TWp2elU0KzNER0pJQmdmYUJ3WEFHaFllRHE2cUFJS0FRPT0K",
+  "size": 13697536
 }
