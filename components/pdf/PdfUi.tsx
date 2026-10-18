@@ -19,7 +19,6 @@ export const PDF_GUIDES: { slug: string; label: string; blurb: string }[] = [
   { slug: "sign-pdf", label: "Sign a PDF", blurb: "Draw, type or upload a signature, offline." },
   { slug: "compress-pdf", label: "Compress a PDF", blurb: "Shrink big files without uploading them." },
   { slug: "merge-pdf", label: "Merge PDFs", blurb: "Combine files and put pages in order." },
-  { slug: "adobe-acrobat-alternative", label: "Acrobat alternative", blurb: "A one-time PDF editor for Windows." },
 ];
 
 export function PdfBuyButton(props: { className?: string; chase?: boolean; wrapperClassName?: string }) {

@@ -84,8 +84,8 @@ export default function SignPdfPage() {
         text editing, compress, conversion and password protection.
       </p>
       <p>
-        Related: <Link href="/pdf/edit-pdf-text">edit PDF text</Link>, <Link href="/pdf/merge-pdf">merge PDFs</Link>, and{" "}
-        <Link href="/pdf/adobe-acrobat-alternative">a one-time Acrobat alternative</Link>. Or see everything in{" "}
+        Related: <Link href="/pdf/edit-pdf-text">edit PDF text</Link> and <Link href="/pdf/merge-pdf">merge PDFs</Link>. Or
+        see everything in{" "}
         <Link href="/pdf">RevinHi PDF</Link>.
       </p>
     </GuidePage>

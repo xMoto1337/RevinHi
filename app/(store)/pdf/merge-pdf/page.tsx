@@ -79,8 +79,8 @@ export default function MergePdfPage() {
         scans is often large, so <Link href="/pdf/compress-pdf">compressing it</Link> afterwards is a natural next step.
       </p>
       <p>
-        Related: <Link href="/pdf/sign-pdf">sign a PDF</Link>, <Link href="/pdf/edit-pdf-text">edit PDF text</Link>{" "}
-        and the <Link href="/pdf/adobe-acrobat-alternative">one-time Acrobat alternative</Link>. Full details are on the{" "}
+        Related: <Link href="/pdf/sign-pdf">sign a PDF</Link> and <Link href="/pdf/edit-pdf-text">edit PDF text</Link>.
+        Full details are on the{" "}
         <Link href="/pdf">RevinHi PDF</Link> page.
       </p>
     </GuidePage>
