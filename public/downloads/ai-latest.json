@@ -1,8 +1,8 @@
 {
-  "version": "0.2.9",
-  "notes": "Try on clothes: dress your people (or anyone's photo) in clothes from product photos, one or several people at once; New in the model store: Try On (FLUX.2 klein 9B); People: a guided photo shoot turns your photos into one reference sheet so the person looks the same in every picture and video",
-  "pub_date": "2026-10-18T04:59:14.597Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.9",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmd0QnVNeXFOMDRycktXYWtjUEkxRjhNcUR3MHFuYWtOU3pRdjNqVERqWGlveU5kMURZdDkwYjB6aXFDR2tJQkM5ditpK09XVkNpbXQvUUZLYUpkWFFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk5NTU0CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCm8xd1Uzd2QrSEFIcHQwZEJHNkZUUzc1OU9ubXgwMW1qNzFzSXAyTWthUnV1d2xleEF1d0ZQdldhVEx3blBmQnhDczBzeElDbWh3ZGRPU2dja1JwdEFBPT0K",
-  "size": 13723136
+  "version": "0.2.10",
+  "notes": "Fixed: making a person (Invent someone), ad presenters and ad scene videos could ask for a picture model that isn't on the drive; they now use the models you have",
+  "pub_date": "2026-10-18T05:10:04.187Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.10",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYnU0dXFUcVhDMXFDNEhXZDRpTXp5RUtHVGpqNVNIYnFxd0JjZEcwZmhOV3JBMjBZVUw0dStEZmU5ZFNvNkVaT2NRWUVUSmY3ZnRsWXhBcHhueit0Y1FNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMzAwMjA0CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCjNtTElUTGtXdllIMEYrS2lqR0hHSnRXc3d6M1pqU0xZcEMwMjNtUXNndnIzdkpndTBOeFZSZU9pZXJLUXREZFN4dFhrek12dFdRMDBDTCt4dU1QU0J3PT0K",
+  "size": 13734400
 }
