@@ -76,6 +76,21 @@ export const PRODUCTS: Product[] = [
     heroMedia: "/pdf/hero.mp4",
     downloadUrl: "/downloads/RevinHi-PDF-Setup.exe",
   },
+  {
+    slug: "ai",
+    name: "RevinHi AI",
+    tabLabel: "AI",
+    tagline: "A private, offline AI on its own drive: chat, pictures, video, ads and topo maps. No cloud, no account.",
+    // Not on sale yet: set the price and Gumroad link, then status "available".
+    price: "Soon",
+    platform: "Windows 10/11",
+    status: "coming-soon",
+    accent: "#2ed573",
+    gumroadUrl: "",
+    route: "/ai",
+    features: ["Offline AI chat, any model", "Make & edit pictures, video", "Video ads from a link", "Offline topo maps"],
+    heroMedia: "/ai/create.jpg",
+  },
 ];
 
 export function getProduct(slug: string): Product {
