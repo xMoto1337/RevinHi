@@ -1,8 +1,8 @@
 {
-  "version": "0.2.7",
-  "notes": "Much sharper satellite photos when you zoom in (Internet on), and in photo downloads; Live-video cameras are now red markers, photo-only cameras grey, with how many are live in each group; Traffic cameras added for Kansas, Nebraska, Massachusetts, Delaware and Michigan; Pick a saved person (or add one) in Remix, Edit and Video",
-  "pub_date": "2026-10-18T04:07:55.241Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.7",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmdFZFluL0ZPN0N1elROaUhRcFpRWXRUc0NXQ3FpV3UzOGZOalYxczVVTUFiWXJ2RDJzTm5pT1RIbWwra0NsWHQrZklvZ29nQjlTTVRiQlFiWE1vNmd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk2NDc1CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCmszcmluM0RxL2IvUVZTb3BxZnkrMWFBcmVSYnRJNGdDZkhXcEJVNFBLMzd2Z2FMVXNTZWR5TWp2elU0KzNER0pJQmdmYUJ3WEFHaFllRHE2cUFJS0FRPT0K",
-  "size": 13697536
+  "version": "0.2.8",
+  "notes": "Satellite close-ups no longer leave blank patches while they load; Download satellite photos for offline use and pick how sharp (with the size shown); Elevation lines at every zoom, from the whole state down to a single hillside",
+  "pub_date": "2026-10-18T04:31:57.475Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.8",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmpyMlZTbE90ZXljMkNWelNEK2UwcSs1SVhtOVJiL3NhOVdlQXZFNUxjaG9NeEdFV1FDZ3pmVW16SHFkVm0xRlppVWN1YVg1bmgzbWhDalAxc2JGaFF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk3OTE3CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCnNsRkR4dlhvUGd6MlpqUDBQRDlINlU2MWFEOVd0a0N6ZitvTW90TzJnVWhmUHk5cENCbDBPSVBrdWgwMEFXcVpJOFdEWmR1Z1NSUWtHVDhadjBKS0RBPT0K",
+  "size": 13690368
 }
