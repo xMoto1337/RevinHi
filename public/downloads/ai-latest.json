@@ -1,8 +1,8 @@
 {
-  "version": "0.2.3",
-  "notes": "New update notice: a small card and an Update button in the top bar instead of a big popup; Checks for updates when the app opens and when you switch Internet on",
-  "pub_date": "2026-10-18T02:43:41.460Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.3",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmd4eVhmT3JaWnVBdXJ2dkZWL2VuNzc1cy9YcGtkWnJHd0xwVjVFSTJpSlA4c01FL3Q3Y3pUSEI4WFR5NjBFVFF4REJFZlRINHdaenF0WkZQVXg1Qmc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjkxNDIxCWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCm9valltMjhEaWRyV04yYTV6ZHZaMWdraERyaEpqSGtOMGNyZkdpRzc4L2hreHFXT1dOdEw1cFNVbi9sbjNPMjNYdlpPYmpqRTl5RXJOc21aQjk2Q0RBPT0K",
+  "version": "0.2.4",
+  "notes": "A dot on the Chat tab tells you a reply is waiting when you were on another tab",
+  "pub_date": "2026-10-18T03:05:44.742Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.4",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYm85R01NZ0crdjlOU2ZaL3NoVTVDVklMc0xsZGpqb1JsUTNQcGl5d2NKWit5a2hMMk5KZG4zemRtdmt6cGF6TW1wZDZsRTFZWk9NYjhGZWljYWY1R1FzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjkyNzQ0CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCno1K054c3g0UVNRcndEbzFGTE12YzlFWFNDTGlydHNmL29QbXd3MDNyU09FR01WZHZiS0NINGhqZ2E3UDAwKzBjNG84Zy8zd1J6TG9PYkRSUmVHNUJRPT0K",
   "size": 13667328
 }
