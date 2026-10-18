@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0",
-  "notes": "New look with color themes and topo lines; Offline map with pins, water sources, satellite view and traffic cameras; Smarter chat: web search, offline library and code that actually runs; Update popup when Internet is on; License key activation",
-  "pub_date": "2026-10-17T22:44:27.465Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.0",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYm9rSDR1UUdhZXJWUmlHbk9UV3NjVjVFTFZlQ0tONFlRTjNkRlJaR2wrNVNacDRpdWVqOHFBWitDZHgyVXpVcWJ1N3hiSmwrZys1L2NBeTU4S1FDeWc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjc3MDY3CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCkg2eGE2T0kzbkw4Q05mR1pvbHRGWmJzK3gxeUNyTW5YaXlobUFURXlteWs0a0tPT0M5bjJ1Q2djT1BvNURlWW1yOXhWRm02YjdSeGdWelZvL1BkVUFBPT0K",
-  "size": 13570048
+  "version": "0.2.1",
+  "notes": "Create and Ads in one place: photos, edits, videos, remixes and ads with one gallery; Smarter answers with any model: exact math worked out with Python, tested code, current info when Internet is on; Long chats no longer run out of memory",
+  "pub_date": "2026-10-18T01:55:25.393Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.1",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmlGaWZDR1VlcUJ3WFJZSitQSXVtd2QrU0FEdXhYUlR0aU5zMzdiaHpybk1tbmE5bno2cFFCT3NiLzNWUW8xdTdKd3o1eG5IQko1KzNJNzYxTk8xK3drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjg4NTI1CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCktOV3ZlWWtpeWR6ckdSWklSRFM2NFprQ0tkb2F6dm1LQitpOWxUTEtLOGs2aU5QemN5Q25DRnYrNUQxa2FXVHkrNnlpY01lV29sSTVmKyszYzhMUkJBPT0K",
+  "size": 13608448
 }
