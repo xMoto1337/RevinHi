@@ -1,8 +1,8 @@
 {
-  "version": "0.2.8",
-  "notes": "Satellite close-ups no longer leave blank patches while they load; Download satellite photos for offline use and pick how sharp (with the size shown); Elevation lines at every zoom, from the whole state down to a single hillside",
-  "pub_date": "2026-10-18T04:31:57.475Z",
-  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.8",
-  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmpyMlZTbE90ZXljMkNWelNEK2UwcSs1SVhtOVJiL3NhOVdlQXZFNUxjaG9NeEdFV1FDZ3pmVW16SHFkVm0xRlppVWN1YVg1bmgzbWhDalAxc2JGaFF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk3OTE3CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCnNsRkR4dlhvUGd6MlpqUDBQRDlINlU2MWFEOVd0a0N6ZitvTW90TzJnVWhmUHk5cENCbDBPSVBrdWgwMEFXcVpJOFdEWmR1Z1NSUWtHVDhadjBKS0RBPT0K",
-  "size": 13690368
+  "version": "0.2.9",
+  "notes": "Try on clothes: dress your people (or anyone's photo) in clothes from product photos, one or several people at once; New in the model store: Try On (FLUX.2 klein 9B); People: a guided photo shoot turns your photos into one reference sheet so the person looks the same in every picture and video",
+  "pub_date": "2026-10-18T04:59:14.597Z",
+  "url": "https://revinhi.com/downloads/RevinHi-AI.exe?v=0.2.9",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRN1pNZXVJUnVJYmd0QnVNeXFOMDRycktXYWtjUEkxRjhNcUR3MHFuYWtOU3pRdjNqVERqWGlveU5kMURZdDkwYjB6aXFDR2tJQkM5ditpK09XVkNpbXQvUUZLYUpkWFFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMjk5NTU0CWZpbGU6cmV2aW5oaS1zdHVkaW8uZXhlCm8xd1Uzd2QrSEFIcHQwZEJHNkZUUzc1OU9ubXgwMW1qNzFzSXAyTWthUnV1d2xleEF1d0ZQdldhVEx3blBmQnhDczBzeElDbWh3ZGRPU2dja1JwdEFBPT0K",
+  "size": 13723136
 }
