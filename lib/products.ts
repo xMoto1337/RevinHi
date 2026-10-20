@@ -91,6 +91,25 @@ export const PRODUCTS: Product[] = [
     features: ["Offline AI chat, any model", "Make & edit pictures, video", "Video ads from a link", "Offline topo maps"],
     heroMedia: "/ai/create.jpg",
   },
+  {
+    slug: "3d",
+    name: "RevinHi 3D",
+    tabLabel: "3D",
+    tagline: "Easy 3D modeling for printing: cut, join and subtract any model, even broken STLs, at real mm or inch sizes.",
+    // PLACEHOLDER price (same as the PDF launch) - change it here before launch; every page reads it.
+    price: "$9.99",
+    platform: "Windows 10/11",
+    // Not on sale yet: create the Gumroad product, set gumroadUrl, then status "available".
+    status: "coming-soon",
+    accent: "#ff9a2e",
+    gumroadUrl: "",
+    route: "/3d",
+    features: ["Cut & join broken STLs", "Real mm & inch sizes", "Draw, text & logos to 3D", "Local AI model maker"],
+    // No file yet: the home card shows the gradient panel until this exists.
+    heroMedia: "/3d/hero.mp4",
+    // Future free installer (freemium). Not offered while coming-soon; /api/download refuses it.
+    downloadUrl: "/downloads/RevinHi-3D-Setup.exe",
+  },
 ];
 
 export function getProduct(slug: string): Product {

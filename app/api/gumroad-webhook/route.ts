@@ -14,16 +14,16 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  * account is the only verification it offers, so that's what's checked here.
  *
  * Several apps are sold on the same account, each validating keys against its OWN secret. A sale
- * is matched to a product by product_name (table below). Desktop and PDF match their default name
+ * is matched to a product by product_name (table below). Desktop, PDF and 3D match their default name
  * case-insensitively, or GUMROAD_PRODUCT_NAME_<APP> when set. Performance keeps its original rule:
  * an EXACT match on GUMROAD_PRODUCT_NAME when that's set; when it isn't, "RevinHi Performance"
  * (case-insensitive). A sale that matches nothing is logged and acknowledged with 200, and no key is
  * sent (previously any non-Desktop sale fell through to Performance).
  */
 type Fulfillment = {
-  slug: "performance" | "desktop" | "pdf";
+  slug: "performance" | "desktop" | "pdf" | "3d";
   app: string;
-  secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" | "LICENSE_SECRET_HEX_PDF";
+  secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" | "LICENSE_SECRET_HEX_PDF" | "LICENSE_SECRET_HEX_3D";
   /** Env var overriding the Gumroad product_name. */
   nameEnv: string;
   /** product_name used when the env var isn't set. */
@@ -32,10 +32,12 @@ type Fulfillment = {
   exactOverride?: boolean;
 };
 
-// Order matters only if two names collide; Desktop / PDF first, as before.
+// Order matters only if two names collide; Desktop / PDF / 3D first, as before.
 const FULFILLMENTS: Fulfillment[] = [
   { slug: "desktop", app: "RevinHi Desktop", secretEnv: "LICENSE_SECRET_HEX_DESKTOP", nameEnv: "GUMROAD_PRODUCT_NAME_DESKTOP", defaultName: "RevinHi Desktop" },
   { slug: "pdf", app: "RevinHi PDF", secretEnv: "LICENSE_SECRET_HEX_PDF", nameEnv: "GUMROAD_PRODUCT_NAME_PDF", defaultName: "RevinHi PDF" },
+  // Same key format as the others, signed with 3D's own secret (= SHARED_SECRET_HEX in revinhi-3d/src-tauri/src/license.rs).
+  { slug: "3d", app: "RevinHi 3D", secretEnv: "LICENSE_SECRET_HEX_3D", nameEnv: "GUMROAD_PRODUCT_NAME_3D", defaultName: "RevinHi 3D" },
   {
     slug: "performance",
     app: "RevinHi Performance",
