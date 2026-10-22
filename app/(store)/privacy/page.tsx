@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
       <p>
-        RevinHi makes Windows apps (RevinHi Desktop and RevinHi Performance) and runs this website. We collect as little as
+        RevinHi makes Windows apps (RevinHi Desktop, RevinHi Performance and RevinHi 3D) and runs this website. We collect as little as
         possible. We don&apos;t sell personal information, and we don&apos;t run third-party advertising trackers on this site
         or in our apps.
       </p>
@@ -51,10 +51,40 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
+      <Section heading="RevinHi 3D">
+        <p>
+          <strong>Usage stats.</strong> About 20 seconds after it starts, and every 12 hours while it runs, RevinHi 3D tells our
+          server that a copy is running, the same way RevinHi Desktop does: a random ID created on your PC, the product, the app
+          version, and whether it&apos;s the Free or Pro version. Our host also tells us the approximate country. Nothing about
+          you, your license key, your hardware or your models is sent. Turn it off at any time in{" "}
+          <strong>Settings → Privacy → Send anonymous usage stats</strong>.
+        </p>
+        <p>
+          <strong>License.</strong> Your Pro key is checked on your PC. Activating it doesn&apos;t contact our servers, and the
+          key is stored only in the app&apos;s folder on your PC.
+        </p>
+        <p>
+          <strong>Your models and pictures stay on your PC.</strong> Opening, editing, saving and exporting all happen locally.
+          Send to slicer saves a temporary file on your PC and opens it in the slicer you pick. Nothing is uploaded.
+        </p>
+        <p>
+          <strong>AI runs fully on your PC.</strong> The picture-to-3D, description-to-3D and command bar features run on your own
+          graphics card. Your pictures, descriptions and models are never uploaded. The only network traffic is downloading the AI
+          models and their engines when you click Download, straight from where they are published (Hugging Face and GitHub);
+          those downloads are governed by those sites&apos; own policies.
+        </p>
+        <p>
+          <strong>Updates.</strong> The version from this website checks revinhi.com for updates. The Microsoft Store version is
+          updated by the Microsoft Store and doesn&apos;t check our site.
+        </p>
+      </Section>
+
       <Section heading="Data the apps keep on your PC">
         <p>
-          Your settings, desktop layouts, saved weather locations and license key are stored locally on your PC, not on our
-          servers. Uninstalling the app removes the app. Its settings folder in %LOCALAPPDATA% can be deleted by you.
+          Your settings, desktop layouts, saved weather locations, projects, recent files list and license key are stored locally
+          on your PC, not on our servers. Uninstalling the app removes the app. Its settings folders in %APPDATA% and
+          %LOCALAPPDATA% can be deleted by you.
+
         </p>
       </Section>
 
