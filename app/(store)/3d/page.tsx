@@ -114,7 +114,7 @@ const TIERS: { feature: string; free: string; pro: string }[] = [
   { feature: "Project files (.rv3d)", free: "Full detail", pro: "Full detail" },
   { feature: "Detail in exported files and Send to slicer", free: "Up to 20,000 triangles, coarser curves", pro: "Every triangle" },
   { feature: "Detail in exported AI models", free: "Up to 5,000 triangles", pro: "Every triangle" },
-  { feature: "Mark on exported files", free: "Small raised RevinHi mark on the bottom", pro: "None" },
+  { feature: "Mark on exported files", free: "Small RevinHi mark engraved into the bottom", pro: "None" },
 ];
 
 const FAQ: { q: string; a: string }[] = [
@@ -124,7 +124,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What's free and what's Pro?",
-    a: "Every tool works in the free version, including cutting, drawing, sculpting, the parts library and the AI model maker, and your project files always keep full detail. Exports (STL, 3MF, OBJ, GLB and Send to slicer) are where Free and Pro differ: Free saves a lighter copy with up to 20,000 triangles (5,000 for AI-made models), coarser curves, and a small raised RevinHi mark on the bottom. Pro saves every triangle with no mark. Pro is a one-time purchase with free updates: no subscription and no account.",
+    a: "Every tool works in the free version, including cutting, drawing, sculpting, the parts library and the AI model maker, and your project files always keep full detail. Exports (STL, 3MF, OBJ, GLB and Send to slicer) are where Free and Pro differ: Free saves a lighter copy with up to 20,000 triangles (5,000 for AI-made models), coarser curves, and a small RevinHi mark engraved into the flat bottom. Pro saves every triangle with no mark. Pro is a one-time purchase with free updates: no subscription and no account.",
 
   },
   {
