@@ -14,16 +14,21 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  * account is the only verification it offers, so that's what's checked here.
  *
  * Several apps are sold on the same account, each validating keys against its OWN secret. A sale
- * is matched to a product by product_name (table below). Desktop, PDF and 3D match their default name
+ * is matched to a product by product_name (table below). Desktop, PDF, 3D and Recovery match their default name
  * case-insensitively, or GUMROAD_PRODUCT_NAME_<APP> when set. Performance keeps its original rule:
  * an EXACT match on GUMROAD_PRODUCT_NAME when that's set; when it isn't, "RevinHi Performance"
  * (case-insensitive). A sale that matches nothing is logged and acknowledged with 200, and no key is
  * sent (previously any non-Desktop sale fell through to Performance).
  */
 type Fulfillment = {
-  slug: "performance" | "desktop" | "pdf" | "3d";
+  slug: "performance" | "desktop" | "pdf" | "3d" | "recovery";
   app: string;
-  secretEnv: "LICENSE_SECRET_HEX" | "LICENSE_SECRET_HEX_DESKTOP" | "LICENSE_SECRET_HEX_PDF" | "LICENSE_SECRET_HEX_3D";
+  secretEnv:
+    | "LICENSE_SECRET_HEX"
+    | "LICENSE_SECRET_HEX_DESKTOP"
+    | "LICENSE_SECRET_HEX_PDF"
+    | "LICENSE_SECRET_HEX_3D"
+    | "LICENSE_SECRET_HEX_RECOVERY";
   /** Env var overriding the Gumroad product_name. */
   nameEnv: string;
   /** product_name used when the env var isn't set. */
@@ -38,6 +43,14 @@ const FULFILLMENTS: Fulfillment[] = [
   { slug: "pdf", app: "RevinHi PDF", secretEnv: "LICENSE_SECRET_HEX_PDF", nameEnv: "GUMROAD_PRODUCT_NAME_PDF", defaultName: "RevinHi PDF" },
   // Same key format as the others, signed with 3D's own secret (= SHARED_SECRET_HEX in revinhi-3d/src-tauri/src/license.rs).
   { slug: "3d", app: "RevinHi 3D", secretEnv: "LICENSE_SECRET_HEX_3D", nameEnv: "GUMROAD_PRODUCT_NAME_3D", defaultName: "RevinHi 3D" },
+  // Recovery's own secret (= secrets/LICENSE_SECRET_HEX_RECOVERY.txt and SHARED_SECRET_HEX in revinhi-recovery/src-tauri/src/license.rs).
+  {
+    slug: "recovery",
+    app: "RevinHi Recovery",
+    secretEnv: "LICENSE_SECRET_HEX_RECOVERY",
+    nameEnv: "GUMROAD_PRODUCT_NAME_RECOVERY",
+    defaultName: "RevinHi Recovery",
+  },
   {
     slug: "performance",
     app: "RevinHi Performance",

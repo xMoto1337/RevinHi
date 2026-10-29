@@ -108,6 +108,24 @@ export const PRODUCTS: Product[] = [
     // Free installer (freemium). Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-3D-Setup.exe",
   },
+  {
+    slug: "recovery",
+    name: "RevinHi Recovery",
+    tabLabel: "Recovery",
+    tagline: "Get back deleted photos, videos and documents, even from formatted drives, memory cards and USB sticks.",
+    // Launch price (matches PRICE in revinhi-recovery/src/license/features.ts). Not on sale yet: set the
+    // Gumroad link, then status "available".
+    price: "$19.99",
+    platform: "Windows 10/11",
+    status: "coming-soon",
+    accent: "#2ee6c0",
+    gumroadUrl: "",
+    route: "/recovery",
+    features: ["Deleted & formatted drives", "Free scan + preview", "Write images to USB", "Drive health & backups"],
+    heroMedia: "/recovery/results.png",
+    // Free installer (scan + preview). Replace the file on every release (keep the name so old links keep working).
+    downloadUrl: "/downloads/RevinHi-Recovery-Setup.exe",
+  },
 ];
 
 export function getProduct(slug: string): Product {
