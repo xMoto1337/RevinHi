@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
       <p>
-        RevinHi makes Windows apps (RevinHi Desktop, RevinHi Performance and RevinHi 3D) and runs this website. We collect as little as
+        RevinHi makes Windows apps (RevinHi Desktop, RevinHi Performance, RevinHi 3D and RevinHi Recovery) and runs this website. We collect as little as
         possible. We don&apos;t sell personal information, and we don&apos;t run third-party advertising trackers on this site
         or in our apps.
       </p>
@@ -76,6 +76,29 @@ export default function PrivacyPage() {
         <p>
           <strong>Updates.</strong> The version from this website checks revinhi.com for updates. The Microsoft Store version is
           updated by the Microsoft Store and doesn&apos;t check our site.
+        </p>
+      </Section>
+
+      <Section heading="RevinHi Recovery">
+        <p>
+          <strong>Usage stats.</strong> About 20 seconds after it starts, and every 12 hours while it runs, RevinHi Recovery tells
+          our server that a copy is running, the same way RevinHi 3D does: a random ID created on your PC, the product, the app
+          version, and whether it&apos;s the Free or Pro version. Our host also tells us the approximate country. Nothing about
+          you, your license key, your hardware, your drives or your files is sent. Turn it off at any time in{" "}
+          <strong>Settings → Privacy → Send anonymous usage stats</strong>.
+        </p>
+        <p>
+          <strong>License.</strong> Your Pro key is checked on your PC. Activating it doesn&apos;t contact our servers, and the
+          key is stored only in the app&apos;s folder on your PC.
+        </p>
+        <p>
+          <strong>Your drives and files stay on your PC.</strong> Scanning, previews, recovering files, backup images and writing
+          images to drives all happen locally. Scan results are saved on your PC (never on the drive being scanned) and are never
+          uploaded. Drive health is read from the drives themselves.
+        </p>
+        <p>
+          <strong>Updates.</strong> The app checks revinhi.com for updates shortly after it starts and every few hours. Updates
+          are only installed when you click to install them.
         </p>
       </Section>
 
