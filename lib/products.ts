@@ -113,13 +113,13 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Recovery",
     tabLabel: "Recovery",
     tagline: "Get back deleted photos, videos and documents, even from formatted drives, memory cards and USB sticks.",
-    // Launch price (matches PRICE in revinhi-recovery/src/license/features.ts). Not on sale yet: set the
-    // Gumroad link, then status "available".
+    // Launch price (matches PRICE in revinhi-recovery/src/license/features.ts). Not on sale yet: set
+    // status "available" after the first release.
     price: "$19.99",
     platform: "Windows 10/11",
     status: "coming-soon",
     accent: "#2ee6c0",
-    gumroadUrl: "",
+    gumroadUrl: "https://revinhi.gumroad.com/l/iizgf",
     route: "/recovery",
     features: ["Deleted & formatted drives", "Free scan + preview", "Write images to USB", "Drive health & backups"],
     heroMedia: "/recovery/results.png",
