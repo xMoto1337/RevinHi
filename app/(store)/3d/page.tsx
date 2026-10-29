@@ -4,12 +4,28 @@ import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
 
-// Coming-soon page. At launch: set status "available", gumroadUrl and the real price in lib/products.ts,
-// put the installer at the product's downloadUrl, and swap the illustration for real screenshots/video.
+// Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
+// product's downloadUrl (replaced on every release). Swap the illustration for real screenshots/video.
 const PRODUCT = getProduct("3d");
 const AVAILABLE = PRODUCT.status === "available";
 const OG_IMAGE = "/brand/revinhi-3d.png";
 const ACCENT = PRODUCT.accent;
+// Counted: /api/download logs the click, then redirects to the installer.
+const DOWNLOAD_URL = `/api/download/${PRODUCT.slug}`;
+
+function DownloadButton({ className = "" }: { className?: string }) {
+  if (!AVAILABLE) return null;
+  return (
+    <a
+      href={DOWNLOAD_URL}
+      download
+      className={`inline-flex items-center justify-center rounded-full font-semibold text-black transition hover:scale-[1.02] ${className}`}
+      style={{ background: ACCENT, boxShadow: `0 0 30px ${ACCENT}59` }}
+    >
+      Download free
+    </a>
+  );
+}
 
 export const metadata: Metadata = pageMetadata({
   title: "RevinHi 3D - Easy 3D modeling for 3D printing on Windows",
@@ -120,7 +136,9 @@ const TIERS: { feature: string; free: string; pro: string }[] = [
 const FAQ: { q: string; a: string }[] = [
   {
     q: "When can I get RevinHi 3D?",
-    a: `It's coming soon. Email ${SUPPORT_EMAIL} if you'd like to hear when it's out.`,
+    a: AVAILABLE
+      ? `Now. Download it free from this page for Windows 10/11, and upgrade to Pro for ${PRODUCT.price} once whenever you want full-detail exports.`
+      : `It's coming soon. Email ${SUPPORT_EMAIL} if you'd like to hear when it's out.`,
   },
   {
     q: "What's free and what's Pro?",
@@ -160,6 +178,7 @@ const SOFTWARE_LD = {
   operatingSystem: "Windows 10, Windows 11",
   applicationCategory: "DesignApplication",
   isAccessibleForFree: true,
+  ...(AVAILABLE ? { downloadUrl: `${SITE_URL}${DOWNLOAD_URL}` } : {}),
   featureList: [
     "Cut, join and subtract any model, including broken STL files, with no automatic repair",
     "Real millimeter and inch sizes that open correctly in slicers",
@@ -297,6 +316,7 @@ export default function ThreeDPage() {
             printing, from your first print to your hundredth.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
+            <DownloadButton className="px-8 py-3.5 text-base" />
             <BuyButton product={PRODUCT} className="px-8 py-3.5 text-base" label={<>Get Pro &mdash; {PRODUCT.price}</>} chase />
             {!AVAILABLE && (
               <a
@@ -387,6 +407,7 @@ export default function ThreeDPage() {
               </div>
             ))}
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <DownloadButton className="px-7 py-3 text-sm" />
               <BuyButton product={PRODUCT} className="px-7 py-3 text-sm" label={<>Get Pro &mdash; {PRODUCT.price}</>} />
             </div>
             <p className="mt-4 text-center text-xs text-white/40">One-time purchase &middot; free updates &middot; no subscription</p>
