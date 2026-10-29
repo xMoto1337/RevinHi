@@ -1,0 +1,11 @@
+{
+  "version": "1.0.1",
+  "notes": "Make it printable is much faster and keeps the face clean, generated models no longer show dark speckles, better color names, ruler numbers no longer draw over models, raised text keeps its own color, split parts lie flat and pack neatly, and a new Install to a USB stick option in Settings.",
+  "pub_date": "2026-10-29T22:57:56.378Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjE0NndKOUkrTWY1Q29EbkRRdFE4VTZyd1h1UFhsSDZtd0htM3dQcmlaa2JYTEVocGwxNHI4VWovRUNSbjQ1SzBQRjM1a0FSdFRLZStlZ3VIRzg3U2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMzE0Njc4CWZpbGU6UmV2aW5IaS0zRC1Qb3J0YWJsZS0xLjAuMS56aXAJdmVyc2lvbjoxLjAuMQpsTHFFNnlOZlF5Y1h5NE8va2lyQjZ4TTkrdU13RmwrdEJoWVQ2a1FIQlo5bHVqMDhrTUE5Q3ZQa3JlaGdOM0JEWHdXRkQ2Q3RJWjZmcTNxUTYzRC9Edz09Cg==",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Portable.zip?v=1.0.1"
+    }
+  }
+}

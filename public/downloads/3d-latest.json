@@ -1,11 +1,11 @@
 {
-  "version": "1.0.0",
-  "notes": "First release",
-  "pub_date": "2026-10-29T00:16:54.107Z",
+  "version": "1.0.1",
+  "notes": "Make it printable is much faster and keeps the face clean, generated models no longer show dark speckles, better color names, ruler numbers no longer draw over models, raised text keeps its own color, split parts lie flat and pack neatly, and a new Install to a USB stick option in Settings.",
+  "pub_date": "2026-10-29T22:57:56.378Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjVobTJDSEw4RnJ6Q2lUcDZCWFBNNXJyTTNzSTc4bDlCNmxtQW1oSXlqWFNpZG5SamliK1prWHhpVG04TTl1ZHBCcWRmektucXpUL010MmFVUVRDQ3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMjMzMDEzCWZpbGU6UmV2aW5IaSAzRF8xLjAuMF94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjAKOWNVUEEzUWJqT1RRQ3ZoK3hHNjREMGpha2FiVEpMWnM3Z09Wa0VrbytTZXpMQ2ZSRnVxS2c4cjQ3QjYyRTBRYmNkUGNyeW5ZeTVUUEU5R3ZPNGJsRGc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.0"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjBXaTJMQTJ6QmoyT3VWNHdYRzE5ZmlWNXFBWGxDUUlwRGFMQUE3bzJjZDNTNTdzcU9FbEM3cHVlcSs3aEJVVnNKdjZpRDlVWS9KMklJeVFkbmsyaGdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMzE0Njc2CWZpbGU6UmV2aW5IaSAzRF8xLjAuMV94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjEKR3dhd3AvdEs5czhaWTc3NUVCb05wT3ZJLzV6dUxhYjQwSUpqK0FkaWRPUno3T010aEt6UXI1QXFkMEZWdlBhMkRNS3FxVExoVVgyYnJtWlR0VjZGQlE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.1"
     }
   }
 }
