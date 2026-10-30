@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
-  "notes": "",
-  "pub_date": "2026-10-29T22:55:59.595Z",
+  "version": "1.0.2",
+  "notes": "Smooth saving progress screen, faster saving, real file names shown while a scan runs",
+  "pub_date": "2026-10-30T00:10:55.419Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSbWpuWDhPcWMzNlliVEViaGdwMXl2RVArbFl3OXdLNHFUNW5Xc0ZNZVZYR292dXM3OHNBSlN1REs1ZFNOYlpBWmhKOUd5UWU0VVlZS296QnlXemFVUFpQZkNlVFpxQ3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMzE0NTU5CWZpbGU6UmV2aW5IaSBSZWNvdmVyeV8xLjAuMV94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjEKWEo0amErSUdFRWpzN0l0RE8ra1BETjk0VXVzajB6V0VqTXBqck9rNWZFWS8rVUtEZm5CK0FTTEJOT0xjWStrbVVwSDBFeFp1Ym1vRXpyOGZKVHhVQnc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Recovery-Setup.exe?v=1.0.1"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSbWpuWDhPcWMzNlFkTWQzT2FFK1dvTnVtdGg1L1BCN3dWNUFnUWI3c0pMT2pjS3BqTlc5MWpVYlRrVlZoN09sdFY0WGRkM2loZXhuQUxnOVNzeUYyb2hzRjJPSlNnWlF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMzE5MDU1CWZpbGU6UmV2aW5IaSBSZWNvdmVyeV8xLjAuMl94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjIKdksxcHZKVGVRYWxnWlphVFZ2aWtUMHVtN2FYT3g3Sk8wdnJCSVlFZ3J5WEVhTjlMbDRmOWRoZGRtKzlQbTJwOUJOOHZVMnFiWWpZNFFXMk84QkE1Qmc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Recovery-Setup.exe?v=1.0.2"
     }
   }
 }
