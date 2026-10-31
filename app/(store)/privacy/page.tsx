@@ -83,7 +83,7 @@ export default function PrivacyPage() {
         <p>
           <strong>Usage stats.</strong> About 20 seconds after it starts, and every 12 hours while it runs, RevinHi Recovery tells
           our server that a copy is running, the same way RevinHi 3D does: a random ID created on your PC, the product, the app
-          version, and whether it&apos;s the Free or Pro version. Our host also tells us the approximate country. Nothing about
+          version, whether it&apos;s the Free or Pro version, and whether it came from our website or the Microsoft Store. Our host also tells us the approximate country. Nothing about
           you, your license key, your hardware, your drives or your files is sent. Turn it off at any time in{" "}
           <strong>Settings → Privacy → Send anonymous usage stats</strong>.
         </p>
@@ -98,7 +98,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           <strong>Updates.</strong> The app checks revinhi.com for updates shortly after it starts and every few hours. Updates
-          are only installed when you click to install them.
+          are only installed when you click to install them. The Microsoft Store version is updated by the Microsoft Store and
+          doesn&apos;t check our site; it asks the Store whether a newer version is available.
         </p>
       </Section>
 
