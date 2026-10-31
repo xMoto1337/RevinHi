@@ -1,11 +1,11 @@
 {
-  "version": "1.0.2",
-  "notes": "Smooth saving progress screen, faster saving, real file names shown while a scan runs",
-  "pub_date": "2026-10-30T00:10:55.419Z",
+  "version": "1.0.3",
+  "notes": "New RevinHi Recovery logo in the title bar",
+  "pub_date": "2026-10-31T15:30:46.006Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSbWpuWDhPcWMzNlFkTWQzT2FFK1dvTnVtdGg1L1BCN3dWNUFnUWI3c0pMT2pjS3BqTlc5MWpVYlRrVlZoN09sdFY0WGRkM2loZXhuQUxnOVNzeUYyb2hzRjJPSlNnWlF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzMzE5MDU1CWZpbGU6UmV2aW5IaSBSZWNvdmVyeV8xLjAuMl94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjIKdksxcHZKVGVRYWxnWlphVFZ2aWtUMHVtN2FYT3g3Sk8wdnJCSVlFZ3J5WEVhTjlMbDRmOWRoZGRtKzlQbTJwOUJOOHZVMnFiWWpZNFFXMk84QkE1Qmc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-Recovery-Setup.exe?v=1.0.2"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSbWpuWDhPcWMzNlhsY01xMUJDSUlHQzFZdEhPcktnOEk5OE91dzBncnBFK1RIQTE4UkpIMW0yc2NaYktsOGVSNUdWU1FaNUVXRGF0cUZDTmdsbUVaeUI2NEpmTjdKdkFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNDYwNjQ1CWZpbGU6UmV2aW5IaSBSZWNvdmVyeV8xLjAuM194NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjMKcHcyb2E4NWJYOFFzUlN2b3pxanJ5SHdkZUZtTmNuc0hFQytibXl3T3VxTzFVamovd3RCYU5MY29jTnhnbndZS2ovRkQyTk0wUUtlY1VhSThmVXFhQXc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-Recovery-Setup.exe?v=1.0.3"
     }
   }
 }
