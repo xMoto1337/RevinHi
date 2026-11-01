@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { LegalLinks } from "@/components/Legal";
-import { pageMetadata } from "@/lib/seo";
+import Image from "next/image";
+import Link from "next/link";
+import { LazyVideo } from "@/components/LazyVideo";
+import { JsonLd } from "@/components/pdf/PdfUi";
+import { SiteFooter } from "@/components/SiteFooter";
+import { ORGANIZATION_LD, pageMetadata, WEBSITE_LD } from "@/lib/seo";
 import fs from "node:fs";
 import path from "node:path";
 import { BuyButton } from "@/components/BuyButton";
 import { MsStoreBadge } from "@/components/MsStoreBadge";
-import { PRODUCTS, SUPPORT_EMAIL, type Product } from "@/lib/products";
+import { PRODUCTS, type Product } from "@/lib/products";
 
 export const metadata: Metadata = pageMetadata({
-  title: "RevinHi - Windows apps for your PC, no subscription",
+  title: "RevinHi: 3D Modeling, PDF Editor & File Recovery for Windows",
   description:
-    "Small Windows 10/11 apps that upgrade your PC: a game optimizer, live wallpapers and radar, and an offline PDF editor. Pay once, free updates.",
+    "Windows 10/11 apps you buy once: a 3D modeling app, an offline PDF editor, file recovery, live wallpapers and a game optimizer. Free versions to try.",
   path: "/",
   imageAlt: "RevinHi logo",
 });
@@ -31,6 +35,12 @@ const WHY = [
   { title: "Windows-native", body: "Real desktop apps built for Windows 10 and 11 - not web wrappers." },
   { title: "Instant checkout", body: "Secure checkout through Gumroad, right on this page." },
 ];
+
+/** "/desktop/hero.mp4" -> "/desktop/hero-poster.jpg" when that file exists. */
+function posterFor(video: string) {
+  const poster = video.replace(/\.(mp4|webm)$/i, "-poster.jpg");
+  return mediaExists(poster) ? poster : undefined;
+}
 
 function ProductMedia({ product }: { product: Product }) {
   const hasMedia = mediaExists(product.heroMedia);
@@ -62,19 +72,20 @@ function ProductMedia({ product }: { product: Product }) {
 
       {hasMedia &&
         (isVideo ? (
-          <video
+          <LazyVideo
             className="absolute inset-0 h-full w-full object-cover"
             src={product.heroMedia}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={`${product.name} preview`}
+            poster={posterFor(product.heroMedia)}
+            label={`${product.name} preview`}
           />
         ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className="absolute inset-0 h-full w-full object-cover" src={product.heroMedia} alt={`${product.name} preview`} />
+          <Image
+            className="absolute inset-0 h-full w-full object-cover"
+            src={product.heroMedia}
+            alt={`${product.name} screenshot`}
+            fill
+            sizes="(max-width: 768px) 100vw, 480px"
+          />
         ))}
     </div>
   );
@@ -84,7 +95,6 @@ function ProductCard({ product }: { product: Product }) {
   const available = product.status === "available";
   return (
     <article className="glass-panel-flat flex flex-col rounded-3xl p-3 sm:p-4">
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <a href={product.route} aria-label={`View ${product.name}`} className="block">
         <ProductMedia product={product} />
       </a>
@@ -118,7 +128,6 @@ function ProductCard({ product }: { product: Product }) {
         </ul>
 
         <div className="mt-auto flex gap-3 pt-6">
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a
             href={product.route}
             className="glass-panel flex flex-1 items-center justify-center rounded-full px-5 py-3 text-center text-sm font-semibold text-white/85 transition hover:text-white"
@@ -153,6 +162,8 @@ export default function StorefrontHome() {
 
   return (
     <div className="flex flex-1 flex-col">
+      <JsonLd data={ORGANIZATION_LD} />
+      <JsonLd data={WEBSITE_LD} />
       {/* Hero - compact on phones so the app cards are reachable in one thumb-scroll */}
       <section className="px-4 pb-10 pt-10 sm:px-6 sm:pb-16 sm:pt-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -168,8 +179,8 @@ export default function StorefrontHome() {
             <span className="rgb-chase-text">your PC.</span>
           </h1>
           <p className="mt-5 max-w-md text-base text-white/60 sm:max-w-xl sm:text-lg">
-            Faster games, a desktop that actually looks alive. Small Windows apps that do one thing really well
-            &mdash; buy once, keep forever.
+            Windows apps that do one job really well: an easy 3D modeling app, an offline PDF editor, file recovery
+            software, live wallpapers and a game optimizer. Most have a free version to try &mdash; buy once, keep forever.
           </p>
           <a
             href="#apps"
@@ -182,6 +193,7 @@ export default function StorefrontHome() {
 
       {/* Product grid */}
       <section id="apps" className="scroll-mt-28 px-4 pb-16 sm:px-6 sm:pb-24">
+        <h2 className="sr-only">RevinHi apps for Windows</h2>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
           {PRODUCTS.map((p) => (
             <ProductCard key={p.slug} product={p} />
@@ -204,24 +216,24 @@ export default function StorefrontHome() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mt-auto border-t border-white/10 px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} RevinHi. All rights reserved.</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            {PRODUCTS.map((p) => (
-              // eslint-disable-next-line @next/next/no-html-link-for-pages
-              <a key={p.slug} href={p.route} className="transition hover:text-white/70">
-                {p.tabLabel}
-              </a>
-            ))}
-            <LegalLinks />
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
-              {SUPPORT_EMAIL}
-            </a>
-          </div>
+      {/* Guides */}
+      <section className="px-4 pb-20 sm:px-6 sm:pb-28">
+        <div className="glass-panel mx-auto max-w-3xl rounded-3xl p-8 text-center">
+          <h2 className="text-2xl font-bold tracking-tight">How-to guides</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60">
+            Step-by-step guides for fixing STL files, editing and signing PDFs, getting back deleted files, cutting input
+            lag and more.
+          </p>
+          <Link
+            href="/guides"
+            className="mt-6 inline-flex rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
+          >
+            Browse all guides
+          </Link>
         </div>
-      </footer>
+      </section>
+
+      <SiteFooter />
     </div>
   );
 }

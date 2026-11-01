@@ -1,7 +1,10 @@
 import { AppShowcase } from "@/components/AppShowcase";
 
 import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
-import { LegalLinks } from "@/components/Legal";
+import { GuideLinks } from "@/components/guides/GuideLinks";
+import { JsonLd } from "@/components/pdf/PdfUi";
+import { SiteFooter } from "@/components/SiteFooter";
+import { faqLd, softwareAppLd } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
 // Price / Gumroad link / support email now live in lib/products.ts (the storefront registry).
@@ -87,9 +90,26 @@ const FAQ: { q: string; a: string }[] = [
   },
 ];
 
+const SOFTWARE_LD = softwareAppLd(PRODUCT, {
+  description:
+    "Windows game optimizer: safe, reversible Windows 10/11 tweaks that cut input lag and help FPS, a DNS speed finder with game-region ping, a live system dashboard, a startup manager and one-button restore.",
+  applicationCategory: "UtilitiesApplication",
+  image: "/brand/revinhi-perf.png",
+  featureList: [
+    "Safe and Advanced tiers of one-click Windows tweaks (Game Mode, HAGS, timer resolution, network tuning)",
+    "Every change saved first and undoable with Restore All Defaults",
+    "DNS Finder: live DNS speed tests and game-region ping",
+    "Live CPU, GPU, RAM and ping dashboard",
+    "Performance Boost: suspends background apps, reversibly",
+    "Startup manager",
+  ],
+});
+
 export default function PerformancePage() {
   return (
     <div className="flex flex-1 flex-col">
+      <JsonLd data={SOFTWARE_LD} />
+      <JsonLd data={faqLd(FAQ)} />
 
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pb-24 pt-14 sm:pt-24">
@@ -99,12 +119,12 @@ export default function PerformancePage() {
             <span>Windows 10/11 &bull; One-time purchase &bull; Instant key delivery</span>
           </div>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-6xl">
-            Stop losing frames to
+            The safe Windows game optimizer
             <br />
-            <span className="rgb-chase-text">Windows itself.</span>
+            <span className="rgb-chase-text">for more FPS, less lag.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
-            RevinHi Performance is a safe, reversible Windows optimizer built for gamers - one-click tweaks,
+            RevinHi Performance is a Windows game optimizer that boosts FPS and cuts input lag safely - one-click tweaks,
             live system monitoring, and a DNS finder that actually shows you what matters. Every change can be
             undone with a single button.
           </p>
@@ -216,23 +236,19 @@ export default function PerformancePage() {
         <div className="mx-auto mt-12 max-w-2xl space-y-4">
           {FAQ.map((item) => (
             <div key={item.q} className="glass-panel-flat rounded-2xl p-6">
-              <p className="font-semibold text-white/90">{item.q}</p>
+              <h3 className="font-semibold text-white/90">{item.q}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{item.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mt-auto border-t border-white/10 px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} RevinHi Performance. All rights reserved.</p>
-          <LegalLinks />
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
-            {SUPPORT_EMAIL}
-          </a>
-        </div>
-      </footer>
+      {/* Guides */}
+      <section id="guides" className="scroll-mt-28 px-6 pb-24">
+        <GuideLinks product="performance" title="How to: game performance guides" />
+      </section>
+
+      <SiteFooter />
     </div>
   );
 }

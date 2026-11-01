@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
@@ -15,9 +16,9 @@ const ACCENT = PRODUCT.accent;
 const DOWNLOAD_URL = `/api/download/${PRODUCT.slug}`;
 
 export const metadata: Metadata = pageMetadata({
-  title: "RevinHi 3D - Easy 3D modeling for 3D printing on Windows",
+  title: "Easy 3D Modeling App for Windows | RevinHi 3D",
   description:
-    "RevinHi 3D is an easy 3D modeling app for Windows: cut, join and subtract any model, even broken STL files, at real mm or inch sizes that open right in your slicer. Drawing, text, logos, sculpting, print helpers and a local AI model maker. Every tool is free.",
+    "An easy 3D modeling app for Windows, made for 3D printing: cut and join any STL, even broken ones, at real mm or inch sizes. Every tool is free.",
   path: "/3d",
   image: OG_IMAGE,
   imageAlt: "RevinHi 3D app icon",
@@ -208,81 +209,21 @@ const FAQ_LD = {
   })),
 };
 
-/**
- * Placeholder hero art until real screenshots exist: a line drawing of a cube with a cylinder cutting a
- * hole through it, sized in mm. Captioned as an illustration so it never passes for a screenshot.
- */
-function HeroIllustration() {
-  const dim = "rgba(255,255,255,0.45)";
+/** Hero: a real screenshot of the app (RevinHi 3D 1.0.0), loaded first since it's above the fold. */
+function HeroScreenshot() {
   return (
     <figure className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-      <div className="relative aspect-[16/10] bg-[#05060a] sm:aspect-[16/9]">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(120% 90% at 15% 10%, ${ACCENT}40, transparent 55%), radial-gradient(90% 80% at 90% 100%, ${ACCENT}26, transparent 60%), #06070c`,
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.15]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-            maskImage: "radial-gradient(circle at 50% 50%, #000, transparent 75%)",
-            WebkitMaskImage: "radial-gradient(circle at 50% 50%, #000, transparent 75%)",
-          }}
-        />
-        <svg
-          viewBox="140 4 340 320"
-          className="absolute inset-0 h-full w-full"
-          role="img"
-          aria-label="Illustration: a 50 mm cube with a cylinder cutting a hole through it"
-        >
-          <defs>
-            <clipPath id="rh3d-hole">
-              <ellipse cx="300" cy="135" rx="49" ry="28.3" />
-            </clipPath>
-          </defs>
-          {/* Cube (Solid) */}
-          <g stroke={ACCENT} strokeWidth="1.6" strokeLinejoin="round">
-            <polygon points="204.7,245 300,300 300,190 204.7,135" fill={ACCENT} fillOpacity="0.2" />
-            <polygon points="300,300 395.3,245 395.3,135 300,190" fill={ACCENT} fillOpacity="0.1" />
-            <polygon points="300,190 395.3,135 300,80 204.7,135" fill={ACCENT} fillOpacity="0.32" />
-          </g>
-          {/* Hole through the top face */}
-          <ellipse cx="300" cy="135" rx="49" ry="28.3" fill="#06070c" />
-          <g clipPath="url(#rh3d-hole)">
-            <ellipse cx="300" cy="135" rx="49" ry="28.3" fill={ACCENT} fillOpacity="0.16" />
-            <ellipse cx="300" cy="160" rx="49" ry="28.3" fill="#06070c" stroke={ACCENT} strokeOpacity="0.5" strokeWidth="1.2" />
-          </g>
-          <ellipse cx="300" cy="135" rx="49" ry="28.3" fill="none" stroke={ACCENT} strokeWidth="1.6" />
-          {/* Cutter (Hole), shown as a dashed ghost */}
-          <g stroke="var(--neon-cyan)" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <ellipse cx="300" cy="42" rx="49" ry="28.3" />
-            <line x1="251" y1="42" x2="251" y2="135" />
-            <line x1="349" y1="42" x2="349" y2="135" />
-          </g>
-          {/* Labels */}
-          <g fontSize="12" fontWeight="600" fill="currentColor">
-            <text x="362" y="38" fill="var(--neon-cyan)">Hole</text>
-            <text x="196" y="204" textAnchor="end" fill={ACCENT}>Solid</text>
-          </g>
-          {/* Dimensions */}
-          <g stroke={dim} strokeWidth="1">
-            <line x1="319" y1="311" x2="414.3" y2="256" />
-            <line x1="281" y1="311" x2="185.7" y2="256" />
-            <line x1="417" y1="245" x2="417" y2="135" />
-          </g>
-          <g fontSize="12" fill={dim} textAnchor="middle">
-            <text x="374" y="298" transform="rotate(-30 374 298)">50 mm</text>
-            <text x="226" y="298" transform="rotate(30 226 298)">50 mm</text>
-            <text x="446" y="194">50 mm</text>
-          </g>
-        </svg>
-      </div>
+      <Image
+        src="/3d/screens/01-editable-cuts.webp"
+        alt="RevinHi 3D editing a desk organizer: hole shapes for pens, markers and cards listed as layers, with the marker hole's 18 mm size typed in the properties panel"
+        width={1600}
+        height={900}
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        preload
+        className="block h-auto w-full"
+      />
       <figcaption className="border-t border-white/10 px-5 py-3 text-center text-xs text-white/45">
-        Illustration. Screenshots of the real app are coming soon.
+        Holes stay layers you can move or resize later. Sizes are typed in mm or inches.
       </figcaption>
     </figure>
   );
@@ -306,12 +247,12 @@ export default function ThreeDPage() {
             </span>
           </div>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-6xl">
-            3D modeling made easy,
+            Easy 3D modeling for Windows,
             <br />
             <span className="rgb-chase-text">even for broken files.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
-            RevinHi 3D lets anyone cut, join and subtract 3D models, even the broken STL files other apps refuse. Real
+            RevinHi 3D is a 3D modeling app for Windows that lets anyone cut, join and subtract 3D models, even the broken STL files other apps refuse. Real
             mm and inch sizes, drawing, text, logos and a built-in AI that makes models on your own PC. Made for 3D
             printing, from your first print to your hundredth.
           </p>
@@ -329,7 +270,7 @@ export default function ThreeDPage() {
           </div>
           <ThreeDStoreNote className="mt-5" />
         </div>
-        <HeroIllustration />
+        <HeroScreenshot />
       </section>
 
       {/* Headline feature */}

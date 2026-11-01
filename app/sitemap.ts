@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { PDF_GUIDES } from "@/components/pdf/PdfUi";
-import { THREED_GUIDES } from "@/components/threed/ThreeDUi";
-import { PRODUCTS } from "@/lib/products";
+import { GUIDES } from "@/lib/guides";
+import { getProduct, PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/seo";
 
 // Public storefront pages only (not /admin, /api or the private /binscout relay page).
+// Guide pages come from lib/guides.ts, so a new guide is listed here automatically.
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
@@ -13,16 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}${p.route}`,
       lastModified,
       changeFrequency: "weekly" as const,
-      priority: 0.9,
+      priority: p.status === "available" ? 0.9 : 0.6,
     })),
-    ...PDF_GUIDES.map((g) => ({
-      url: `${SITE_URL}/pdf/${g.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-    ...THREED_GUIDES.map((g) => ({
-      url: `${SITE_URL}/3d/${g.slug}`,
+    { url: `${SITE_URL}/guides`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    ...GUIDES.map((g) => ({
+      url: `${SITE_URL}${getProduct(g.product).route}/${g.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,

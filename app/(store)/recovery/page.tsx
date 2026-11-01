@@ -1,8 +1,10 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
+import { GuideLinks } from "@/components/guides/GuideLinks";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
 // product's downloadUrl (replaced on every release by revinhi-recovery/scripts/release.mjs).
@@ -29,9 +31,9 @@ function DownloadButton({ className = "" }: { className?: string }) {
 }
 
 export const metadata: Metadata = pageMetadata({
-  title: "RevinHi Recovery - Get back deleted files on Windows",
+  title: "File Recovery Software for Windows | RevinHi Recovery",
   description:
-    "RevinHi Recovery finds deleted and lost files on hard drives, SSDs, USB sticks and memory cards, even after a format. Scan and preview everything free, then save your files with Pro. Also writes VHD and disk images to USB drives, makes backup images of failing drives and checks drive health.",
+    "File recovery software for Windows: get back deleted photos, videos and documents from drives, USB sticks and SD cards, even after a format. Free scan.",
   path: "/recovery",
   image: OG_IMAGE,
   imageAlt: "RevinHi Recovery app icon",
@@ -171,6 +173,14 @@ const SOFTWARE_LD = {
   applicationCategory: "UtilitiesApplication",
   isAccessibleForFree: true,
   ...(AVAILABLE ? { downloadUrl: `${SITE_URL}${DOWNLOAD_URL}` } : {}),
+  ...(AVAILABLE
+    ? {
+        offers: [
+          { "@type": "Offer", name: "Free (scan and preview)", price: "0", priceCurrency: "USD", url: `${SITE_URL}/recovery` },
+          { "@type": "Offer", name: "Pro (one-time)", price: PRODUCT.price.replace("$", ""), priceCurrency: "USD", url: PRODUCT.gumroadUrl },
+        ],
+      }
+    : {}),
   featureList: [
     "Recover deleted files",
     "Recover files from formatted drives and memory cards",
@@ -195,11 +205,10 @@ const FAQ_LD = {
   })),
 };
 
-function Screenshot({ src, alt, caption, className = "" }: { src: string; alt: string; caption?: string; className?: string }) {
+function Screenshot({ src, alt, caption, className = "", preload = false }: { src: string; alt: string; caption?: string; className?: string; preload?: boolean }) {
   return (
     <figure className={`overflow-hidden rounded-2xl border border-white/10 bg-[#05060a] shadow-[0_30px_80px_rgba(0,0,0,0.6)] ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="block h-auto w-full" loading="lazy" />
+      <Image src={src} alt={alt} width={1360} height={880} sizes="(max-width: 1024px) 100vw, 1024px" className="block h-auto w-full" preload={preload} />
       {caption && <figcaption className="border-t border-white/10 px-5 py-3 text-center text-xs text-white/50">{caption}</figcaption>}
     </figure>
   );
@@ -223,13 +232,13 @@ export default function RecoveryPage() {
             </span>
           </div>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-6xl">
-            Deleted it by accident?
+            Recover deleted files,
             <br />
-            <span className="rgb-chase-text">Get it back.</span>
+            <span className="rgb-chase-text">even after a format.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
-            RevinHi Recovery finds deleted photos, videos and documents on hard drives, SSDs, USB sticks and memory
-            cards, even after a format. See every file before you save it, and know its chances up front.
+            RevinHi Recovery is file recovery software for Windows. It finds deleted photos, videos and documents on
+            hard drives, SSDs, USB sticks and memory cards, even after a format. See every file before you save it, and know its chances up front.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
             <DownloadButton className="px-8 py-3.5 text-base" />
@@ -248,6 +257,7 @@ export default function RecoveryPage() {
           src="/recovery/drives.png"
           alt="RevinHi Recovery's drive list with Scan buttons, recent scans and quick tools"
           className="mx-auto mt-14 max-w-5xl"
+          preload
         />
       </section>
 
@@ -374,6 +384,11 @@ export default function RecoveryPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Guides */}
+      <section id="guides" className="scroll-mt-28 px-6 pb-24">
+        <GuideLinks product="recovery" title="How to: file recovery guides" />
       </section>
 
       <Footer />

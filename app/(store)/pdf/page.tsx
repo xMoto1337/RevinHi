@@ -1,3 +1,4 @@
+import { LazyVideo } from "@/components/LazyVideo";
 import type { Metadata } from "next";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { SUPPORT_EMAIL } from "@/lib/products";
@@ -15,9 +16,9 @@ import {
 } from "@/components/pdf/PdfUi";
 
 export const metadata: Metadata = pageMetadata({
-  title: "RevinHi PDF - Offline PDF editor, no subscription",
+  title: "Offline PDF Editor for Windows | RevinHi PDF",
   description:
-    "Offline PDF editor for Windows 10/11: edit text, Fill & Sign, OCR scans, true redaction, merge, compress and protect PDFs. Portable USB version. Free download, Pro is $9.99 once - no subscription.",
+    "An offline PDF editor for Windows 10/11: edit text, fill and sign, OCR, redact, merge, compress and password-protect PDFs. Free download, Pro $9.99 once.",
   path: "/pdf",
   image: PDF_OG_IMAGE,
   imageAlt: "RevinHi PDF app icon",
@@ -163,7 +164,6 @@ const SOFTWARE_LD = {
   name: PRODUCT.name,
   description:
     "Offline PDF editor for Windows: edit and add text, Fill & Sign, OCR scanned PDFs, true redaction, annotate, merge, split, compress and password-protect PDFs. Also available as a portable USB version.",
-  softwareVersion: "0.2.0",
   url: `${SITE_URL}/pdf`,
   image: `${SITE_URL}${PDF_OG_IMAGE}`,
   operatingSystem: "Windows 10, Windows 11",
@@ -234,12 +234,12 @@ export default function PdfPage() {
             <span>{AVAILABLE ? "Windows 10/11 • Free download • Pro is a one-time purchase" : "Coming soon • Windows 10/11"}</span>
           </div>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-6xl">
-            Every PDF job,
+            The offline PDF editor for Windows,
             <br />
             <span className="rgb-chase-text">no subscription.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/60 sm:text-lg">
-            RevinHi PDF edits the text that&apos;s already there, fills and signs forms, makes scans searchable, redacts,
+            RevinHi PDF is a PDF editor for Windows that edits the text that&apos;s already there, fills and signs forms, makes scans searchable, redacts,
             merges and splits, compresses and password-protects. Fast, offline, and yours to keep.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
@@ -257,6 +257,7 @@ export default function PdfPage() {
             muted
             loop
             playsInline
+            preload="metadata"
             aria-label="RevinHi PDF editing the text of an existing PDF"
           />
         </div>
@@ -268,17 +269,7 @@ export default function PdfPage() {
         <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-3">
           {DEMOS.map((demo) => (
             <figure key={demo.src} className="glass-panel-flat overflow-hidden rounded-2xl">
-              <video
-                className="block h-auto w-full"
-                src={demo.src}
-                poster={demo.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={demo.caption}
-              />
+              <LazyVideo className="block h-auto w-full" src={demo.src} poster={demo.poster} label={demo.caption} />
               <figcaption className="px-5 py-4 text-sm text-white/70">{demo.caption}</figcaption>
             </figure>
           ))}

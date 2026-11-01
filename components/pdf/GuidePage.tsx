@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { SITE_URL } from "@/lib/seo";
+import { faqLd, SITE_URL } from "@/lib/seo";
 import { JsonLd, PDF_AVAILABLE, PDF_PRODUCT, PdfBuyButton, PdfDownloadButton, PdfFooter, PdfGuideLinks } from "./PdfUi";
 
 /**
@@ -12,12 +12,15 @@ export function GuidePage({
   eyebrow,
   title,
   intro,
+  faq,
   children,
 }: {
   slug: string;
   eyebrow: string;
   title: string;
   intro: ReactNode;
+  /** Optional FAQ, shown after the article and emitted as FAQPage JSON-LD. */
+  faq?: { q: string; a: string }[];
   children: ReactNode;
 }) {
   const breadcrumbs = {
@@ -33,6 +36,7 @@ export function GuidePage({
   return (
     <div className="flex flex-1 flex-col">
       <JsonLd data={breadcrumbs} />
+      {faq && faq.length > 0 && <JsonLd data={faqLd(faq)} />}
 
       <section className="relative overflow-hidden px-6 pb-12 pt-14 sm:pt-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -67,6 +71,22 @@ export function GuidePage({
           {children}
         </article>
       </section>
+
+      {faq && faq.length > 0 && (
+        <section className="px-6 pb-20" aria-labelledby="faq">
+          <h2 id="faq" className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
+            Questions
+          </h2>
+          <div className="mx-auto mt-8 max-w-2xl space-y-4">
+            {faq.map((f) => (
+              <div key={f.q} className="glass-panel-flat rounded-2xl p-6">
+                <h3 className="font-semibold text-white/90">{f.q}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="px-6 pb-20">
         <div className="glass-panel mx-auto max-w-3xl rounded-3xl p-8 text-center sm:p-10">

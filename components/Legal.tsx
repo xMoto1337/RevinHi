@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const LEGAL_UPDATED = "October 22, 2026";
 
@@ -19,11 +20,14 @@ export function LegalLinks() {
 
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-12 sm:py-16">
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-      <p className="mt-2 text-sm text-white/50">Last updated {LEGAL_UPDATED}</p>
-      <div className="legal mt-8 space-y-6 text-[15px] leading-relaxed text-white/75">{children}</div>
-    </main>
+    <>
+      <main className="mx-auto w-full max-w-3xl px-5 py-12 sm:py-16">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+        <p className="mt-2 text-sm text-white/50">Last updated {LEGAL_UPDATED}</p>
+        <div className="legal mt-8 space-y-6 text-[15px] leading-relaxed text-white/75">{children}</div>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 

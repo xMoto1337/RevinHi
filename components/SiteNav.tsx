@@ -3,7 +3,11 @@
 import { usePathname } from "next/navigation";
 import { PRODUCTS } from "@/lib/products";
 
-const TABS = [{ label: "Home", href: "/" }, ...PRODUCTS.map((p) => ({ label: p.tabLabel, href: p.route }))];
+const TABS = [
+  { label: "Home", href: "/" },
+  ...PRODUCTS.map((p) => ({ label: p.tabLabel, href: p.route })),
+  { label: "Guides", href: "/guides" },
+];
 
 /*
  * Shared storefront tab bar. Tabs are plain <a> (full page loads). gumroad.js also watches for links

@@ -20,6 +20,12 @@ export default function EditPdfTextPage() {
       eyebrow="Edit PDF text"
       title="Edit the text in a PDF on Windows, offline"
       intro="Fix a typo, update a date or change a price in a PDF without hunting down the original Word file. RevinHi PDF lets you click a line and retype it, right on your PC."
+      faq={[
+        { q: "Can I edit the text in any PDF?", a: "Text in PDFs made digitally, like exports from Word, invoices and statements, can be retyped, and RevinHi matches the original font, size and color. A scanned page is a picture of text, so for those, cover the area with whiteout and add a new text box." },
+        { q: "Is editing text the same as redacting it?", a: "No. Edited text is drawn over the original, and the old words stay in the file underneath. To really remove sensitive text, use the redaction tool, which removes it from the file." },
+        { q: "Do I have to upload my PDF?", a: "No. RevinHi PDF runs entirely on your Windows PC, with no account, and works with Wi-Fi turned off." },
+        { q: "Is editing text free?", a: "Editing existing text is a Pro feature (a one-time $9.99, no subscription). The free version opens files, adds text boxes, highlights, draws, signs and fills forms, with a small watermark on exports." },
+      ]}
     >
       <h2>Why editing PDF text is usually a pain</h2>
       <p>

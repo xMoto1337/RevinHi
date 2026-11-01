@@ -20,6 +20,12 @@ export default function CompressPdfPage() {
       eyebrow="Compress a PDF"
       title="Compress a PDF offline, without uploading it"
       intro="Email attachment limits and upload portals don't care how important your file is. RevinHi PDF shrinks oversized PDFs on your own PC, so you can send them without handing them to a website first."
+      faq={[
+        { q: "How much smaller will my PDF get?", a: "It depends on what's in it. Image-heavy PDFs like scans and photos often shrink by 80% or more; PDFs that are mostly text may only get a little smaller." },
+        { q: "Will compressing make text blurry?", a: "No. Text stays sharp at every strength, because only oversized images are shrunk. If pictures look too soft, compress the original again on a lower strength." },
+        { q: "Is my original file kept?", a: "Yes. The compressed copy is saved with _compressed on the end of its name by default, so the original is never overwritten." },
+        { q: "Is compress free?", a: "Compress is a Pro feature, a one-time $9.99 with no subscription." },
+      ]}
     >
       <h2>Why some PDFs are so big</h2>
       <p>

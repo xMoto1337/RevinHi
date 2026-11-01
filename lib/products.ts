@@ -106,8 +106,8 @@ export const PRODUCTS: Product[] = [
     gumroadUrl: "https://revinhi.gumroad.com/l/enziky",
     route: "/3d",
     features: ["Cut & join broken STLs", "Real mm & inch sizes", "Draw, text & logos to 3D", "Local AI model maker"],
-    // No file yet: the home card shows the gradient panel until this exists.
-    heroMedia: "/3d/hero.mp4",
+    // Real app screenshot (from revinhi-3d/store/listing/screenshots).
+    heroMedia: "/3d/screens/01-editable-cuts.webp",
     // Free installer (freemium). Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-3D-Setup.exe",
     // Store ID 9NFFN0J610J5. The Store edition updates through the Store.

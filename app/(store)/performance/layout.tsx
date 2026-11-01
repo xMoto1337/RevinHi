@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "RevinHi Performance - Safe Windows game optimizer",
+  title: "Windows Game Optimizer for More FPS | RevinHi Performance",
   description:
-    "Safe, reversible Windows 10/11 tweaks that cut input lag and squeeze more FPS out of your PC. $9.99 once, free updates forever.",
+    "A safe Windows 10/11 game optimizer: reversible tweaks that cut input lag and boost FPS, a DNS speed finder and one-button undo. $9.99 once.",
   path: "/performance",
   image: "/brand/revinhi-perf.png",
   imageAlt: "RevinHi Performance app icon",

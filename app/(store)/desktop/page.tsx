@@ -1,7 +1,12 @@
+import Image from "next/image";
+import { LazyVideo } from "@/components/LazyVideo";
 import { HeroMedia, MiniRadar } from "./HeroMedia";
 import styles from "./desktop.module.css";
 import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
-import { LegalLinks } from "@/components/Legal";
+import { GuideLinks } from "@/components/guides/GuideLinks";
+import { JsonLd } from "@/components/pdf/PdfUi";
+import { SiteFooter } from "@/components/SiteFooter";
+import { faqLd, softwareAppLd } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
 // Price / Gumroad link / support email live in lib/products.ts (the storefront registry).
@@ -157,9 +162,26 @@ const FAQ: { q: string; a: string }[] = [
   },
 ];
 
+const SOFTWARE_LD = softwareAppLd(PRODUCT, {
+  description:
+    "Live wallpaper app for Windows 10/11: animated wallpaper scenes or your own videos and images, custom widgets, rain, snow and light-ray effects, one-click presets, and a live US weather radar with lightning and severe-weather alerts from NOAA / National Weather Service data.",
+  applicationCategory: "LifestyleApplication",
+  image: "/brand/revinhi-desktop.png",
+  freeOfferNote: "Free forever: an animated wallpaper, clock and date widgets, the live radar and alerts for one location.",
+  featureList: [
+    "Live wallpapers: original animated scenes, or your own videos and images",
+    "Widgets: clock, date, CPU/RAM/GPU stats, battery, custom text",
+    "Rain, snow and light-ray effects over the desktop",
+    "100+ one-click presets",
+    "Live US weather radar, lightning, severe-weather alerts and forecast",
+  ],
+});
+
 export default function DesktopPage() {
   return (
     <div className="flex flex-1 flex-col pb-24 sm:pb-0">
+      <JsonLd data={SOFTWARE_LD} />
+      <JsonLd data={faqLd(FAQ)} />
       {/* Hero - mobile first: headline, one line of copy, CTA, then the media right under it */}
       <section className="relative overflow-hidden px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-20">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -168,12 +190,12 @@ export default function DesktopPage() {
             <span>Free to try &bull; Pro {PRICE_DISPLAY} once &bull; Windows 10/11</span>
           </div>
           <h1 className="mt-5 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:mt-6 sm:text-7xl">
-            Your desktop,
+            Live wallpapers for Windows.
             <br />
-            <span className="rgb-chase-text">but alive.</span>
+            <span className="rgb-chase-text">Your desktop, but alive.</span>
           </h1>
           <p className="mt-5 max-w-md text-base text-white/65 sm:max-w-xl sm:text-lg">
-            Live wallpapers, clean widgets, rain on your screen, and a real storm radar with lightning. One click
+            RevinHi Desktop is a live wallpaper app for Windows: animated wallpapers, clean widgets, rain on your screen, and a real storm radar with lightning. One click
             and your PC looks like the setups you keep saving.
           </p>
           <div className="mt-7 flex w-full flex-col items-center gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:gap-4">
@@ -221,16 +243,11 @@ export default function DesktopPage() {
         <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 items-start gap-8 sm:mt-14 lg:grid-cols-[300px_1fr]">
           <div className="mx-auto w-[260px] sm:w-[300px]">
             <div className="overflow-hidden rounded-[2rem] border-[6px] border-white/10 bg-black shadow-[0_0_60px_rgba(138,92,255,0.35)]">
-              <video
+              <LazyVideo
                 className="block aspect-[9/16] w-full object-cover"
                 src="/desktop/trailer-vertical.mp4"
                 poster="/desktop/trailer-vertical-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="RevinHi Desktop trailer"
+                label="RevinHi Desktop trailer"
               />
             </div>
             <p className="mt-3 text-center text-xs text-white/40">30-second tour · sound off</p>
@@ -238,11 +255,12 @@ export default function DesktopPage() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {GALLERY.map((g) => (
               <figure key={g.file} className="group overflow-hidden rounded-xl border border-white/10 bg-black">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={`/desktop/gallery/${g.file}.jpg`}
                   alt={`${g.name} - ${g.note}`}
-                  loading="lazy"
+                  width={1280}
+                  height={720}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
                   className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
                 />
                 <figcaption className="px-3 py-2">
@@ -395,19 +413,11 @@ export default function DesktopPage() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-white/10 px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} RevinHi. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a href="/" className="transition hover:text-white/70">All RevinHi apps</a>
-            <LegalLinks />
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
-              {SUPPORT_EMAIL}
-            </a>
-          </div>
-        </div>
-      </footer>
+      <section id="guides" className="scroll-mt-28 px-4 pb-24 sm:px-6">
+        <GuideLinks product="desktop" title="How to: desktop guides" />
+      </section>
+
+      <SiteFooter />
 
       {/* Mobile-only sticky buy bar - most visitors arrive from a bio link on a phone */}
       <div className={`fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-background/95 px-4 pt-3 sm:hidden ${styles.stickyBar}`}>
