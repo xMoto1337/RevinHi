@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi 3D",
     tabLabel: "3D",
     tagline: "Easy 3D modeling for printing: cut, join and subtract any model, even broken STLs, at real mm or inch sizes.",
-    price: "$9.99",
+    price: "$19.99",
     platform: "Windows 10/11",
     status: "available",
     accent: "#ff9a2e",
