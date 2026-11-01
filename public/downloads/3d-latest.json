@@ -1,11 +1,11 @@
 {
-  "version": "1.0.2",
-  "notes": "Better AI models: more detail and smoother surfaces, settings matched to your graphics card with an automatic lighter retry if it runs out of memory, notes when a picture is a poor fit, a Detail level choice in Advanced, and an optional full-detail model download.",
-  "pub_date": "2026-10-31T16:21:41.354Z",
+  "version": "1.0.3",
+  "notes": "Your first 3 saves are now full detail so you can see the real quality before deciding on Pro.",
+  "pub_date": "2026-11-01T16:00:28.982Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjVFR1FMcm10ZFhDbWVadithV0RDMTRhb0l1V2tKS0FXQWFiYmNJQUlZY0NqeUFjSDJkdHFVbnArQ1pyTHNjYnFUTFg2VTNIWUdESzh2eWlHU0dRQmdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNDYzNzAxCWZpbGU6UmV2aW5IaSAzRF8xLjAuMl94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjIKWUIyZHVRRHpGTXpBT2R5d3poNnhTeFRtU3FjdTIvdUJDaXNmNWtXVWFsYkdDaDdmQzJUMTJ0TTFudzM5M2h3RnB5UC9DMkhLS2t0OHZQdHZsTG9KQVE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.2"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjU3aHgvcndGQnU3QWJqOFpWdmhlTGhoNDBQbnJkbzc1c1p3UG9iQytWY1NCVlQwRks0VFo3UzJBMjFYempDd3RIakIrNy9rQ0RGbGdEUlc5Ly9qcVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNTQ4ODI4CWZpbGU6UmV2aW5IaSAzRF8xLjAuM194NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjMKN2lDcVl1NE9WMStEakdOU1k5N21QZis1UURmMit2ejJzVDRWVXRCVlZqaXFoMjI2NHZiYkNYek5keWhRWTJSOFBMbERuUVArZzJpV21hdjRTTlBVQUE9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.3"
     }
   }
 }
