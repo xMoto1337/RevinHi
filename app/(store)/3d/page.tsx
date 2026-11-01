@@ -3,6 +3,7 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
+import { ThreeDGetButtons, ThreeDGuideLinks, ThreeDStoreNote } from "@/components/threed/ThreeDUi";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
 // product's downloadUrl (replaced on every release). Swap the illustration for real screenshots/video.
@@ -12,20 +13,6 @@ const OG_IMAGE = "/brand/revinhi-3d.png";
 const ACCENT = PRODUCT.accent;
 // Counted: /api/download logs the click, then redirects to the installer.
 const DOWNLOAD_URL = `/api/download/${PRODUCT.slug}`;
-
-function DownloadButton({ className = "" }: { className?: string }) {
-  if (!AVAILABLE) return null;
-  return (
-    <a
-      href={DOWNLOAD_URL}
-      download
-      className={`inline-flex items-center justify-center rounded-full font-semibold text-black transition hover:scale-[1.02] ${className}`}
-      style={{ background: ACCENT, boxShadow: `0 0 30px ${ACCENT}59` }}
-    >
-      Download free
-    </a>
-  );
-}
 
 export const metadata: Metadata = pageMetadata({
   title: "RevinHi 3D - Easy 3D modeling for 3D printing on Windows",
@@ -163,7 +150,9 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Is it Windows only?",
-    a: "Yes. It's built for Windows 10 and 11 (64-bit). It's also coming to the Microsoft Store.",
+    a: PRODUCT.msStoreUrl
+      ? "Yes. It's built for Windows 10 and 11 (64-bit). Get it here or from the Microsoft Store, whichever you prefer. The Microsoft Store version updates through the Store."
+      : "Yes. It's built for Windows 10 and 11 (64-bit).",
   },
 ];
 
@@ -179,6 +168,16 @@ const SOFTWARE_LD = {
   applicationCategory: "DesignApplication",
   isAccessibleForFree: true,
   ...(AVAILABLE ? { downloadUrl: `${SITE_URL}${DOWNLOAD_URL}` } : {}),
+  ...(AVAILABLE
+    ? {
+        offers: [
+          { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", url: `${SITE_URL}/3d` },
+          { "@type": "Offer", name: "Pro (one-time)", price: PRODUCT.price.replace("$", ""), priceCurrency: "USD", url: PRODUCT.gumroadUrl },
+        ],
+      }
+    : {}),
+  // The Microsoft Store listing is the same app, so it identifies it too.
+  ...(PRODUCT.msStoreUrl ? { sameAs: [PRODUCT.msStoreUrl] } : {}),
   featureList: [
     "Cut, join and subtract any model, including broken STL files, with no automatic repair",
     "Real millimeter and inch sizes that open correctly in slicers",
@@ -315,8 +314,8 @@ export default function ThreeDPage() {
             mm and inch sizes, drawing, text, logos and a built-in AI that makes models on your own PC. Made for 3D
             printing, from your first print to your hundredth.
           </p>
-          <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
-            <DownloadButton className="px-8 py-3.5 text-base" />
+          <div className="mt-9 flex flex-col items-center gap-4">
+            <ThreeDGetButtons />
             <BuyButton product={PRODUCT} className="px-8 py-3.5 text-base" label={<>Get Pro &mdash; {PRODUCT.price}</>} chase />
             {!AVAILABLE && (
               <a
@@ -327,7 +326,7 @@ export default function ThreeDPage() {
               </a>
             )}
           </div>
-          <p className="mt-5 text-xs text-white/45">Coming to the Microsoft Store, too.</p>
+          <ThreeDStoreNote className="mt-5" />
         </div>
         <HeroIllustration />
       </section>
@@ -406,11 +405,12 @@ export default function ThreeDPage() {
                 <span className="text-neon-success">{t.pro}</span>
               </div>
             ))}
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <DownloadButton className="px-7 py-3 text-sm" />
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <ThreeDGetButtons size="sm" />
               <BuyButton product={PRODUCT} className="px-7 py-3 text-sm" label={<>Get Pro &mdash; {PRODUCT.price}</>} />
             </div>
             <p className="mt-4 text-center text-xs text-white/40">One-time purchase &middot; free updates &middot; no subscription</p>
+            <ThreeDStoreNote className="mt-1.5 text-center" />
           </div>
         </div>
       </section>
@@ -426,6 +426,11 @@ export default function ThreeDPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Guides */}
+      <section id="guides" className="scroll-mt-28 px-6 pb-24">
+        <ThreeDGuideLinks title="How to: RevinHi 3D guides" />
       </section>
 
       <Footer />

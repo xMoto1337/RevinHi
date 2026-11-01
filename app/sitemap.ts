@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PDF_GUIDES } from "@/components/pdf/PdfUi";
+import { THREED_GUIDES } from "@/components/threed/ThreeDUi";
 import { PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/seo";
 
@@ -16,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...PDF_GUIDES.map((g) => ({
       url: `${SITE_URL}/pdf/${g.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...THREED_GUIDES.map((g) => ({
+      url: `${SITE_URL}/3d/${g.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,

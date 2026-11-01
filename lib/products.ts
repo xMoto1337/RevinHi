@@ -26,6 +26,9 @@ export type Product = {
    *  and the Gumroad link becomes the Pro upgrade. Only offered while status is "available" (a
    *  coming-soon product can list its future file without a dead download link). */
   downloadUrl?: string;
+  /** Microsoft Store listing (apps.microsoft.com/detail/<Store ID>). When set, the "Get it from
+   *  Microsoft" badge sits next to every Download free button so people can pick either. */
+  msStoreUrl?: string;
 };
 
 export const SUPPORT_EMAIL = "revinhi@yahoo.com";
@@ -107,6 +110,8 @@ export const PRODUCTS: Product[] = [
     heroMedia: "/3d/hero.mp4",
     // Free installer (freemium). Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-3D-Setup.exe",
+    // Store ID 9NFFN0J610J5. The Store edition updates through the Store.
+    msStoreUrl: "https://apps.microsoft.com/detail/9NFFN0J610J5",
   },
   {
     slug: "recovery",

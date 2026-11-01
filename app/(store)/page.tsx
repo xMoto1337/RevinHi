@@ -4,6 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 import fs from "node:fs";
 import path from "node:path";
 import { BuyButton } from "@/components/BuyButton";
+import { MsStoreBadge } from "@/components/MsStoreBadge";
 import { PRODUCTS, SUPPORT_EMAIL, type Product } from "@/lib/products";
 
 export const metadata: Metadata = pageMetadata({
@@ -136,6 +137,12 @@ function ProductCard({ product }: { product: Product }) {
             <BuyButton product={product} className="flex-1 px-5 py-3 text-sm" label={<>Buy {product.price}</>} />
           )}
         </div>
+        {product.msStoreUrl && available && (
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-3 text-xs text-white/45">
+            <span>Or get it from the Store:</span>
+            <MsStoreBadge href={product.msStoreUrl} sizeClassName="h-10" />
+          </div>
+        )}
       </div>
     </article>
   );
