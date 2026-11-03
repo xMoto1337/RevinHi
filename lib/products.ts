@@ -130,6 +130,24 @@ export const PRODUCTS: Product[] = [
     // Free installer (scan + preview). Replace the file on every release (keep the name so old links keep working).
     downloadUrl: "/downloads/RevinHi-Recovery-Setup.exe",
   },
+  {
+    slug: "drivers",
+    name: "RevinHi Drivers",
+    tabLabel: "Drivers",
+    tagline: "See which drivers and game components have newer, signed versions. Every update can be rolled back.",
+    // Launch price (matches PRICE in revinhi-drivers/src/license/features.ts).
+    price: "$14.99",
+    platform: "Windows 10/11",
+    // Not on sale yet: set gumroadUrl, then status "available" (LAUNCH.md in revinhi-drivers).
+    status: "coming-soon",
+    accent: "#ffd23f",
+    gumroadUrl: "",
+    route: "/drivers",
+    features: ["Free scan, nothing changed", "Signed, newer drivers only", "Restore point + roll back", "Offline packs & backups"],
+    heroMedia: "/drivers/screens/01-updates-found.webp",
+    // Free installer (scan, details, backups). Replace the file on every release (keep the name so old links keep working).
+    downloadUrl: "/downloads/RevinHi-Drivers-Setup.exe",
+  },
 ];
 
 export function getProduct(slug: string): Product {

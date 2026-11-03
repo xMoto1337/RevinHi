@@ -14,21 +14,22 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  * account is the only verification it offers, so that's what's checked here.
  *
  * Several apps are sold on the same account, each validating keys against its OWN secret. A sale
- * is matched to a product by product_name (table below). Desktop, PDF, 3D and Recovery match their default name
+ * is matched to a product by product_name (table below). Desktop, PDF, 3D, Recovery and Drivers match their default name
  * case-insensitively, or GUMROAD_PRODUCT_NAME_<APP> when set. Performance keeps its original rule:
  * an EXACT match on GUMROAD_PRODUCT_NAME when that's set; when it isn't, "RevinHi Performance"
  * (case-insensitive). A sale that matches nothing is logged and acknowledged with 200, and no key is
  * sent (previously any non-Desktop sale fell through to Performance).
  */
 type Fulfillment = {
-  slug: "performance" | "desktop" | "pdf" | "3d" | "recovery";
+  slug: "performance" | "desktop" | "pdf" | "3d" | "recovery" | "drivers";
   app: string;
   secretEnv:
     | "LICENSE_SECRET_HEX"
     | "LICENSE_SECRET_HEX_DESKTOP"
     | "LICENSE_SECRET_HEX_PDF"
     | "LICENSE_SECRET_HEX_3D"
-    | "LICENSE_SECRET_HEX_RECOVERY";
+    | "LICENSE_SECRET_HEX_RECOVERY"
+    | "LICENSE_SECRET_HEX_DRIVERS";
   /** Env var overriding the Gumroad product_name. */
   nameEnv: string;
   /** product_name used when the env var isn't set. */
@@ -50,6 +51,14 @@ const FULFILLMENTS: Fulfillment[] = [
     secretEnv: "LICENSE_SECRET_HEX_RECOVERY",
     nameEnv: "GUMROAD_PRODUCT_NAME_RECOVERY",
     defaultName: "RevinHi Recovery",
+  },
+  // Drivers' own secret (= secrets/LICENSE_SECRET_HEX_DRIVERS.txt and SHARED_SECRET_HEX in revinhi-drivers/src-tauri/src/license.rs).
+  {
+    slug: "drivers",
+    app: "RevinHi Drivers",
+    secretEnv: "LICENSE_SECRET_HEX_DRIVERS",
+    nameEnv: "GUMROAD_PRODUCT_NAME_DRIVERS",
+    defaultName: "RevinHi Drivers",
   },
   {
     slug: "performance",
