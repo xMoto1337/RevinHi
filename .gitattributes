@@ -1,0 +1,2 @@
+# Signed files: their bytes must stay exactly as signed (no line-ending changes).
+public/catalog/** -text
