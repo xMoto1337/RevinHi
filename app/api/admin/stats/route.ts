@@ -52,6 +52,20 @@ export async function GET(request: NextRequest) {
     const versions: Record<string, number> = {};
     for (const r of active ?? []) versions[r.version || "?"] = (versions[r.version || "?"] ?? 0) + 1;
 
+    // RevinHi Drivers: chips the app found no driver for (/api/coverage), most reported first.
+    let coverage: { device: string; reports: number; firstSeen: string; lastSeen: string }[] | undefined;
+    if (product === "drivers") {
+      const { data, error } = await db
+        .from("coverage_missing")
+        .select("device, reports, first_seen, last_seen")
+        .eq("product", product)
+        .order("reports", { ascending: false })
+        .order("last_seen", { ascending: false })
+        .limit(50);
+      if (error) throw error;
+      coverage = (data ?? []).map((r) => ({ device: r.device, reports: r.reports, firstSeen: r.first_seen, lastSeen: r.last_seen }));
+    }
+
     return NextResponse.json({
       product,
       downloads: { total: dlTotal, day: dl1, week: dl7, month: dl30 },
@@ -60,6 +74,7 @@ export async function GET(request: NextRequest) {
       daily: Object.entries(daily).map(([date, n]) => ({ date, n })),
       countries: Object.entries(countries).sort((a, b) => b[1] - a[1]).slice(0, 8),
       versions: Object.entries(versions).sort((a, b) => b[1] - a[1]),
+      ...(coverage ? { coverage } : {}),
     });
   } catch (e) {
     console.error("stats failed", e);

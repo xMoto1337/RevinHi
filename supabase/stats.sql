@@ -51,3 +51,27 @@ returns void language sql as $$
         country = coalesce(excluded.country, installs.country),
         pings = installs.pings + 1;
 $$;
+
+-- RevinHi Drivers' missing-driver report (/api/coverage): after a scan the app sends the chips no
+-- source had any driver for, as bus + vendor + device numbers only ("pci:8086:02f0"). No install ID,
+-- names or serial numbers, so a row can't be tied to a PC. The app sends each chip at most once a
+-- month, so `reports` is roughly "PCs that needed it". Shown at /admin as "Missing coverage".
+create table if not exists coverage_missing (
+  product text not null,
+  device text not null,
+  reports integer not null default 1,
+  first_seen timestamptz not null default now(),
+  last_seen timestamptz not null default now(),
+  primary key (product, device)
+);
+create index if not exists coverage_missing_reports on coverage_missing (product, reports desc);
+alter table coverage_missing enable row level security;
+
+create or replace function record_coverage(p_product text, p_devices text[])
+returns void language sql as $$
+  insert into coverage_missing (product, device)
+  select p_product, d from unnest(p_devices) as d
+  on conflict (product, device) do update
+    set reports = coverage_missing.reports + 1,
+        last_seen = now();
+$$;

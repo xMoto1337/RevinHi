@@ -103,6 +103,31 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
+      <Section heading="RevinHi Drivers">
+        <p>
+          <strong>Usage stats.</strong> About 20 seconds after it starts, and every 12 hours while it runs, RevinHi Drivers tells
+          our server that a copy is running, the same way RevinHi Recovery does: a random ID created on your PC, the product, the
+          app version, whether it&apos;s the Free or Pro version, and whether it came from our website or the Microsoft Store. Our
+          host also tells us the approximate country. Turn it off at any time in{" "}
+          <strong>Settings → Privacy → Send anonymous usage stats</strong>.
+        </p>
+        <p>
+          <strong>Devices with no driver.</strong> When a scan finds a device that none of the driver sources has a driver for, the
+          app sends us only that chip&apos;s bus and its maker&apos;s vendor and model numbers (for example &quot;PCI
+          8086:02F0&quot;), at most once a month per chip. It doesn&apos;t send the random ID above, device names, serial numbers,
+          your PC maker&apos;s board numbers or anything else about your PC, so the report can&apos;t be tied to you or your PC. We
+          count how often each chip comes up to decide which drivers to add to our driver list next. Turn it off at any time in{" "}
+          <strong>Settings → Privacy → Report devices with no driver</strong>.
+        </p>
+        <p>
+          <strong>Scans.</strong> The list of your devices and drivers is read and compared on your PC and isn&apos;t sent to us. To
+          find newer drivers, the app asks Windows Update, the Microsoft Update Catalog and NVIDIA about your devices&apos; hardware
+          IDs, and downloads Intel&apos;s driver list and RevinHi&apos;s signed driver list (from revinhi.com). Drivers are downloaded
+          from their makers&apos; own sites when you install them. Those requests are governed by those companies&apos; own
+          policies.
+        </p>
+      </Section>
+
       <Section heading="Data the apps keep on your PC">
         <p>
           Your settings, desktop layouts, saved weather locations, projects, recent files list and license key are stored locally
