@@ -20,6 +20,11 @@ export default function MergePdfPage() {
       eyebrow="Merge PDFs"
       title="Merge PDF files on Windows"
       intro="Turn a cover letter, a résumé and a reference letter into one file, or join scanned pages into a single document. RevinHi PDF merges PDFs right on your PC, then lets you tidy up the pages."
+      faq={[
+        { q: "Can I merge PDFs for free?", a: "Yes, two files at a time. Merge two, then merge the result with the next, or insert pages in the Editor. Free exports carry a small watermark. Pro (a one-time $9.99) merges any number of files at once with no watermark." },
+        { q: "Can I change the page order after merging?", a: "Yes. Drag pages to reorder them, and rotate, delete, duplicate or extract pages in the page tools." },
+        { q: "Are my files uploaded?", a: "No. Merging happens on your Windows PC, with no account and no internet needed." },
+      ]}
     >
       <h2>Merge files with the Merge tool</h2>
       <ol>

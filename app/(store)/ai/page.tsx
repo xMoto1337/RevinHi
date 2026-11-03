@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
@@ -11,7 +12,7 @@ const OG_IMAGE = "/brand/revinhi-ai.png";
 export const metadata: Metadata = pageMetadata({
   title: "RevinHi AI - Private offline AI on a drive for Windows",
   description:
-    "RevinHi AI is a private, offline AI that runs from a drive on your Windows PC: chat with open AI models, make and edit pictures and videos, build video ads, and use offline topo maps. No cloud, no account, no subscription.",
+    "A private, offline AI that runs from a drive on your Windows PC: chat, pictures, video, video ads and offline topo maps. No cloud and no account.",
   path: "/ai",
   image: OG_IMAGE,
   imageAlt: "RevinHi AI app icon",
@@ -174,12 +175,13 @@ export default function AiPage() {
           </div>
         </div>
         <figure className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             className="block h-auto w-full"
             src="/ai/create.jpg"
             width={1400}
             height={860}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            preload
             alt="RevinHi AI's Create screen: making a photo from a description, with a gallery of pictures and videos made on the PC"
           />
         </figure>
@@ -207,13 +209,12 @@ export default function AiPage() {
           subtitle="Elevation lines, shaded hills, water sources and your own pins, saved on the drive. Measure routes and draw distance rings anywhere."
         />
         <figure className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             className="block h-auto w-full"
             src="/ai/map.jpg"
             width={1400}
             height={860}
-            loading="lazy"
+            sizes="(max-width: 1024px) 100vw, 1024px"
             alt="RevinHi AI's offline topographic map with elevation lines and pins for a camp, a meeting point, a creek and a hazard"
           />
         </figure>

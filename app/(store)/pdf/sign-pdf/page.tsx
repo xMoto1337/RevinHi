@@ -20,6 +20,11 @@ export default function SignPdfPage() {
       eyebrow="Sign a PDF"
       title="Sign a PDF offline on Windows"
       intro="No printing, scanning or uploading. Make your signature once in RevinHi PDF, then drop it onto any document and fill in the form fields around it, all on your own PC."
+      faq={[
+        { q: "Is signing a PDF free?", a: "Yes. Signing and form filling are free, with one saved signature. Free exports carry a small watermark; Pro (a one-time $9.99) removes it and saves unlimited signatures." },
+        { q: "Is this a legal digital signature?", a: "It places an image of your signature on the page, the digital version of signing a printout, which is what most everyday paperwork asks for. It isn't a certificate-based digital signature, so check first if a bank, court or government office asks for a certified e-signature." },
+        { q: "Can I sign without uploading the document?", a: "Yes. Everything happens on your Windows PC. Nothing is sent to a server and there's no account." },
+      ]}
     >
       <h2>Create your signature once</h2>
       <ol>
