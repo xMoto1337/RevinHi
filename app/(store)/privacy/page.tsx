@@ -108,8 +108,8 @@ export default function PrivacyPage() {
           <strong>Usage stats.</strong> About 20 seconds after it starts, and every 12 hours while it runs, RevinHi Drivers tells
           our server that a copy is running, the same way RevinHi Recovery does: a random ID created on your PC, the product, the
           app version, whether it&apos;s the Free or Pro version, and whether it came from our website or the Microsoft Store. Our
-          host also tells us the approximate country. Turn it off at any time in{" "}
-          <strong>Settings → Privacy → Send anonymous usage stats</strong>.
+          host also tells us the approximate country. Nothing about you, your license key, your devices or your files is sent.
+          Turn it off at any time in <strong>Settings → Privacy → Send anonymous usage stats</strong>.
         </p>
         <p>
           <strong>Devices with no driver.</strong> When a scan finds a device that none of the driver sources has a driver for, the
@@ -125,6 +125,21 @@ export default function PrivacyPage() {
           IDs, and downloads Intel&apos;s driver list and RevinHi&apos;s signed driver list (from revinhi.com). Drivers are downloaded
           from their makers&apos; own sites when you install them. Those requests are governed by those companies&apos; own
           policies.
+        </p>
+        <p>
+          <strong>License.</strong> Your Pro key is checked on your PC. Activating it doesn&apos;t contact our servers, and the
+          key is stored only in the app&apos;s folder on your PC.
+        </p>
+        <p>
+          <strong>Backups and history stay on your PC.</strong> Restore points, driver backups, the install history, offline packs
+          and hardware lists are made on your PC and saved where you choose; none of them are uploaded. A hardware list for the
+          offline updater holds device IDs, driver versions and the Windows version, not device names or serial numbers.
+        </p>
+        <p>
+          <strong>Updates.</strong> The app checks revinhi.com for updates shortly after it starts and every few hours. Updates
+          are only installed when you click to install them. The Microsoft Store version is updated by the Microsoft Store and
+          doesn&apos;t check our site for app updates; it still downloads RevinHi&apos;s signed driver list. The optional
+          scheduled scan runs only if you turn it on, and sends nothing beyond what a normal scan does.
         </p>
       </Section>
 
