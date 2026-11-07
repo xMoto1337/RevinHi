@@ -1,11 +1,11 @@
 {
-  "version": "1.0.4",
-  "notes": "Wrap Picture: wrap topo maps, patterns and logos evenly around curved parts, even across several pieces as one; cuts separate loose pieces; quick resize with corner and height/width/depth handles; Pattern in a circle around another object's true middle at an exact distance; Pro is now $19.99.",
-  "pub_date": "2026-11-07T00:40:27.411Z",
+  "version": "1.0.5",
+  "notes": "Wrap Picture sizes itself to the part; new Arrange tools to align, space out, grid and pack objects on the bed; Pattern in a circle can point any side at the middle; fixed a freeze with very detailed objects; cleaner Properties panel.",
+  "pub_date": "2026-11-07T16:22:34.379Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTi9ZdUdzUXd6RS9SZmhkQ2kzbVF1QTNueVpJRGJDZlpVbDE2dVpXa2QzekJLNHNSbFlic3BXVmlUUFJyaGU4VkxNMWIzODVCb2FhN1Q1WFphVklIN0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MDEyMDI2CWZpbGU6UmV2aW5IaSAzRF8xLjAuNF94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjQKZUNFR1ZjcGIzcVNVU1FSb1luUGhDNkVYdG02SXpGN0NrTlhXS1JlTjErV1JtTWtYeHVEd1Q4NEZPNmk5MW9XTDFkeGhTR3F1NlhDSmdPZU9URlhWREE9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.4"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTnovbnZoYVNNTkdOYy8yT1ZKS0RvZ1RUVjdycTZkbXQrVUszM0NMd2hlT2dlYW1vR0t4a21YL1JvWjJnaXJDaXc0UEFaeDdkeS9HT3orek9DSlpUZlFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MDY4NTU0CWZpbGU6UmV2aW5IaSAzRF8xLjAuNV94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjUKQUFBYS9hT3AzUXFxK1RnNWIwQmoxTk9ORHFSeDBmODR1YWtKYlg3dXQvY1g1b0M5Z21DRmV6ZnVUenJYcS9hOEpBZnZZWWNVbkdWdmNtd3hYc25VQ3c9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.5"
     }
   }
 }
