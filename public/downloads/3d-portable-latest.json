@@ -1,11 +1,11 @@
 {
-  "version": "1.0.5",
-  "notes": "Wrap Picture sizes itself to the part; new Arrange tools to align, space out, grid and pack objects on the bed; Pattern in a circle can point any side at the middle; fixed a freeze with very detailed objects; cleaner Properties panel.",
-  "pub_date": "2026-11-07T16:22:34.379Z",
+  "version": "1.0.6",
+  "notes": "Clicking and selecting no longer stops working after Draw, unlocking or showing an object again. The update popup no longer shows the wrong version. Pro export is simpler. Make it turns on as soon as you type a size.",
+  "pub_date": "2026-11-08T17:24:18.759Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjlVNE5wKzBqbGF2aW04VEhoZWFIblJacUtKOTV6Q3lrMGNWVHB3Sm5JOFptQmFiaXkweDdVQi96cXl4TExRTGxNbDU1RnR3S2NZaHNja0dDNVAxS2djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MDY4NTU2CWZpbGU6UmV2aW5IaS0zRC1Qb3J0YWJsZS0xLjAuNS56aXAJdmVyc2lvbjoxLjAuNQpIbEJQQ1B5cmJQbzB2YWYzMHRFMjZRREduK1hvQ2IyU0NtYmlQc3QxZUpQbEZpWllYcXBpYUVZTGpWWFF3RmtMSmVaUlZwVUJsYXhZSEVIZ013clhDQT09Cg==",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Portable.zip?v=1.0.5"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjUrdUIrTFF5d1NGZGJZa04rYy9vV1ZieFc2UkV0QUUrNHZlU0M4SUp2QkUxRVdBVTBUeENteUYzd2dtWUU5SFpOb2RqZjlKMEQ5RXRhTDJKYkhHd2c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MTU4NjYwCWZpbGU6UmV2aW5IaS0zRC1Qb3J0YWJsZS0xLjAuNi56aXAJdmVyc2lvbjoxLjAuNgpYNjcxWFB4YkpEYnBxVzJpMEljMXFuaTkxdUp3dG1uNmZjc1M1KzVzNzVXTk9OaWZnbkxBUHVMcFo2a1ZYbEp6cysvOUZhRjRWSmxTZFBGVTJQMWlDdz09Cg==",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Portable.zip?v=1.0.6"
     }
   }
 }
