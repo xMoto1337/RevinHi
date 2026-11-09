@@ -1,11 +1,11 @@
 {
-  "version": "1.0.6",
-  "notes": "Clicking and selecting no longer stops working after Draw, unlocking or showing an object again. The update popup no longer shows the wrong version. Pro export is simpler. Make it turns on as soon as you type a size.",
-  "pub_date": "2026-11-08T17:24:18.759Z",
+  "version": "1.0.7",
+  "notes": "New: describe a pattern, logo or lithophane and pick from four pictures made on your PC, Trace a face, a Type what you want box, Will this print?, Ask RevinHi and Sell It Kit. Free export previews no longer freeze on big flat models, the toolbar fits small windows, and Lay flat works on big AI models.",
+  "pub_date": "2026-11-09T16:41:54.156Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTng0UU8yVG52UFg0WXlwUVJtaGpSa1J2aEJKdmlkaDZMRE1Ca2V5OE5STVUweERqbDNVN2NpK2J6ZzFldUNJQXh5aERkSGZleHkzOVQxSmJWM3FMcHdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MTU4NjU4CWZpbGU6UmV2aW5IaSAzRF8xLjAuNl94NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjYKU1RwbGFZTUtLVTJmSmFuTGlnVmVUZjVOeHVkbnpINnc0WVgxZVlucy9jQXl4T0x3Wnp0NlZoejdJNTZ3MEVsU2FrdGE2MmlZKzVtbmluQ3ZxVnRsQmc9PQo=",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.6"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjhtenU3bTdncFRpUFV4TFhMNWRmclN0WnM3cTFPaG8rbmlrOTF0b1VhcEIrek1NbjZDYjdUQk1XTGk3ZjU1Y1lpbEFMK2NPSXRJNkFjbThtcEIvb1FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjQyNTEzCWZpbGU6UmV2aW5IaSAzRF8xLjAuN194NjQtc2V0dXAuZXhlCXZlcnNpb246MS4wLjcKREdHYnpvSFJBRE1jcGJZR2Z3TDhaaGpwMzU0TmJxMnpQTzJtL3hGYk5Sd1RKbDVPbzNVUzZtUTVhUXZLZ2hpZVVqeWc3M25rQWdhOHFyTEYzT2g5RGc9PQo=",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Setup.exe?v=1.0.7"
     }
   }
 }
