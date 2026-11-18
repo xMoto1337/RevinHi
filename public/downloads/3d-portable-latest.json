@@ -1,11 +1,11 @@
 {
-  "version": "1.0.7",
-  "notes": "New: describe a pattern, logo or lithophane and pick from four pictures made on your PC, Trace a face, a Type what you want box, Will this print?, Ask RevinHi and Sell It Kit. Free export previews no longer freeze on big flat models, the toolbar fits small windows, and Lay flat works on big AI models.",
-  "pub_date": "2026-11-09T16:41:54.156Z",
+  "version": "1.0.8",
+  "notes": "A command bar that thinks and can build things with no button, raised pieces stay separate and cuts go straight in, Separate into parts, threads and screws, insert holes, roller stamp, paper embosser, Make it flexi, Trace outer edge and border, smoother wrap lines, AI patterns sized to the part, smarter models, easier mouse, number box undo fix",
+  "pub_date": "2026-11-18T06:25:23.057Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjdOdmlKVmxlTzNHWXFhU05VdXA5S1FjY2pIYlFoRkFoRmQwNzBvSXREcGxNSmFsZndDbjlObkVFbTRheFpmMzFGQ3NsOWhrak1YMmlzemxDOFJiSnd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjQyNTE2CWZpbGU6UmV2aW5IaS0zRC1Qb3J0YWJsZS0xLjAuNy56aXAJdmVyc2lvbjoxLjAuNwpEYUpyT2QzQTNxZU1XNjF4SWJhQ1V3NndjNnlyQnFjdkNUYkdxWXVlbXhCSE05eGxQRExFRW1JVkY2K0hyMzJ0eE4rWGdUS21nYWEwRmdLTDl6aE5BUT09Cg==",
-      "url": "https://revinhi.com/downloads/RevinHi-3D-Portable.zip?v=1.0.7"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRV2t5ckxuWk1KTjRVZnB2TUZLdjQxdC9odmk2SEtScjI2R2t1MGRjUzloYVFrc3lQSVdtdkExYXNrVHRUM1N5MXh2eUQzaUNhWWdzb2dMMlBBa1kzb3d3S3Y1TXhuSUFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0OTgzMTI1CWZpbGU6UmV2aW5IaS0zRC1Qb3J0YWJsZS0xLjAuOC56aXAJdmVyc2lvbjoxLjAuOApqd1VrQU9wWXRsTVFYRjNacTZiKzU0OEY1czY4OTdVUUxUQ3dZcnRUT3JyK1Bld3FMNGhBQlJ4MTJZTUNqaWczRDNVZERyeFpTMFMzNEI5YWFTa3pEdz09Cg==",
+      "url": "https://revinhi.com/downloads/RevinHi-3D-Portable.zip?v=1.0.8"
     }
   }
 }
