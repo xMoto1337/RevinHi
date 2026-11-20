@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAdminRequest } from "@/lib/admin-auth";
 import { getSupabaseAdmin, WALLPAPERS_BUCKET } from "@/lib/supabase";
 
 const MAX_FILE_BYTES = 200 * 1024 * 1024; // 200MB - generous for a short looping wallpaper clip
@@ -9,8 +10,19 @@ const IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"];
  * Multipart upload used by both the admin page (manual single uploads) and the Pexels import
  * script (bulk, one call per clip) - same path either way, so moderation always sees everything
  * that lands, regardless of where it came from.
+ *
+ * Locked: needs the admin login cookie. The one exception is the local dev server on your own PC
+ * (localhost only), so the Pexels script keeps working without logging in.
  */
+function isLocalDev(request: NextRequest) {
+  const host = (request.headers.get("host") ?? "").split(":")[0];
+  return process.env.NODE_ENV !== "production" && (host === "localhost" || host === "127.0.0.1");
+}
+
 export async function POST(request: NextRequest) {
+  if (!isAdminRequest(request) && !isLocalDev(request)) {
+    return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
+  }
   const form = await request.formData();
   const file = form.get("file");
   const title = form.get("title");

@@ -22,3 +22,6 @@ export const MESSAGE_MAX = 4000;
 /** Forms sent faster than this after the page loaded are almost always bots. */
 export const MIN_FILL_MS = 3000;
 export const MAX_PER_HOUR = 5;
+/** Alert emails per day (UTC), across everyone. Keeps feedback from eating the Resend free plan's
+ *  100 emails/day that license-key emails also need. */
+export const EMAILS_PER_DAY = 10;

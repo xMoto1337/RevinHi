@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { FEEDBACK_APPS, FEEDBACK_KINDS, MAX_PER_HOUR, MESSAGE_MAX, MESSAGE_MIN, MIN_FILL_MS } from "@/lib/feedback";
+import { EMAILS_PER_DAY, FEEDBACK_APPS, FEEDBACK_KINDS, MAX_PER_HOUR, MESSAGE_MAX, MESSAGE_MIN, MIN_FILL_MS } from "@/lib/feedback";
 import { SUPPORT_EMAIL } from "@/lib/products";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
@@ -13,7 +13,8 @@ import { getSupabaseAdmin } from "@/lib/supabase";
  *  - a hidden "website" field only bots fill in (silently accepted and dropped),
  *  - forms sent less than MIN_FILL_MS after the page loaded (silently dropped),
  *  - MAX_PER_HOUR messages per visitor, keyed by a one-way daily IP code (the IP is never stored),
- *  - messages stuffed with links are refused.
+ *  - messages stuffed with links are refused,
+ *  - at most EMAILS_PER_DAY alert emails a day in total (the rest are only saved).
  */
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -75,8 +76,26 @@ export async function POST(request: NextRequest) {
     console.error("Feedback: database save failed", err);
   }
 
+  // Daily cap on alert emails, so a flood of feedback can't use up the free Resend plan's 100/day and
+  // block buyers' key emails. Past the cap, messages are still saved (just no email).
+  let alertNote = "";
+  let overCap = false;
+  if (saved) {
+    const dayStart = new Date();
+    dayStart.setUTCHours(0, 0, 0, 0);
+    const { count } = await getSupabaseAdmin()
+      .from("feedback")
+      .select("id", { count: "exact", head: true })
+      .gte("created_at", dayStart.toISOString());
+    const today = count ?? 0; // includes this message
+    overCap = today > EMAILS_PER_DAY;
+    if (today === EMAILS_PER_DAY) {
+      alertNote = `This is the last feedback email today (limit ${EMAILS_PER_DAY}). Any more are saved in /admin/feedback.`;
+    }
+  }
+
   let emailed = false;
-  if (process.env.RESEND_API_KEY) {
+  if (process.env.RESEND_API_KEY && !overCap) {
     try {
       const appLabel = FEEDBACK_APPS.find((a) => a.id === app)?.label ?? app;
       const kindLabel = FEEDBACK_KINDS.find((k) => k.id === kind)?.label ?? kind;
@@ -91,6 +110,7 @@ export async function POST(request: NextRequest) {
           `From: ${email || "(no email given)"}`,
           ...(page ? [`Page: ${page}`] : []),
           ...(saved ? [] : ["NOTE: this one did NOT save to the database."]),
+          ...(alertNote ? [alertNote] : []),
           "",
           message,
         ].join("\n"),
