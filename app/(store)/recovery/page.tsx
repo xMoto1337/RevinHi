@@ -4,6 +4,7 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
+import { MsStoreBadge } from "@/components/MsStoreBadge";
 import { GuideLinks } from "@/components/guides/GuideLinks";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
@@ -242,6 +243,7 @@ export default function RecoveryPage() {
           </p>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
             <DownloadButton className="px-8 py-3.5 text-base" />
+            {AVAILABLE && PRODUCT.msStoreUrl && <MsStoreBadge href={PRODUCT.msStoreUrl} sizeClassName="h-[52px]" />}
             <BuyButton product={PRODUCT} className="px-8 py-3.5 text-base" label={<>Get Pro &mdash; {PRODUCT.price}</>} chase />
             {!AVAILABLE && (
               <a
@@ -354,6 +356,7 @@ export default function RecoveryPage() {
             ))}
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <DownloadButton className="px-7 py-3 text-sm" />
+              {AVAILABLE && PRODUCT.msStoreUrl && <MsStoreBadge href={PRODUCT.msStoreUrl} sizeClassName="h-11" />}
               <BuyButton product={PRODUCT} className="px-7 py-3 text-sm" label={<>Get Pro &mdash; {PRODUCT.price}</>} />
             </div>
             <p className="mt-4 text-center text-xs text-white/40">One-time purchase &middot; free updates &middot; no subscription</p>

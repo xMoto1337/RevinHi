@@ -124,6 +124,7 @@ export const PRODUCTS: Product[] = [
     status: "available",
     accent: "#2ee6c0",
     gumroadUrl: "https://revinhi.gumroad.com/l/iizgf",
+    msStoreUrl: "https://apps.microsoft.com/detail/9PNDGD4KD48H",
     route: "/recovery",
     features: ["Deleted & formatted drives", "Free scan + preview", "Write images to USB", "Drive health & backups"],
     heroMedia: "/recovery/results.png",
