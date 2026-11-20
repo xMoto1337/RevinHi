@@ -1,55 +1,59 @@
 import Link from "next/link";
+import { FeedbackPrompt } from "@/components/FeedbackPrompt";
 import { LegalLinks } from "@/components/Legal";
-import { guidesFor } from "@/lib/guides";
 import { PRODUCTS, SUPPORT_EMAIL } from "@/lib/products";
 
 /**
- * Site-wide footer: every product, every guide (grouped by product, from lib/guides.ts), the guides
- * index, legal links and support email. Used on every storefront page so search engines and people
- * can reach any page from any page.
+ * Site-wide footer: a feedback line (names the app on app/guide pages), every app, help links, legal
+ * links and support email. Kept to one compact block so it doesn't grow with every new app. Guides are
+ * linked from each app page, the /guides index and the sitemap, so they don't need footer columns.
  */
 export function SiteFooter() {
-  const withGuides = PRODUCTS.filter((p) => guidesFor(p.slug).length > 0);
   return (
-    <footer className="mt-auto border-t border-white/10 px-6 pb-10 pt-12">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 text-sm sm:grid-cols-3 lg:grid-cols-6">
-        <div>
+    <footer className="mt-auto border-t border-white/10 px-6 pb-10 pt-8">
+      <FeedbackPrompt />
+      <div className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 text-sm sm:grid-cols-[2fr_1fr_1fr]">
+        <div className="col-span-2 sm:col-span-1">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/50">Apps</p>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
             {PRODUCTS.map((p) => (
               <li key={p.slug}>
                 <Link href={p.route} className="text-white/45 transition hover:text-white/80">
-                  {p.name}
+                  {p.tabLabel}
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/50">Help</p>
+          <ul className="mt-3 space-y-2">
             <li>
               <Link href="/guides" className="text-white/45 transition hover:text-white/80">
-                All guides
+                How-to guides
               </Link>
+            </li>
+            <li>
+              <Link href="/feedback" className="text-white/45 transition hover:text-white/80">
+                Send feedback
+              </Link>
+            </li>
+            <li>
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="text-white/45 transition hover:text-white/80">
+                Email us
+              </a>
             </li>
           </ul>
         </div>
-        {withGuides.map((p) => (
-          <div key={p.slug}>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/50">{p.tabLabel} guides</p>
-            <ul className="mt-3 space-y-2">
-              {guidesFor(p.slug).map((g) => (
-                <li key={g.slug}>
-                  <Link href={`${p.route}/${g.slug}`} className="text-white/45 transition hover:text-white/80">
-                    {g.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/50">Legal</p>
+          <div className="mt-3 flex flex-col gap-2 text-white/45">
+            <LegalLinks />
           </div>
-        ))}
-      </div>
-      <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/40 sm:flex-row">
-        <p>&copy; {new Date().getFullYear()} RevinHi. All rights reserved.</p>
-        <div className="flex items-center gap-6">
-          <LegalLinks />
         </div>
+      </div>
+      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/40 sm:flex-row">
+        <p>&copy; {new Date().getFullYear()} RevinHi. All rights reserved.</p>
         <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-white/70">
           {SUPPORT_EMAIL}
         </a>

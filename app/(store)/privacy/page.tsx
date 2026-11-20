@@ -39,6 +39,15 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
+      <Section heading="Feedback you send us">
+        <p>
+          When you use the feedback form we keep what you write, which app it&apos;s about, the page you came from, your browser
+          type and your email if you give one. It&apos;s stored in our database (Supabase) and sent to us as an email (through
+          Resend). Your email is only used to reply to you. To stop spam we use a code made from your IP address that changes
+          every day; we never store your IP address.
+        </p>
+      </Section>
+
       <Section heading="Anonymous usage stats in RevinHi Desktop">
         <p>
           When it starts, and every 12 hours while it runs, RevinHi Desktop tells our server that a copy is running. It sends a

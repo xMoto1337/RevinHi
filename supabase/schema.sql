@@ -50,3 +50,25 @@ create index if not exists binscout_jobs_token_status_idx on binscout_jobs (devi
 -- Same reasoning as wallpapers above: service_role (used by all app/api/binscout/* routes) bypasses
 -- this; it only blocks direct anon/authenticated access.
 alter table binscout_jobs enable row level security;
+
+-- Feedback / suggestion box (revinhi.com/feedback). Each message is saved here and an alert email is
+-- sent through Resend. ip_hash is a one-way code (IP + browser-free salt + day) used only for the
+-- "5 messages per hour" spam limit; the IP itself is never stored. Listed in /admin/feedback.
+create table if not exists feedback (
+  id uuid primary key default gen_random_uuid(),
+  app text not null,                     -- product slug, or 'website' / 'other'
+  kind text not null check (kind in ('idea', 'bug', 'other')),
+  message text not null,
+  email text,                            -- optional, only if they want a reply
+  page text,                             -- page they came from
+  ip_hash text,
+  user_agent text,
+  status text not null default 'new' check (status in ('new', 'done')),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists feedback_created_idx on feedback (created_at desc);
+create index if not exists feedback_ip_idx on feedback (ip_hash, created_at);
+
+-- Same as the tables above: only the service_role key (server routes) touches this table.
+alter table feedback enable row level security;

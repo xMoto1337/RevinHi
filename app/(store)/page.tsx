@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { LazyVideo } from "@/components/LazyVideo";
+import { BuyButton } from "@/components/BuyButton";
 import { JsonLd } from "@/components/pdf/PdfUi";
 import { SiteFooter } from "@/components/SiteFooter";
+import { APP_GROUPS, PRODUCTS, priceLabel, type Product } from "@/lib/products";
 import { ORGANIZATION_LD, pageMetadata, WEBSITE_LD } from "@/lib/seo";
-import fs from "node:fs";
-import path from "node:path";
-import { BuyButton } from "@/components/BuyButton";
-import { MsStoreBadge } from "@/components/MsStoreBadge";
-import { PRODUCTS, type Product } from "@/lib/products";
 
 export const metadata: Metadata = pageMetadata({
   title: "RevinHi: 3D Modeling, PDF Editor & File Recovery for Windows",
@@ -19,216 +14,107 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: "RevinHi logo",
 });
 
-// Checked at build time (this page is statically prerendered): only render a product's hero media if
-// the file actually exists in /public, otherwise show the gradient art panel instead of a broken video.
-function mediaExists(publicPath: string) {
-  try {
-    return fs.existsSync(path.join(process.cwd(), "public", publicPath));
-  } catch {
-    return false;
-  }
-}
+const WHY = ["Pay once, no subscription", "Free updates forever", "Free version to try", "Made for Windows 10 and 11"];
 
-const WHY = [
-  { title: "Pay once", body: "One price, no subscription, no account to make." },
-  { title: "Free updates", body: "Every future version of every app you buy, free forever." },
-  { title: "Windows-native", body: "Real desktop apps built for Windows 10 and 11 - not web wrappers." },
-  { title: "Instant checkout", body: "Secure checkout through Gumroad, right on this page." },
-];
-
-/** "/desktop/hero.mp4" -> "/desktop/hero-poster.jpg" when that file exists. */
-function posterFor(video: string) {
-  const poster = video.replace(/\.(mp4|webm)$/i, "-poster.jpg");
-  return mediaExists(poster) ? poster : undefined;
-}
-
-function ProductMedia({ product }: { product: Product }) {
-  const hasMedia = mediaExists(product.heroMedia);
-  const isVideo = /\.(mp4|webm)$/i.test(product.heroMedia);
-
+/** One row in an app section: icon, name, one line, price, and the main action. */
+function AppRow({ product: p }: { product: Product }) {
+  const available = p.status === "available";
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-[#05060a]">
-      {/* Fallback art panel - always rendered underneath */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(120% 90% at 15% 10%, ${product.accent}55, transparent 55%), radial-gradient(90% 80% at 90% 100%, ${product.accent}33, transparent 60%), #06070c`,
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-[0.15]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-          maskImage: "radial-gradient(circle at 50% 50%, #000, transparent 75%)",
-          WebkitMaskImage: "radial-gradient(circle at 50% 50%, #000, transparent 75%)",
-        }}
-      />
-      <div className="absolute inset-0 flex flex-col items-start justify-end p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/50">RevinHi</p>
-        <p className="text-2xl font-extrabold tracking-tight sm:text-3xl">{product.tabLabel}</p>
-      </div>
-
-      {hasMedia &&
-        (isVideo ? (
-          <LazyVideo
-            className="absolute inset-0 h-full w-full object-cover"
-            src={product.heroMedia}
-            poster={posterFor(product.heroMedia)}
-            label={`${product.name} preview`}
-          />
-        ) : (
-          <Image
-            className="absolute inset-0 h-full w-full object-cover"
-            src={product.heroMedia}
-            alt={`${product.name} screenshot`}
-            fill
-            sizes="(max-width: 768px) 100vw, 480px"
-          />
-        ))}
+    <div className="flex items-center gap-4 p-4 transition hover:bg-white/[0.03]">
+      <a href={p.route} aria-hidden="true" tabIndex={-1} className="shrink-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={p.icon} alt="" width={48} height={48} className="h-12 w-12 rounded-xl" />
+      </a>
+      <a href={p.route} className="min-w-0 flex-1">
+        <h3 className="flex items-center gap-2 font-bold">
+          {p.name}
+          {!available && (
+            <span className="rounded-full border border-neon-amber/40 bg-neon-amber/10 px-2 py-px text-[10px] font-semibold text-neon-amber">
+              Soon
+            </span>
+          )}
+        </h3>
+        <p className="text-sm text-white/55">{p.oneLine}</p>
+        {p.downloadUrl && available && <p className="mt-0.5 text-xs text-white/40 sm:hidden">{priceLabel(p)}</p>}
+      </a>
+      {available && p.downloadUrl && <p className="hidden shrink-0 text-right text-xs text-white/50 sm:block">{priceLabel(p)}</p>}
+      {available && p.downloadUrl ? (
+        <a
+          href={`/api/download/${p.slug}`}
+          download
+          className="shrink-0 rounded-full border border-neon-cyan/40 bg-neon-cyan/15 px-4 py-1.5 text-sm font-semibold text-neon-cyan transition hover:bg-neon-cyan/25 hover:shadow-[0_0_18px_rgba(0,229,255,0.3)] active:scale-[0.97]"
+        >
+          Get free
+        </a>
+      ) : available ? (
+        <BuyButton product={p} className="shrink-0 px-4 py-1.5 text-sm" label={<>Buy {p.price}</>} />
+      ) : (
+        <a
+          href={p.route}
+          className="shrink-0 rounded-full border border-white/15 px-4 py-1.5 text-sm text-white/65 transition hover:border-white/30 hover:text-white"
+        >
+          View
+        </a>
+      )}
     </div>
   );
 }
 
-function ProductCard({ product }: { product: Product }) {
-  const available = product.status === "available";
-  return (
-    <article className="glass-panel-flat flex flex-col rounded-3xl p-3 sm:p-4">
-      <a href={product.route} aria-label={`View ${product.name}`} className="block">
-        <ProductMedia product={product} />
-      </a>
-      <div className="flex flex-1 flex-col px-2 pb-2 pt-4 sm:px-3">
-        <div className="flex flex-wrap items-center gap-2 text-[11px]">
-          <span
-            className={`rounded-full border px-2.5 py-0.5 font-semibold ${
-              available
-                ? "border-neon-success/40 bg-neon-success/10 text-neon-success"
-                : "border-neon-amber/40 bg-neon-amber/10 text-neon-amber"
-            }`}
-          >
-            {available ? "Available now" : "Coming soon"}
-          </span>
-          <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-white/55">{product.platform}</span>
-        </div>
-
-        <div className="mt-3 flex items-baseline justify-between gap-3">
-          <h3 className="text-xl font-bold tracking-tight">{product.name}</h3>
-          <p className="shrink-0 text-lg font-bold">{product.downloadUrl ? <>Free <span className="text-sm font-semibold text-white/50">&middot; Pro {product.price}</span></> : product.price}</p>
-        </div>
-        <p className="mt-1.5 text-sm leading-relaxed text-white/60">{product.tagline}</p>
-
-        <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-white/70 min-[420px]:grid-cols-2">
-          {product.features.map((f) => (
-            <li key={f} className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: product.accent }} />
-              {f}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-auto flex gap-3 pt-6">
-          <a
-            href={product.route}
-            className="glass-panel flex flex-1 items-center justify-center rounded-full px-5 py-3 text-center text-sm font-semibold text-white/85 transition hover:text-white"
-          >
-            View
-          </a>
-          {product.downloadUrl && available ? (
-            <a
-              href={`/api/download/${product.slug}`}
-              download
-              className="inline-flex flex-1 items-center justify-center rounded-full bg-neon-cyan px-5 py-3 text-sm font-semibold text-black shadow-[0_0_30px_rgba(0,229,255,0.35)] transition hover:scale-[1.02]"
-            >
-              Download free
-            </a>
-          ) : (
-            <BuyButton product={product} className="flex-1 px-5 py-3 text-sm" label={<>Buy {product.price}</>} />
-          )}
-        </div>
-        {product.msStoreUrl && available && (
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-3 text-xs text-white/45">
-            <span>Or get it from the Store:</span>
-            <MsStoreBadge href={product.msStoreUrl} sizeClassName="h-10" />
-          </div>
-        )}
-      </div>
-    </article>
-  );
-}
-
 export default function StorefrontHome() {
-  const available = PRODUCTS.filter((p) => p.status === "available").length;
-
   return (
     <div className="flex flex-1 flex-col">
       <JsonLd data={ORGANIZATION_LD} />
       <JsonLd data={WEBSITE_LD} />
-      {/* Hero - compact on phones so the app cards are reachable in one thumb-scroll */}
-      <section className="px-4 pb-10 pt-10 sm:px-6 sm:pb-16 sm:pt-20">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <div className="glass-panel flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] text-white/70 sm:px-4 sm:text-xs">
-            <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-neon-success" />
-            <span>
-              {available} {available === 1 ? "app" : "apps"} available &bull; Windows 10/11 &bull; One-time price
-            </span>
-          </div>
-          <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.05] tracking-tight sm:mt-6 sm:text-7xl">
-            Apps that upgrade
-            <br />
-            <span className="rgb-chase-text">your PC.</span>
-          </h1>
-          <p className="mt-5 max-w-md text-base text-white/60 sm:max-w-xl sm:text-lg">
-            Windows apps that do one job really well: an easy 3D modeling app, an offline PDF editor, file recovery
-            software, live wallpapers and a game optimizer. Most have a free version to try &mdash; buy once, keep forever.
-          </p>
-          <a
-            href="#apps"
-            className="mt-7 w-full rounded-full bg-white px-8 py-3.5 text-base font-semibold text-black transition hover:bg-white/90 sm:w-auto"
-          >
-            Browse the apps
-          </a>
-        </div>
-      </section>
 
-      {/* Product grid */}
-      <section id="apps" className="scroll-mt-28 px-4 pb-16 sm:px-6 sm:pb-24">
-        <h2 className="sr-only">RevinHi apps for Windows</h2>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
-          {PRODUCTS.map((p) => (
-            <ProductCard key={p.slug} product={p} />
+      <section className="px-4 pb-8 pt-12 text-center sm:px-6 sm:pt-16">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <span className="rgb-chase-text">RevinHi</span> apps for Windows
+        </h1>
+        <p className="mx-auto mt-3 max-w-lg text-white/60">
+          Small apps that each do one job well. Try them free, buy once, keep them forever.
+        </p>
+        <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+          {WHY.map((w) => (
+            <span key={w} className="glass-panel-flat flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-white/70">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon-success" />
+              {w}
+            </span>
           ))}
         </div>
       </section>
 
-      {/* Why RevinHi */}
-      <section className="px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan">Why RevinHi</p>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {WHY.map((w) => (
-              <div key={w.title} className="glass-panel-flat rounded-2xl p-4 sm:p-5">
-                <p className="font-semibold">{w.title}</p>
-                <p className="mt-1.5 text-xs leading-relaxed text-white/55 sm:text-sm">{w.body}</p>
+      <section id="apps" className="scroll-mt-24 px-4 pb-16 sm:px-6">
+        <div className="mx-auto max-w-3xl space-y-10">
+          {APP_GROUPS.map((g) => {
+            const apps = PRODUCTS.filter((p) => p.group === g.id);
+            if (apps.length === 0) return null;
+            return (
+              <div key={g.id}>
+                <h2 className="mb-3 px-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/45">{g.title}</h2>
+                <div className="glass-panel-flat divide-y divide-white/10 overflow-hidden rounded-2xl">
+                  {apps.map((p) => (
+                    <AppRow key={p.slug} product={p} />
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Guides */}
-      <section className="px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="glass-panel mx-auto max-w-3xl rounded-3xl p-8 text-center">
-          <h2 className="text-2xl font-bold tracking-tight">How-to guides</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60">
-            Step-by-step guides for fixing STL files, editing and signing PDFs, getting back deleted files, cutting input
-            lag and more.
-          </p>
+      <section className="px-4 pb-20 sm:px-6">
+        <div className="glass-panel-flat mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl p-6 text-center sm:flex-row sm:text-left">
+          <div>
+            <h2 className="font-bold">How-to guides</h2>
+            <p className="mt-1 text-sm text-white/55">
+              Fix STL files, edit and sign PDFs, get back deleted files, cut input lag and more.
+            </p>
+          </div>
           <Link
             href="/guides"
-            className="mt-6 inline-flex rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
+            className="shrink-0 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90"
           >
-            Browse all guides
+            Browse guides
           </Link>
         </div>
       </section>

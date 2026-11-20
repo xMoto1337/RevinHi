@@ -2,6 +2,15 @@
 // Adding a new app = add one entry here (plus its page under app/(store)/<route>). The home grid,
 // the tab navigation, and each product page's Buy buttons all read from this list.
 
+export type AppGroup = "make" | "pc" | "desktop";
+
+/** Sections on the home page and in the Apps menu, in display order. A new app picks one. */
+export const APP_GROUPS: { id: AppGroup; title: string }[] = [
+  { id: "make", title: "Make things" },
+  { id: "pc", title: "Fix and speed up your PC" },
+  { id: "desktop", title: "Make your desktop yours" },
+];
+
 export type ProductStatus = "available" | "coming-soon";
 
 export type Product = {
@@ -10,6 +19,12 @@ export type Product = {
   /** Short name shown in the tab bar. */
   tabLabel: string;
   tagline: string;
+  /** One short line for the home list and the Apps menu. */
+  oneLine: string;
+  /** App icon under /public. */
+  icon: string;
+  /** Home page / Apps menu section (see APP_GROUPS). */
+  group: AppGroup;
   /** Display string - must match the price set on the Gumroad product. */
   price: string;
   platform: string;
@@ -39,6 +54,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Performance",
     tabLabel: "Performance",
     tagline: "Safe, reversible Windows tweaks that cut input lag and squeeze out more FPS.",
+    oneLine: "More FPS and less input lag, with one-button undo.",
+    icon: "/brand/revinhi-perf.png",
+    group: "pc",
     price: "$9.99",
     platform: "Windows 10/11",
     status: "available",
@@ -53,6 +71,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Desktop",
     tabLabel: "Desktop",
     tagline: "Live wallpapers, custom widgets, rain on your screen, and a live storm radar.",
+    oneLine: "Live wallpapers, widgets and a live storm radar.",
+    icon: "/brand/revinhi-desktop.png",
+    group: "desktop",
     price: "$9.99",
     platform: "Windows 10/11",
     status: "available",
@@ -69,6 +90,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi PDF",
     tabLabel: "PDF",
     tagline: "Edit, sign, merge, compress and protect PDFs - fast, offline, no subscription.",
+    oneLine: "Edit, sign, merge and shrink PDFs, offline.",
+    icon: "/brand/revinhi-pdf.png",
+    group: "make",
     price: "$9.99",
     platform: "Windows 10/11",
     status: "available",
@@ -84,6 +108,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi AI",
     tabLabel: "AI",
     tagline: "A private, offline AI on its own drive: chat, pictures, video, ads and topo maps. No cloud, no account.",
+    oneLine: "A private AI that runs on its own drive. No cloud.",
+    icon: "/brand/revinhi-ai.png",
+    group: "make",
     // Not on sale yet: set the price and Gumroad link, then status "available".
     price: "Soon",
     platform: "Windows 10/11",
@@ -99,6 +126,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi 3D",
     tabLabel: "3D",
     tagline: "Easy 3D modeling for printing: cut, join and subtract any model, even broken STLs, at real mm or inch sizes.",
+    oneLine: "Easy 3D modeling for printing, even broken STLs.",
+    icon: "/brand/revinhi-3d.png",
+    group: "make",
     price: "$19.99",
     platform: "Windows 10/11",
     status: "available",
@@ -118,6 +148,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Recovery",
     tabLabel: "Recovery",
     tagline: "Get back deleted photos, videos and documents, even from formatted drives, memory cards and USB sticks.",
+    oneLine: "Get back deleted photos, videos and files.",
+    icon: "/brand/revinhi-recovery.png",
+    group: "pc",
     // Launch price (matches PRICE in revinhi-recovery/src/license/features.ts).
     price: "$19.99",
     platform: "Windows 10/11",
@@ -136,6 +169,9 @@ export const PRODUCTS: Product[] = [
     name: "RevinHi Drivers",
     tabLabel: "Drivers",
     tagline: "See which drivers and game components have newer, signed versions. Every update can be rolled back.",
+    oneLine: "Safe, signed driver updates you can roll back.",
+    icon: "/brand/revinhi-drivers.png",
+    group: "pc",
     // Launch price (matches PRICE in revinhi-drivers/src/license/features.ts).
     price: "$14.99",
     platform: "Windows 10/11",
@@ -150,6 +186,12 @@ export const PRODUCTS: Product[] = [
     downloadUrl: "/downloads/RevinHi-Drivers-Setup.exe",
   },
 ];
+
+/** "Free · Pro $9.99", "$19.99" or "Coming soon". */
+export function priceLabel(p: Product): string {
+  if (p.status !== "available") return "Coming soon";
+  return p.downloadUrl ? `Free · Pro ${p.price}` : p.price;
+}
 
 export function getProduct(slug: string): Product {
   const product = PRODUCTS.find((p) => p.slug === slug);
