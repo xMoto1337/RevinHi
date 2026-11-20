@@ -72,3 +72,21 @@ create index if not exists feedback_ip_idx on feedback (ip_hash, created_at);
 
 -- Same as the tables above: only the service_role key (server routes) touches this table.
 alter table feedback enable row level security;
+
+-- Admin login tries (/api/admin/login). Used to limit wrong guesses (5 per 15 min per visitor, 30 per
+-- hour overall) and to stop an authenticator code being used twice. ip_hash is a one-way code; the
+-- IP itself is never stored. Old rows can be deleted any time.
+create table if not exists admin_login_attempts (
+  id bigint generated always as identity primary key,
+  ip_hash text not null,
+  ok boolean not null,
+  totp_step bigint,                      -- set on good logins only
+  country text,
+  user_agent text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists admin_login_attempts_ip_idx on admin_login_attempts (ip_hash, created_at);
+create index if not exists admin_login_attempts_ok_idx on admin_login_attempts (ok, created_at);
+
+alter table admin_login_attempts enable row level security;

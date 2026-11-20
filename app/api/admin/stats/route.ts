@@ -1,11 +1,10 @@
+import { isAdminRequest } from "@/lib/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
 /** Aggregates for /admin/stats. Gated by the same ADMIN_SECRET header as the wallpaper admin. */
 export async function GET(request: NextRequest) {
-  // Trimmed: a value pasted/piped into Vercel can carry a trailing newline.
-  const secret = process.env.ADMIN_SECRET?.trim();
-  if (!secret || request.headers.get("x-admin-secret")?.trim() !== secret) {
+  if (!isAdminRequest(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const product = request.nextUrl.searchParams.get("product") ?? "desktop";

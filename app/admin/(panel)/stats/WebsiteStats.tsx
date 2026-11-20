@@ -35,7 +35,7 @@ type Traffic = {
 
 const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;
 
-export function WebsiteStats({ secret, onUnauthorized }: { secret: string; onUnauthorized: () => void }) {
+export function WebsiteStats({ onUnauthorized }: { onUnauthorized: () => void }) {
   const [days, setDays] = useState(30);
   const [data, setData] = useState<Traffic | null>(null);
   const [error, setError] = useState("");
@@ -44,7 +44,7 @@ export function WebsiteStats({ secret, onUnauthorized }: { secret: string; onUna
   const load = useCallback(async () => {
     setLoading(true);
     setError("");
-    const res = await fetch(`/api/admin/traffic?days=${days}`, { headers: { "x-admin-secret": secret } });
+    const res = await fetch(`/api/admin/traffic?days=${days}`);
     setLoading(false);
     if (res.status === 401) return onUnauthorized();
     const json = await res.json();
@@ -53,7 +53,7 @@ export function WebsiteStats({ secret, onUnauthorized }: { secret: string; onUna
       return;
     }
     setData(json);
-  }, [days, secret, onUnauthorized]);
+  }, [days, onUnauthorized]);
 
   useEffect(() => {
     void load();

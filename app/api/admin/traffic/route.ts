@@ -1,11 +1,11 @@
+import { isAdminRequest } from "@/lib/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { UTM_NAMES } from "@/lib/trackingLinks";
 
 /** Website analytics for /admin: traffic, sources, devices, live visitors and the sales funnel. */
 export async function GET(request: NextRequest) {
-  const secret = process.env.ADMIN_SECRET?.trim();
-  if (!secret || request.headers.get("x-admin-secret")?.trim() !== secret) {
+  if (!isAdminRequest(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const days = Math.min(90, Math.max(1, Number(request.nextUrl.searchParams.get("days")) || 30));

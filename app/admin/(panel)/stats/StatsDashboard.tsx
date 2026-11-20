@@ -27,10 +27,12 @@ const PRODUCTS = [
   { slug: "drivers", label: "RevinHi Drivers" },
 ];
 
-// Same shared-secret gate as /admin/wallpapers (sessionStorage only, sent as a header).
+const toLogin = () => {
+  window.location.href = "/admin/login";
+};
+
+// Login is checked by the (panel) layout and the API routes (admin cookie).
 export default function StatsDashboard() {
-  const [secret, setSecret] = useState(() => (typeof window === "undefined" ? "" : sessionStorage.getItem("revinhi-admin-secret") ?? ""));
-  const [authed, setAuthed] = useState(() => typeof window !== "undefined" && !!sessionStorage.getItem("revinhi-admin-secret"));
   const [product, setProduct] = useState("website");
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState("");
@@ -40,60 +42,28 @@ export default function StatsDashboard() {
     if (product === "website") return; // WebsiteStats loads its own data
     setLoading(true);
     setError("");
-    const res = await fetch(`/api/admin/stats?product=${product}`, { headers: { "x-admin-secret": secret } });
+    const res = await fetch(`/api/admin/stats?product=${product}`);
     setLoading(false);
-    if (res.status === 401) {
-      sessionStorage.removeItem("revinhi-admin-secret");
-      setAuthed(false);
-      setError("Wrong secret.");
-      return;
-    }
+    if (res.status === 401) return toLogin();
     const json = await res.json();
     if (!res.ok) {
       setError(`Couldn't load stats: ${json.detail ?? json.error}. Did you run supabase/stats.sql?`);
       return;
     }
     setStats(json);
-  }, [product, secret]);
+  }, [product]);
 
   useEffect(() => {
-    if (!authed) return;
     void load();
     const id = setInterval(load, 60000);
     return () => clearInterval(id);
-  }, [authed, load]);
-
-  if (!authed) {
-    return (
-      <main className="mx-auto mt-24 w-full max-w-sm px-4">
-        <form
-          className="glass-panel flex flex-col gap-3 rounded-2xl p-6"
-          onSubmit={(e) => {
-            e.preventDefault();
-            sessionStorage.setItem("revinhi-admin-secret", secret);
-            setAuthed(true);
-          }}
-        >
-          <h1 className="text-lg font-bold">RevinHi stats</h1>
-          <input
-            type="password"
-            className="rounded-lg border border-white/15 bg-black/40 px-3 py-2 outline-none"
-            placeholder="Admin secret"
-            value={secret}
-            onChange={(e) => setSecret(e.target.value)}
-          />
-          <button className="rounded-full bg-neon-cyan px-4 py-2 font-semibold text-black">Unlock</button>
-          {error && <p className="text-sm text-neon-danger">{error}</p>}
-        </form>
-      </main>
-    );
-  }
+  }, [load]);
 
   const max = Math.max(1, ...(stats?.daily.map((d) => d.n) ?? [1]));
   const conversion = stats && stats.downloads.total > 0 ? ((stats.sales.total / stats.downloads.total) * 100).toFixed(1) : "0.0";
 
   return (
-    <main className="mx-auto w-full max-w-5xl px-4 py-10">
+    <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
       <div className="flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-2xl font-bold">Stats</h1>
         {PRODUCTS.map((p) => (
@@ -113,12 +83,7 @@ export default function StatsDashboard() {
       </div>
       {product === "website" && (
         <WebsiteStats
-          secret={secret}
-          onUnauthorized={() => {
-            sessionStorage.removeItem("revinhi-admin-secret");
-            setAuthed(false);
-            setError("Wrong secret.");
-          }}
+          onUnauthorized={toLogin}
         />
       )}
       {error && <p className="mt-4 text-sm text-neon-danger">{error}</p>}

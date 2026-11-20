@@ -1,14 +1,12 @@
+import { isAdminRequest } from "@/lib/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
-/** Feedback list for /admin/feedback. Gated by the same ADMIN_SECRET header as the other admin pages. */
-function authed(request: NextRequest) {
-  const secret = process.env.ADMIN_SECRET?.trim();
-  return !!secret && request.headers.get("x-admin-secret")?.trim() === secret;
-}
+/** Feedback list for /admin/feedback. Needs the admin login cookie. */
+
 
 export async function GET(request: NextRequest) {
-  if (!authed(request)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!isAdminRequest(request)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const { data, error } = await getSupabaseAdmin()
     .from("feedback")
     .select("id, app, kind, message, email, page, status, created_at")
@@ -20,7 +18,7 @@ export async function GET(request: NextRequest) {
 
 /** Body: { id, status: "new" | "done" } */
 export async function PATCH(request: NextRequest) {
-  if (!authed(request)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!isAdminRequest(request)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const body = await request.json().catch(() => ({}));
   if (typeof body.id !== "string" || !["new", "done"].includes(body.status)) {
     return NextResponse.json({ error: "bad request" }, { status: 400 });
