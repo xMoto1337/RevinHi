@@ -1,0 +1,700 @@
+/*
+ * RevinHi Performance look-alike for the website preview. Values are copied from the real WPF app
+ * (revinhi-performance/src/RevinHi.App: Themes/NeonTheme.xaml, Controls/SafeAdvancedModeToggle.xaml,
+ * MainWindow.xaml and Views/*.xaml). Note the app's "NeonCyan" brush is actually white (#FFFFFF).
+ * Scoped as a CSS module, so nothing leaks into the site.
+ */
+
+.root {
+  --white: #ffffff;
+  --amber: #ffa800;
+  --danger: #ff3b3b;
+  --success: #2ed573;
+  --body: #b8c4d9;
+  --idle: #808ca0;
+  --card-bg: rgba(255, 255, 255, 0.078);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --back-ease: cubic-bezier(0.34, 1.45, 0.64, 1);
+
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--white);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.33;
+  user-select: none;
+  /* Acrylic black (alpha 160) over a blurred desktop. */
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(70, 90, 140, 0.16), transparent 60%),
+    radial-gradient(700px 500px at -10% 110%, rgba(110, 60, 140, 0.12), transparent 60%),
+    rgba(6, 7, 10, 0.94);
+}
+
+.root *,
+.root *::before,
+.root *::after {
+  box-sizing: border-box;
+}
+
+:where(.root) button {
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+.root ::-webkit-scrollbar {
+  width: 8px;
+}
+.root ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+.root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------------------------------------------- RGB chase (MainWindow RgbChaseStoryboard, 6s) */
+
+@keyframes chaseColor {
+  0% { color: #ff3b30; }
+  16.667% { color: #ff9500; }
+  33.333% { color: #ffee00; }
+  50% { color: #2ed573; }
+  66.667% { color: #00e5ff; }
+  83.333% { color: #8a5cff; }
+  100% { color: #ff3b30; }
+}
+
+@keyframes chaseBorder {
+  0% { border-color: #ff3b30; }
+  16.667% { border-color: #ff9500; }
+  33.333% { border-color: #ffee00; }
+  50% { border-color: #2ed573; }
+  66.667% { border-color: #00e5ff; }
+  83.333% { border-color: #8a5cff; }
+  100% { border-color: #ff3b30; }
+}
+
+@keyframes chaseFill {
+  0% { background-color: #ff3b30; }
+  16.667% { background-color: #ff9500; }
+  33.333% { background-color: #ffee00; }
+  50% { background-color: #2ed573; }
+  66.667% { background-color: #00e5ff; }
+  83.333% { background-color: #8a5cff; }
+  100% { background-color: #ff3b30; }
+}
+
+/* ---------------------------------------------- title row + tabs */
+
+.titleRow {
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 14px;
+}
+
+.statusPill {
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--success);
+  background: rgba(255, 255, 255, 0.078);
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: default;
+  animation: chaseBorder 6s linear infinite;
+}
+.statusPill span:last-child {
+  opacity: 0.85;
+}
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: chaseFill 6s linear infinite;
+}
+
+.tabs {
+  display: flex;
+  margin: 16px 32px 0;
+  flex-shrink: 0;
+}
+
+.tab {
+  padding: 9px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--idle);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  transition: background 0.12s;
+}
+.tab:hover {
+  background: rgba(255, 255, 255, 0.078);
+}
+.tabActive {
+  animation: chaseColor 6s linear infinite;
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  margin: 16px 32px 26px;
+  display: flex;
+  flex-direction: column;
+}
+.view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------- text styles */
+
+.header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+.body {
+  font-size: 12.5px;
+  color: var(--body);
+}
+.meta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white);
+}
+.pageTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+.pageHead {
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.pageHead .body {
+  margin-top: 6px;
+}
+.sectionLabel {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.5);
+  transform: scaleX(1.15);
+  transform-origin: left center;
+  margin: 0 0 12px 4px;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------- cards */
+
+.card {
+  border-radius: 14px;
+  border: 1.2px solid var(--card-border);
+  padding: 20px;
+  background: var(--card-bg);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.wrap > .card {
+  width: 410px;
+  margin: 0 16px 16px 0;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tweakCard {
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+.tweakCard:hover {
+  transition-duration: 0.18s;
+  border-color: var(--glow);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--glow) 40%, transparent);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tweakText {
+  flex: 1;
+  min-width: 0;
+  margin-right: 16px;
+}
+.tweakTop {
+  display: flex;
+  align-items: flex-start;
+}
+.tweakTop .header {
+  flex: 1;
+  font-size: 15px;
+  margin-right: 8px;
+}
+.tierPill {
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  flex-shrink: 0;
+  color: var(--success);
+  background: rgba(46, 213, 115, 0.15);
+}
+.tierAdvanced {
+  color: var(--amber);
+  background: rgba(255, 168, 0, 0.15);
+}
+.tweakDesc {
+  margin: 6px 0;
+}
+.dim7 {
+  opacity: 0.7;
+}
+.dim6 {
+  opacity: 0.6;
+}
+.statusError {
+  color: var(--danger);
+  font-size: 11.5px;
+  margin-top: 8px;
+}
+
+/* ---------------------------------------------- toggles (SafeAdvancedModeToggle.xaml) */
+
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+.toggle:disabled {
+  cursor: default;
+}
+.track {
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-color: var(--danger);
+  transition: border-color var(--dur), box-shadow var(--dur), opacity 0.15s;
+}
+.toggle:disabled .track {
+  opacity: 0.5;
+}
+.knob {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  border-radius: 50%;
+  background: #f5fbff;
+  transform: translate(0, -50%);
+  transition: transform var(--dur) var(--back-ease);
+}
+.on .track {
+  border-color: var(--success);
+}
+.on .knob {
+  transform: translate(var(--travel), -50%);
+}
+
+/* Compact per-tweak toggle: 44x22 */
+.compact {
+  --dur: 0.18s;
+  --travel: 22px;
+  width: 44px;
+  height: 22px;
+}
+.compact .track {
+  border-radius: 11px;
+  border-width: 1.2px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px rgba(255, 59, 59, 0.35);
+}
+.compact.on .track {
+  box-shadow: 0 0 10px rgba(46, 213, 115, 0.6);
+}
+.compact .knob {
+  width: 16px;
+  height: 16px;
+}
+
+/* Safe / Advanced mode: 64x32 */
+.mode {
+  --dur: 0.22s;
+  --travel: 32px;
+  width: 64px;
+  height: 32px;
+}
+.mode .track {
+  border-radius: 16px;
+  border-width: 1.5px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(255, 59, 59, 0.45);
+}
+.mode.on .track {
+  box-shadow: 0 0 14px rgba(46, 213, 115, 0.55);
+}
+.mode .knob {
+  width: 26px;
+  height: 26px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Performance Boost: 80x40 */
+.boost {
+  --dur: 0.25s;
+  --travel: 40px;
+  width: 80px;
+  height: 40px;
+}
+.boost .track {
+  border-radius: 20px;
+  border-width: 1.6px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 16px rgba(255, 59, 59, 0.4);
+}
+.boost.on .track {
+  box-shadow: 0 0 22px rgba(46, 213, 115, 0.75);
+}
+.boost .knob {
+  width: 34px;
+  height: 34px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------------------------------------- glow pill button (GlowButtonStyle) */
+
+.glowBtn {
+  padding: 7px 16px;
+  margin-right: 8px;
+  border-radius: 18px;
+  border: 1.2px solid var(--white);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.glowBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+  transition-duration: 0.15s;
+}
+.glowBtn:active {
+  transform: scale(0.97);
+}
+.glowBtnSmall {
+  font-size: 10.5px;
+  padding: 3px 8px;
+  margin-right: 0;
+}
+
+/* ---------------------------------------------- Boost & Tweaks */
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+.topGrid > .card:nth-child(2) {
+  grid-column: 3;
+}
+.toggleHead {
+  display: flex;
+  align-items: center;
+}
+.toggleHead > :last-child {
+  margin-left: 16px;
+}
+.boostTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--success);
+}
+.cardBody {
+  margin-top: 12px;
+}
+.boostStatus {
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 22px;
+  border-color: var(--white);
+  border-width: 1px;
+  flex-shrink: 0;
+  text-align: center;
+  animation: fadeIn 0.25s ease-out;
+}
+.statValue {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.ignored {
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 16px;
+  padding: 6px 12px;
+  margin: 0 10px 10px 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.chipX {
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
+}
+.chipX:hover {
+  background: rgba(255, 255, 255, 0.125);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+.bottomRow .body {
+  margin-left: 10px;
+}
+
+/* ---------------------------------------------- DNS Finder */
+
+.statusLine {
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.currentCard {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-color: var(--success);
+  flex-shrink: 0;
+}
+.currentLabel {
+  color: var(--success);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+.msBig {
+  font-size: 20px;
+  font-weight: 700;
+  min-width: 80px;
+  text-align: right;
+  margin-right: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.ms {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 64px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.dnsCard {
+  display: flex;
+  align-items: center;
+}
+.dnsCard .ms {
+  margin-right: 14px;
+}
+.dnsActive {
+  border-color: var(--white);
+}
+.activeTag {
+  font-size: 9.5px;
+  font-weight: 700;
+  margin-left: 8px;
+  position: relative;
+  top: 1px;
+}
+.badge {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 2px 6px;
+  margin-top: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--success);
+  background: rgba(46, 213, 115, 0.15);
+}
+.regionNote {
+  margin: 0 0 12px 4px;
+  max-width: 820px;
+}
+
+/* ---------------------------------------------- Dashboard */
+
+.meterTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 27px;
+}
+.bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease-out;
+}
+.meterValue {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------- dialogs (BoostPreviewWindow / InstructionsWindow) */
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  animation: fadeIn 0.15s ease-out;
+}
+.dialog {
+  display: flex;
+  flex-direction: column;
+  background: rgba(14, 15, 18, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+.dialogBar {
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+}
+.dialogBar > span {
+  margin-left: 18px;
+  font-size: 11.5px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+.closeBtn {
+  width: 44px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+.closeBtn:hover {
+  background: var(--danger);
+}
+
+.candidate {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+.candidateName {
+  color: var(--white);
+  font-weight: 600;
+}
+.candidateMb {
+  margin: 0 10px;
+}
+.check {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.1);
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.check:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.checkOn {
+  border-color: #60cdff;
+  background: #60cdff;
+}
+.checkOn:hover {
+  background: #5ab9e8;
+}
+
+.instructions {
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 20px;
+  white-space: pre-line;
+}

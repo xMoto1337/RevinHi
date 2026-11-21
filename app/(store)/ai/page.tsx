@@ -4,6 +4,10 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
+import { Bot, Clapperboard, Globe, Map as MapIcon, Megaphone, ShieldCheck, Sigma, Wand2 } from "lucide-react";
+import { FeatureGrid, type Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import AiDemo from "@/components/demo/AiDemo";
 
 const PRODUCT = getProduct("ai");
 const AVAILABLE = PRODUCT.status === "available";
@@ -18,54 +22,54 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: "RevinHi AI app icon",
 });
 
-const FEATURES: { title: string; description: string; accent: string }[] = [
+const FEATURES: Feature[] = [
   {
     title: "Chat with any model",
     description:
       "Pick from a store of open AI models for everyday questions, writing, coding and seeing pictures, including uncensored ones. Switch models mid-chat, or add more from the built-in store.",
-    accent: "var(--neon-success)",
+    icon: Bot,
   },
   {
     title: "It does the work",
     description:
       "Ask to change a photo, make a picture, a video, a song or read something aloud, and your chat hands the job to the right specialist model on your PC. No copy-pasting between apps.",
-    accent: "var(--neon-purple)",
+    icon: Wand2,
   },
   {
     title: "Pictures, edits and video",
     description:
       "Make photos from a description, edit or combine photos, bring a picture to life as a short video, or copy the moves from a video you own. All rendered on your own graphics card.",
-    accent: "var(--neon-cyan)",
+    icon: Clapperboard,
   },
   {
     title: "Video ads from a link",
     description:
       "Paste a product link and RevinHi AI reads the page, writes a script and plans talking and product scenes with a presenter you choose. Change anything before you export.",
-    accent: "var(--neon-amber)",
+    icon: Megaphone,
   },
   {
     title: "Offline topo maps",
     description:
       "A tactical map with elevation lines, shaded hills, water sources, pins, distance rings and measuring, all working with no signal. Download more areas or satellite views when you're online.",
-    accent: "var(--neon-success)",
+    icon: MapIcon,
   },
   {
     title: "Exact answers",
     description:
       "Small AI models are bad at arithmetic, so RevinHi AI works out numbers, dates and money by running real calculations, and tests the code it writes before handing it over.",
-    accent: "var(--neon-danger)",
+    icon: Sigma,
   },
   {
     title: "Internet only when you want it",
     description:
       "One switch. Off, nothing leaves your PC. On, the AI can search the web and read pages for current answers and name its sources, and the app can download maps and models.",
-    accent: "var(--neon-purple)",
+    icon: Globe,
   },
   {
     title: "Private by design",
     description:
       "No account, no cloud, no tracking of what you ask. Your chats, pictures and files stay on your drive, and it runs from the drive without installing anything on the PC.",
-    accent: "var(--neon-cyan)",
+    icon: ShieldCheck,
   },
 ];
 
@@ -187,18 +191,14 @@ export default function AiPage() {
         </figure>
       </section>
 
+      <TryTheApp title="Click around RevinHi AI" subtitle="A working preview of the real app: chat with it, make a picture, download a model or drop pins on the map. Nothing here runs an AI or touches your computer.">
+        <AiDemo />
+      </TryTheApp>
+
       {/* Features */}
       <section id="features" className="scroll-mt-28 px-6 py-24">
         <SectionHeading eyebrow="What it does" title="A whole AI studio that never phones home" subtitle="Everything runs on your PC, from the drive." />
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureGrid features={FEATURES} accent={PRODUCT.accent} />
       </section>
 
       {/* Maps */}

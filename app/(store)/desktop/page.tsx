@@ -6,6 +6,8 @@ import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
 import { GuideLinks } from "@/components/guides/GuideLinks";
 import { JsonLd } from "@/components/pdf/PdfUi";
 import { SiteFooter } from "@/components/SiteFooter";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import DesktopDemo from "@/components/demo/DesktopDemo";
 import { faqLd, softwareAppLd } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
@@ -209,6 +211,14 @@ export default function DesktopPage() {
           <HeroMedia />
         </div>
       </section>
+
+      {/* Try it */}
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Pick a preset, drag widgets around, flip on rain or snow and watch the storm on the radar. It's a preview with sample weather: nothing on your computer is changed."
+      >
+        <DesktopDemo />
+      </TryTheApp>
 
       {/* Features */}
       <section id="features" className="scroll-mt-28 px-4 py-16 sm:px-6 sm:py-24">

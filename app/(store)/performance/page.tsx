@@ -1,9 +1,13 @@
+import { Gauge, Globe, Power, Rocket, SlidersHorizontal, Undo2 } from "lucide-react";
 import { AppShowcase } from "@/components/AppShowcase";
 
 import { BuyButton as SharedBuyButton } from "@/components/BuyButton";
 import { GuideLinks } from "@/components/guides/GuideLinks";
 import { JsonLd } from "@/components/pdf/PdfUi";
 import { SiteFooter } from "@/components/SiteFooter";
+import { FeatureGrid, type Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import PerformanceDemo from "@/components/demo/PerformanceDemo";
 import { faqLd, softwareAppLd } from "@/lib/seo";
 import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 
@@ -24,46 +28,40 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: 
   );
 }
 
-type Feature = {
-  title: string;
-  description: string;
-  accent: string;
-};
-
 const FEATURES: Feature[] = [
   {
     title: "Boost & Tweaks",
     description:
       "Safe and Advanced tiers of one-click Windows tweaks - Game Mode, HAGS, timer resolution, network stack tuning, and more. Every change is snapshotted before it's made.",
-    accent: "var(--neon-success)",
+    icon: SlidersHorizontal,
   },
   {
     title: "DNS Finder",
     description:
       "Live-tests your current DNS against a dozen providers (including ad-blocking options), plus real ping to the regions popular games actually host servers in.",
-    accent: "var(--neon-cyan)",
+    icon: Globe,
   },
   {
     title: "Live Dashboard",
     description: "CPU, GPU, RAM, and ping at a glance, refreshed in real time while you're keeping an eye on things.",
-    accent: "var(--neon-amber)",
+    icon: Gauge,
   },
   {
     title: "Performance Boost",
     description:
       "Suspends background apps eating your RAM and CPU with one click - fully reversible, nothing is closed or loses unsaved work.",
-    accent: "var(--neon-purple)",
+    icon: Rocket,
   },
   {
     title: "Startup Manager",
     description: "See and control exactly what launches when Windows boots, without digging through Task Manager tabs.",
-    accent: "var(--neon-danger)",
+    icon: Power,
   },
   {
     title: "Restore All Defaults",
     description:
       "One button undoes everything RevinHi has ever changed - back to the exact state your PC was in before you installed it.",
-    accent: "var(--neon-cyan)",
+    icon: Undo2,
   },
 ];
 
@@ -147,6 +145,13 @@ export default function PerformancePage() {
         </div>
       </section>
 
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Flip tweaks, run a Boost, test DNS speeds and watch the live dashboard. It's a preview with sample readings: nothing on your PC is changed."
+      >
+        <PerformanceDemo />
+      </TryTheApp>
+
       {/* Features */}
       <section id="features" className="scroll-mt-28 px-6 py-24">
         <SectionHeading
@@ -154,18 +159,7 @@ export default function PerformancePage() {
           title="Every optimization, always reversible"
           subtitle="No black-box registry hacks. Every tweak is documented, tiered by risk, and undoable at any time."
         />
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div
-                className="mb-4 h-9 w-9 rounded-lg"
-                style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }}
-              />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureGrid features={FEATURES} accent={PRODUCT.accent} />
       </section>
 
       {/* Safety */}

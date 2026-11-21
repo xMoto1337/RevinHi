@@ -5,6 +5,10 @@ import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
 import { ThreeDGetButtons, ThreeDGuideLinks, ThreeDStoreNote } from "@/components/threed/ThreeDUi";
+import { Blocks, Brush, Image as ImageIcon, Layers, Lightbulb, Palette, PenTool, Printer, Ruler, Stamp, Type, Wrench } from "lucide-react";
+import { FeatureGrid, type Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import ThreeDDemo from "@/components/demo/ThreeDDemo";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
 // product's downloadUrl (replaced on every release). Swap the illustration for real screenshots/video.
@@ -39,71 +43,71 @@ const STEPS: { title: string; body: string }[] = [
   },
 ];
 
-const FEATURES: { title: string; description: string; accent: string }[] = [
+const FEATURES: Feature[] = [
   {
     title: "Real sizes, mm or inches",
     description:
       "Type 50 mm or 2 in and that's what you get. Files open at the right size in Bambu Studio, PrusaSlicer, Cura and OrcaSlicer.",
-    accent: ACCENT,
+    icon: Ruler,
   },
   {
     title: "Change your mind later",
     description:
       "Keep your work as Solid and Hole layers you can move or resize any time, or apply each cut right away. Your choice, cut by cut.",
-    accent: "var(--neon-cyan)",
+    icon: Layers,
   },
   {
     title: "Draw, then make it 3D",
     description:
       "Draw with lines, shapes and a pen tool, on the grid or right on a model. Then pull it up, spin it around, or blend between two drawings.",
-    accent: "var(--neon-purple)",
+    icon: PenTool,
   },
   {
     title: "Text from your fonts",
     description:
       "Use any font installed on your PC. Set the height and depth, curve the words around a circle, or flip them for a stamp.",
-    accent: "var(--neon-success)",
+    icon: Type,
   },
   {
     title: "Pictures and logos to 3D",
     description: "Turn a picture or logo into a 3D shape in a few clicks, with a live preview. SVG and DXF drawings work too.",
-    accent: "var(--neon-amber)",
+    icon: ImageIcon,
   },
   {
     title: "Raise or engrave",
     description: "Put text or a logo onto any surface, raised up or cut in. It bends to follow curved surfaces too.",
-    accent: "var(--neon-danger)",
+    icon: Stamp,
   },
   {
     title: "Lithophanes",
     description: "Turn a photo into a lithophane that lights up when you hold it to a lamp. Flat or curved, at the size you choose.",
-    accent: ACCENT,
+    icon: Lightbulb,
   },
   {
     title: "Sculpt like clay",
     description: "Push, pull, smooth, pinch and inflate with brushes. Works with a mouse or a pen tablet.",
-    accent: "var(--neon-cyan)",
+    icon: Brush,
   },
   {
     title: "Print helpers",
     description:
       "Hollow a model to save filament, split big models to fit your printer bed with pegs to join the pieces, and send to your slicer in one click.",
-    accent: "var(--neon-purple)",
+    icon: Printer,
   },
   {
     title: "Multi-color prints",
     description: "Color each part or paint right onto the model, then save a multi-color 3MF ready for your multi-color printer.",
-    accent: "var(--neon-success)",
+    icon: Palette,
   },
   {
     title: "Parts library",
     description: "Ready-made threads, nuts and bolts, hinges, gears, clips and boxes with lids, sized however you want.",
-    accent: "var(--neon-amber)",
+    icon: Wrench,
   },
   {
     title: "Open STEP files",
     description: "Bring in STEP files from CAD programs and parts websites at the right size, alongside STL, OBJ and 3MF.",
-    accent: "var(--neon-danger)",
+    icon: Blocks,
   },
 ];
 
@@ -273,6 +277,14 @@ export default function ThreeDPage() {
         <HeroScreenshot />
       </section>
 
+      {/* Try it */}
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Cut holes, type sizes in mm or inches, add shapes and text, split a model to fit the bed or make one with AI. It's a preview with a sample project: nothing on your computer is opened or saved."
+      >
+        <ThreeDDemo />
+      </TryTheApp>
+
       {/* Headline feature */}
       <section id="cut" className="scroll-mt-28 px-6 py-24">
         <SectionHeading
@@ -300,15 +312,7 @@ export default function ThreeDPage() {
           title="Everything you need to make it, fix it and print it"
           subtitle="Easy enough for a first print, with room to grow."
         />
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureGrid features={FEATURES} accent={ACCENT} />
       </section>
 
       {/* Local AI */}

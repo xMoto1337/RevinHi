@@ -14,6 +14,10 @@ import {
   PdfPortableLink as PortableLink,
   SectionHeading,
 } from "@/components/pdf/PdfUi";
+import { EyeOff, FileLock, FileOutput, Files, Highlighter, Layers, PencilLine, ScanText, Search, Signature, Type, Zap } from "lucide-react";
+import type { Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import PdfDemo from "@/components/demo/PdfDemo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Offline PDF Editor for Windows | RevinHi PDF",
@@ -30,71 +34,71 @@ const DEMOS = [
   { src: "/pdf/clip-compress.mp4", poster: "/pdf/clip-compress-poster.jpg", caption: "Compress big PDFs for email" },
 ];
 
-const FEATURES: { title: string; description: string; accent: string; pro?: boolean }[] = [
+const FEATURES: (Feature & { pro?: boolean })[] = [
   {
     title: "Edit existing text",
     description: "Click any line in a PDF and retype it. RevinHi matches the original font, size and color, so the change blends in.",
-    accent: "var(--neon-purple)",
+    icon: PencilLine,
     pro: true,
   },
   {
     title: "Add text anywhere",
     description: "Type straight onto the page in wrapping text boxes. 6 fonts, bold, italic, underline, alignment, background, border and rotation, or match the text nearby.",
-    accent: "var(--neon-cyan)",
+    icon: Type,
   },
   {
     title: "Fill & Sign",
     description: "Drop ✓ ✗ • ◯ ☑ marks that size themselves to checkboxes and lines, tick real form checkboxes, and sign with a saved signature. Flatten when you're done.",
-    accent: "var(--neon-amber)",
+    icon: Signature,
   },
   {
     title: "Annotate & comment",
     description: "Highlight, underline or strike through selected text, leave sticky-note comments that show up in other PDF readers, and add stamps like Approved, Paid or Signed with the date.",
-    accent: "var(--neon-success)",
+    icon: Highlighter,
   },
   {
     title: "Read & find",
     description: "Find with Ctrl+F, select and copy text, fit to width or page, two-page view, night reading and presentation mode. Bookmarks, clickable links, back/forward, and it remembers your place.",
-    accent: "var(--neon-danger)",
+    icon: Search,
   },
   {
     title: "Page tools",
     description: "Drag pages to reorder, rotate, crop, duplicate, reverse, delete, extract or insert blanks. Copy pages between tabs, merge files and split by ranges.",
-    accent: "var(--neon-purple)",
+    icon: Files,
   },
   {
     title: "OCR, fully offline",
     description: "Make scanned PDFs searchable and selectable without uploading them anywhere. It all runs on your PC.",
-    accent: "var(--neon-cyan)",
+    icon: ScanText,
     pro: true,
   },
   {
     title: "True redaction",
     description: "Black out sensitive text and it's actually removed from the file, not just covered up.",
-    accent: "var(--neon-amber)",
+    icon: EyeOff,
     pro: true,
   },
   {
     title: "Convert",
     description: "Turn photos and scans into a PDF, or export pages as PNG / JPG at up to 300 dpi. Pro adds PDF to Word, PDF to text and extract images.",
-    accent: "var(--neon-success)",
+    icon: FileOutput,
   },
   {
     title: "Batch & finishing",
     description: "Process many files at once. Add page numbers, headers & footers, Bates numbering, custom watermarks and custom stamps, convert to grayscale, remove blank pages and flatten annotations.",
-    accent: "var(--neon-danger)",
+    icon: Layers,
     pro: true,
   },
   {
     title: "Compress & protect",
     description: "Shrink image-heavy PDFs, often by 80% or more, and lock files with AES-256 passwords.",
-    accent: "var(--neon-purple)",
+    icon: FileLock,
     pro: true,
   },
   {
     title: "Fast to work in",
     description: "Command palette (Ctrl+K), a shortcut sheet, copy/paste/align/snap/lock objects, print, and autosave with crash recovery. Or run the portable version straight from a USB stick.",
-    accent: "var(--neon-cyan)",
+    icon: Zap,
   },
 ];
 
@@ -263,6 +267,14 @@ export default function PdfPage() {
         </div>
       </section>
 
+      {/* Try it */}
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Edit the text, fill the form, sign it, and drag the pages around. It's a preview with sample documents: nothing on your computer is opened or changed."
+      >
+        <PdfDemo />
+      </TryTheApp>
+
       {/* Demos */}
       <section className="px-6 pb-8">
         <SectionHeading eyebrow="See it in action" title="Real app, real workflow" />
@@ -280,9 +292,15 @@ export default function PdfPage() {
       <section id="features" className="scroll-mt-28 px-6 py-24">
         <SectionHeading eyebrow="What you get" title="A whole PDF toolkit in one app" subtitle="Everything runs on your PC. Nothing is uploaded." />
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
+          {FEATURES.map(({ icon: Icon, ...feature }) => (
+            <div key={feature.title} className="glass-panel-flat group rounded-2xl p-6 transition hover:border-white/25 hover:bg-white/[0.07]">
+              {/* Same tile as <FeatureGrid>, kept inline so the Pro badges stay next to the titles. */}
+              <div
+                className="mb-4 grid h-11 w-11 place-items-center rounded-xl border transition group-hover:scale-105"
+                style={{ background: `${PRODUCT.accent}1f`, borderColor: `${PRODUCT.accent}55`, color: PRODUCT.accent, boxShadow: `0 0 22px ${PRODUCT.accent}22` }}
+              >
+                <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
+              </div>
               <h3 className="flex items-center gap-2 text-lg font-semibold">
                 {feature.title}
                 {feature.pro && (

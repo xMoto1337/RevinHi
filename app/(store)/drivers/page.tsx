@@ -5,6 +5,10 @@ import { getProduct, SUPPORT_EMAIL } from "@/lib/products";
 import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/PdfUi";
 import { BuyButton } from "@/components/BuyButton";
 import { GuideLinks } from "@/components/guides/GuideLinks";
+import { CircleArrowUp, CircuitBoard, Cpu, Laptop, ListChecks, ShieldCheck } from "lucide-react";
+import { FeatureGrid, type Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import DriversDemo from "@/components/demo/DriversDemo";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
 // product's downloadUrl (replaced on every release by revinhi-drivers/scripts/release.mjs).
@@ -58,36 +62,36 @@ const STEPS: { title: string; body: string }[] = [
   },
 ];
 
-const RULES: { title: string; description: string; accent: string }[] = [
+const RULES: Feature[] = [
   {
     title: "Signed drivers only",
     description: "Every driver offered carries a valid signature, checked on your PC before it's installed.",
-    accent: ACCENT,
+    icon: ShieldCheck,
   },
   {
     title: "Made for your exact device",
     description: "A driver is only offered when it lists your device's own hardware ID, at least as closely as the driver you have now.",
-    accent: "var(--neon-cyan)",
+    icon: Cpu,
   },
   {
     title: "Never an older driver",
     description: "The new driver must be newer than yours, by version and date. Downgrades are never offered.",
-    accent: "var(--neon-purple)",
+    icon: CircleArrowUp,
   },
   {
     title: "Your PC maker's drivers kept",
     description: "Drivers Dell, HP, Lenovo and others tuned for your PC stay unless you allow general ones in Settings.",
-    accent: "var(--neon-amber)",
+    icon: Laptop,
   },
   {
     title: "Firmware left alone",
     description: "BIOS and firmware updates are set aside. Those belong to your PC maker's own tools.",
-    accent: "var(--neon-success)",
+    icon: CircuitBoard,
   },
   {
     title: "Exactly what was found",
     description: "The scan shows real counts in plain words. No warnings to scare you and no popups asking you to buy.",
-    accent: "var(--neon-danger)",
+    icon: ListChecks,
   },
 ];
 
@@ -263,6 +267,13 @@ export default function DriversPage() {
         />
       </section>
 
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Run a scan, open a device's details and try an update or a roll back. It's a preview with a sample laptop: nothing on your computer is read or changed."
+      >
+        <DriversDemo />
+      </TryTheApp>
+
       {/* How it works */}
       <section id="how" className="scroll-mt-28 px-6 py-24">
         <SectionHeading eyebrow="How it works" title="Scan, look, update" subtitle="Nothing changes until you choose, and every change can be undone." />
@@ -291,15 +302,7 @@ export default function DriversPage() {
           title="Careful by default"
           subtitle="A driver is only offered when it passes every one of these checks."
         />
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {RULES.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureGrid features={RULES} accent={ACCENT} />
       </section>
 
       {/* Game components + tools */}

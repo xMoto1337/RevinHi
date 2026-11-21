@@ -6,6 +6,10 @@ import { JsonLd, PdfFooter as Footer, SectionHeading } from "@/components/pdf/Pd
 import { BuyButton } from "@/components/BuyButton";
 import { MsStoreBadge } from "@/components/MsStoreBadge";
 import { GuideLinks } from "@/components/guides/GuideLinks";
+import { ChartPie, Files, Gauge, HardDrive, Trash2, Usb } from "lucide-react";
+import { FeatureGrid, type Feature } from "@/components/FeatureGrid";
+import { TryTheApp } from "@/components/demo/AppWindow";
+import RecoveryDemo from "@/components/demo/RecoveryDemo";
 
 // Product page. Status, price and Gumroad link live in lib/products.ts; the installer is at the
 // product's downloadUrl (replaced on every release by revinhi-recovery/scripts/release.mjs).
@@ -55,36 +59,36 @@ const STEPS: { title: string; body: string }[] = [
   },
 ];
 
-const RECOVERS: { title: string; description: string; accent: string }[] = [
+const RECOVERS: Feature[] = [
   {
     title: "Deleted files",
     description: "Emptied the Recycle Bin or pressed Shift+Delete? Files stay on the drive until something new is saved over them, and RevinHi finds them.",
-    accent: ACCENT,
+    icon: Trash2,
   },
   {
     title: "Formatted drives",
     description: "A full scan looks for files by what's inside them, so photos and videos come back even after a quick format or when the drive shows as RAW.",
-    accent: "var(--neon-cyan)",
+    icon: HardDrive,
   },
   {
     title: "Lost partitions",
     description: "A whole partition vanished? RevinHi searches the drive for it and scans what was on it.",
-    accent: "var(--neon-purple)",
+    icon: ChartPie,
   },
   {
     title: "Windows drives, USB sticks and cards",
     description: "Works with NTFS, FAT32 and exFAT: hard drives, SSDs, USB sticks, SD and microSD cards, and disk image files.",
-    accent: "var(--neon-amber)",
+    icon: Usb,
   },
   {
     title: "30+ file types",
     description: "JPEG, PNG, HEIC and camera RAW photos, MP4, MOV and AVI videos, MP3 and WAV music, PDF and Office documents, ZIP, RAR and 7z.",
-    accent: "var(--neon-success)",
+    icon: Files,
   },
   {
     title: "A clear chance for every file",
     description: "Each file shows whether it should come back whole or has been partly written over, so you know before you save.",
-    accent: "var(--neon-danger)",
+    icon: Gauge,
   },
 ];
 
@@ -263,6 +267,14 @@ export default function RecoveryPage() {
         />
       </section>
 
+      {/* Try it */}
+      <TryTheApp
+        title="Try the app right here"
+        subtitle="Pick a drive, run a scan and look through what it finds. It's a preview with sample files: nothing on your computer is read or changed."
+      >
+        <RecoveryDemo />
+      </TryTheApp>
+
       {/* How it works */}
       <section id="how" className="scroll-mt-28 px-6 py-24">
         <SectionHeading
@@ -295,15 +307,7 @@ export default function RecoveryPage() {
           title="Deleted, formatted or simply gone"
           subtitle="From one deleted photo to a whole memory card that was formatted by mistake."
         />
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {RECOVERS.map((feature) => (
-            <div key={feature.title} className="glass-panel-flat rounded-2xl p-6 transition hover:bg-white/[0.07]">
-              <div className="mb-4 h-9 w-9 rounded-lg" style={{ background: feature.accent, boxShadow: `0 0 24px ${feature.accent}` }} />
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureGrid features={RECOVERS} accent={ACCENT} />
       </section>
 
       {/* Tools */}
